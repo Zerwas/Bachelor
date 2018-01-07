@@ -1,4 +1,13 @@
 \section{Martingale Technique}
+\begin{definition}
+A \define{martingale} is a family $(f_i,\mathcal{F}_i)_{i\in \{0,\dots,n\}}$ such that
+\begin{itemize}
+\item $f_i$ is integrable for all $i\in \{0,\dots,n\}$,
+\item $f_i$ is $\mathcal{F}_i$ measurable for all $i\in \{0,\dots,n\}$, and
+\item $f_i=\mathbb{E}[f_{i+1}|\mathcal{F}_i]$ for all $i\in \{0,\dots,n-1\}$.
+\end{itemize}
+\end{definition}
+
 
 \begin{lemma}
 \[\mu(\{x\in X\mid |f(x)-\mathbb{E}(f)|\geq c\})\leq 2\exp\left(-\frac{c^2}{4\sum_{i=1}^{n}\|d_i\|^2_\infty}\right)\]
