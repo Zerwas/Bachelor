@@ -13,3 +13,21 @@ A \define{martingale} is a family $(f_i,\mathcal{F}_i)_{i\in \{0,\dots,n\}}$ suc
 \[\mu(\{x\in X\mid |f(x)-\mathbb{E}(f)|\geq c\})\leq 2\exp\left(-\frac{c^2}{4\sum_{i=1}^{n}\|d_i\|^2_\infty}\right)\]
 \[\mu(\{|f-\mathbb{E}(f)|\geq c\})\leq 2\exp\left(-\frac{c^2}{4\sum_{i=1}^{n}\|d_i\|^2_\infty}\right)\]
 \end{lemma}
+
+\begin{theorem}
+If an mm-space $(X,d,\mu)$ has length $l$, then the concentration function of $X$ satisfies
+\[\alpha_X(\varepsilon)\leq 2\exp\left(-\frac{\varepsilon^2}{16l^2}\right).\]
+\end{theorem}
+
+
+\begin{theorem}
+Let $G$ be a compact group with a bi-invariant metric $d$, and let
+\[\{e\}=G_0<G_1<\dots <G_n=G\]
+be a chain of subgroups. Denote the diameter of $G_i/G_{i_-1}$ with respect to the factor metric by $a_i$. Then the concentration function of the mm-space $(G,d,\mu)$, where $\mu$ is the normalized Haar measure, satisfies
+\[\alpha_X(\varepsilon)\leq 2\exp\left(-\frac{\varepsilon^2}{16\sum_{i=1}^{n}a_i^2}\right).\]
+\end{theorem}
+
+\begin{theorem}
+The normalized counting measure on the groups $\SL_{2^n}(q)$ concentrates with respect to the rank-metric, i.e. for all $r>0$
+\[\lim_{n\to\infty} \alpha_{\SL_{2^n}}(r)=0 .\]
+\end{theorem}
