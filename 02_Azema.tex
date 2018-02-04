@@ -14,6 +14,10 @@ A \define{martingale} is a family $(f_i,\mathcal{F}_i)_{i\in \{0,\dots,n\}}$ suc
 \[\mu(\{|f-\mathbb{E}(f)|\geq c\})\leq 2\exp\left(-\frac{c^2}{4\sum_{i=1}^{n}\|d_i\|^2_\infty}\right)\]
 \end{lemma}
 
+\begin{definition}\label{def:length}
+Let $(X,d,\mu)$ be an mm-space.
+\end{definition}
+
 \begin{theorem}
 If an mm-space $(X,d,\mu)$ has length $l$, then the concentration function of $X$ satisfies
 \[\alpha_X(\varepsilon)\leq 2\exp\left(-\frac{\varepsilon^2}{16l^2}\right).\]
@@ -26,8 +30,34 @@ Let $G$ be a compact group with a bi-invariant metric $d$, and let
 be a chain of subgroups. Denote the diameter of $G_i/G_{i_-1}$ with respect to the factor metric by $a_i$. Then the concentration function of the mm-space $(G,d,\mu)$, where $\mu$ is the normalized Haar measure, satisfies
 \[\alpha_X(\varepsilon)\leq 2\exp\left(-\frac{\varepsilon^2}{16\sum_{i=1}^{n}a_i^2}\right).\]
 \end{theorem}
+%rank from 2 to 3 in proof
 
 \begin{theorem}
 The normalized counting measure on the groups $\SL_{2^n}(q)$ concentrates with respect to the rank-metric, i.e. for all $r>0$
 \[\lim_{n\to\infty} \alpha_{\SL_{2^n}}(r)=0 .\]
 \end{theorem}
+
+\begin{lemma}
+Let $(X,d,\mu)$ be an mm-space with diameter $d$ and \FlorianSagt{could be that this only holds for finite $X$ as conditions in definition of length are just almost surely}
+\[\Omega_0=\{X\}\prec\dots\prec\Omega_n=\{\{x\}\mid x\in X\}\]
+with $a_1,\dots,a_n$ as in Definition \ref{def:length}. Then 
+\[\sum_{i=1}^{n}a_i\geq d.\]
+\end{lemma}
+\begin{proof}
+Let $x,y\in X$, with $x\neq y$, we show $d(x,y)\leq\sum_{i=1}^{n}a_i$. Let $i_0$ be the smallest number such that $[x]_{i_0}\neq [y]_{i_0}$. Since $[x]_0=X=[y]_0$ we know that $i_0$ is at least 1. Therefore $[x]_{i_0-1}=[y]_{i_0-1}$ and there is an isomorphism $\varphi_{i_0}\colon[x]_{i_0}\to[y]_{i_0}$ such that $d(\varphi_{i_0}(x),y)\leq a_{i_0}$.\FlorianSagt{here is the a.s. problem} Let $x_{i_0}=\varphi_{i_0}(x)$, then 
+\[d(x,y)\leq d(x,x_{i_0})+d(x_{i_0},y).\]
+If $x_{i_0}=y$, then we are done. Otherwise let $i_1$ be the smallest number such that $[x_{i_0}]_{i_1}\neq [y]_{i_1}$. Then let $\varphi_{i_1}\colon[x_{i_0}]_{i_1}\to[y]_{i_1}$ be an isomorphism such that $d(\varphi_{i_1}(x_{i_0}),y)\leq a_{i_1}$. Define $x_{i_1}=\varphi_{i_1}(x_{i_0})$. Proceeding in this fashion yields elements $x_{i_0},\dots,x_{i_k}$ such that $x_{i_k}=y$ and
+\[d(x,y)\leq d(x,x_{i_0})+d(x_{i_0},x_{i_1})+\dots+d(x_{i_{k-1}},x_{i_k})\leq a_{i_0}+\dots +a_{i_k}\leq\sum_{i=1}^{n}a_i.\] 
+\end{proof}
+
+\begin{lemma}
+Let $(X,d,\mu)$ be an mm-space with diameter 1 and $\Delta=\min d$. Then the length of $X$ is at least $\Delta^{\frac{1}{2}}$.
+\end{lemma}
+
+\begin{definition}
+The \define{symplectic group} of degree $2n$ over a field $q$, denoted by $\Sp(2n,q)$, is the subgroup of $\SL(2n,q)$ containing all matrices $A$ such that
+\[A^T\Omega A=\Omega,\ \text{where}\ \Omega=\left(\begin{array}{cc}
+0&E_n\\
+-E_n&0
+\end{array}\right).\]
+\end{definition}
