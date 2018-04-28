@@ -8,8 +8,11 @@ A \define{martingale} is a family $(f_i,\mathcal{F}_i)_{i\in \{0,\dots,n\}}$ suc
 \end{itemize}
 \end{definition}
 
+\begin{lemma} For all $x\in\R$
+\[e^{x}\leq x+e^{x^2}.\]
+\end{lemma}
 
-\begin{lemma}
+\begin{lemma}[Azema's inequality]
 \[\mu(\{x\in X\mid |f(x)-\mathbb{E}(f)|\geq c\})\leq 2\exp\left(-\frac{c^2}{4\sum_{i=1}^{n}\|d_i\|^2_\infty}\right)\]
 \[\mu(\{|f-\mathbb{E}(f)|\geq c\})\leq 2\exp\left(-\frac{c^2}{4\sum_{i=1}^{n}\|d_i\|^2_\infty}\right)\]
 \end{lemma}
@@ -61,3 +64,22 @@ The \define{symplectic group} of degree $2n$ over a field $q$, denoted by $\Sp(2
 -E_n&0
 \end{array}\right).\]
 \end{definition}
+
+\begin{lemma} %d(A0,A0)
+              % (CD 0I)
+Let $g\colon V\to V$ be an isomorphism, $V=U\oplus U'$, and $g(U')\subseteq U'$. %it follows g(U')=U'
+Then the map 
+\begin{align*}
+g'\colon V&\to V\\
+v&\mapsto
+\begin{cases}
+g(v)-\pi_{U'}(g(v)) &\text{if }v\notin U'\\
+v &\text{if }v\in U'
+\end{cases}
+\end{align*}
+i.e. $g'=\pi_U\circ g-\pi_U\circ g \circ1_{U'} +1_{U'}$, is an isomorphism and $d(g,g')\leq \frac{1}{n}\cdot\dim U'$.
+\end{lemma}
+
+\begin{lemma}[what we still need (add conditions for $\omega$ if necessary)]
+Let $\omega\colon V\times V\to k$ be a bilinear map, $U,U'$ subspaces of $V$, and $h\colon U\to U'$ an isomorphism that preserves $\omega$. Then $h$ can be extended to an isomorphism on $V$ which also preserves $\omega$.
+\end{lemma}
