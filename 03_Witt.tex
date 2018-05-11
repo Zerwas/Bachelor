@@ -1,0 +1,46 @@
+\section{Limits of other Matrix group families are Levy groups too}
+When studying matrices it is often useful to look at the corresponding linear maps of a suitable vector space. In the case of orthogonal, symplectic, or unitary matrices these are linear maps from the vector space to itself preserving an orthogonal, symplectic, or unitary from respectively. Formally, the symplectic group $\Sp_n(q)$ is isomorphic to $\Aut(V,\omega)$, where $V$ is an $n$-dimensional $F(q)$ vector space and $\omega$ is a symplectic form.
+
+As we have to only handle finite dimensional vector spaces here a lot of nice theorems hold. \dots
+
+Let $V$ be an $n$ dimensional vector space.%and e_1,...,e_n\in V a basis
+\begin{lemma}\label{lem:complementExists}
+For all $U\leq V$ there is an $U'\leq V$ such that $U\oplus U'=V$.
+\end{lemma}
+
+Let $\omega$ be a bilinear form on $V$.
+\begin{lemma}
+For all $W\leq V$ there is a $W'\leq W^\bot$ such that $W\cap W'=\emptyset$ and \[\dim W'\geq \dim V-2\dim W.\]
+\end{lemma}
+\begin{proof}
+By Lemma \ref{lem:complementExists} there is a $W'$ such that 
+\[W^\bot=(W^\bot\cap W)\oplus W'.\]
+Clearly, $W\cap W'=\emptyset$ and 
+\[\dim W'=\dim W^\bot - \dim (W^\bot\cap W)\geq \dim W^\bot- \dim W.\]
+Whats left is to show that $\dim W^\bot\geq \dim V-\dim W$. Let $b_1,\dots, b_{\dim W}$ be a basis of $W$. Then $W^\bot$ is equal to the kernel of the map 
+\begin{align*}
+V\to F_q^{\dim W}&& v\mapsto
+\begin{pmatrix}
+\omega(b_1,v)\\
+\vdots\\
+\omega(b_{\dim W},v)
+\end{pmatrix}.
+\end{align*}
+Now the statement follows from the rank-nullity theorem.
+\end{proof}
+
+[other useful theorems]
+
+
+\begin{theorem}[Witt]
+Let $V$ be an orthogonal, symplectic, or unitary space. Let $U$ and $W$ be subspaces of $V$ and suppose $\alpha\colon U\to W$ is an isometry. Then $\alpha$ extends to an isometry of $V$.
+\end{theorem}
+
+\begin{lemma}
+Let $G$ be an orthogonal, symplectic, or unitary group. 
+\end{lemma}
+\begin{proof}
+$G=\Aut(V,\omega)$ for some vector space $V$ with  bilinear form $\omega$. Let $\{e_1,\dots,e_n\}$ be a basis of $V$ and $H=\Aut(\langle e_1,\dots,e_n\rangle,\omega)$. Our aim is to find for any $g\in G$ an $h\in H$ such that $d(g,h)\leq\frac{4}{n}$.
+
+Let $g\in G$ 
+\end{proof}
