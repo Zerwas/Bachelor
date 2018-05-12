@@ -9,7 +9,7 @@ For all $U\leq V$ there is an $U'\leq V$ such that $U\oplus U'=V$.
 \end{lemma}
 
 Let $\omega$ be a bilinear form on $V$.
-\begin{lemma}
+\begin{lemma}\label{lem:largeOrthogonal}
 For all $W\leq V$ there is a $W'\leq W^\bot$ such that $W\cap W'=\emptyset$ and \[\dim W'\geq \dim V-2\dim W.\]
 \end{lemma}
 \begin{proof}
@@ -17,7 +17,7 @@ By Lemma \ref{lem:complementExists} there is a $W'$ such that
 \[W^\bot=(W^\bot\cap W)\oplus W'.\]
 Clearly, $W\cap W'=\emptyset$ and 
 \[\dim W'=\dim W^\bot - \dim (W^\bot\cap W)\geq \dim W^\bot- \dim W.\]
-Whats left is to show that $\dim W^\bot\geq \dim V-\dim W$. Let $b_1,\dots, b_{\dim W}$ be a basis of $W$. Then $W^\bot$ is equal to the kernel of the map 
+Whats left is to show that $\dim W^\bot\geq \dim V-\dim W$. Let $b_1,\dots, b_{\dim W}$ be a basis of $W$. Then $W^\bot$ is equal to the kernel of the linear map 
 \begin{align*}
 V\to F_q^{\dim W}&& v\mapsto
 \begin{pmatrix}
@@ -29,6 +29,22 @@ V\to F_q^{\dim W}&& v\mapsto
 Now the statement follows from the rank-nullity theorem.
 \end{proof}
 
+\begin{lemma}\label{lem:isomSum}\FlorianSagt{maybe $g\colon U_1\to U_2$ and $h\colon W_1\to W_2$ better}
+Let $g_1\colon U_1\to W_1$ and $g_2\colon U_2\to W_2$ be isometries such that $U_1\bot U_2$, $U_1\cap U_2=\emptyset$, $W_1\bot W_2$, and $W_1\cap W_2=\emptyset$.
+Then $g_1\oplus g_2\colon U_1\oplus U_2\to W_1\oplus W_2$ is also an isomtry.
+\end{lemma}
+\begin{proof}
+Obviously, $g_1\oplus g_2$ is again a bijective linear map. Consider $v_1+v_2, u_1+u_2\in U_1\oplus U_2$
+\begin{align*}
+\omega(v_1+v_2, u_1+u_2)&=\omega(v_1, u_1)+\omega(v_1, u_2)+\omega(v_2, u_1)+\omega(v_2, u_2)\\
+&=\omega(v_1, u_1)+0+0+\omega(v_2, u_2) \tag{$U_1\bot U_2$}\\
+&=\omega(g_1(v_1), g_1(u_1))+\omega(g_2(v_2), g_2(u_2))\\
+&=\omega(g_1(v_1), g_1(u_1))+\omega(g_1(v_1), g_2(u_2))\\ &\phantom{={}}+\omega(g_2(v_2), g_1(u_1))+\omega(g_2(v_2), g_2(u_2))\tag{$W_1\bot W_2$}\\
+&=\omega(g_1\oplus g_2(v_1+v_2), g_1\oplus g_2(u_1+u_2))
+\end{align*}
+Hence $g_1\oplus g_2$ preserves $\omega$.
+\end{proof}
+
 [other useful theorems]
 
 
@@ -37,10 +53,15 @@ Let $V$ be an orthogonal, symplectic, or unitary space. Let $U$ and $W$ be subsp
 \end{theorem}
 
 \begin{lemma}
-Let $G$ be an orthogonal, symplectic, or unitary group. 
+Let $G$ be an orthogonal, symplectic, or unitary group. \dots
 \end{lemma}
 \begin{proof}
-$G=\Aut(V,\omega)$ for some vector space $V$ with  bilinear form $\omega$. Let $\{e_1,\dots,e_n\}$ be a basis of $V$ and $H=\Aut(\langle e_1,\dots,e_n\rangle,\omega)$. Our aim is to find for any $g\in G$ an $h\in H$ such that $d(g,h)\leq\frac{4}{n}$.
+$G=\Aut(V,\omega)$ for some vector space $V$ with  bilinear form $\omega$. Let $\{e_1,\dots,e_n\}$ be a basis of $V$ and $H=\Aut(\langle e_1,\dots,e_{n-1}\rangle,\omega)$. Our aim is to find for any $g\in G$ an $g'\in H$ such that $d(g,g')\leq\frac{4}{n}$.
+The idea is to find a map $h\in H$ that behaves like the inverse of $g$ on $ge_n$ and like the identity an most of the rest. Then $hg$ is the desired $g'$.\FlorianSagt{not jet, we still need $hg\in H$, i.e. $hg(\langle e_1,\dots,e_{n-1}\rangle)\subseteq\langle e_1,\dots,e_{n-1}\rangle$}
 
-Let $g\in G$ 
+Let $g\in G$ and define $W=\langle e_n,ge_n\rangle$. By Lemma \ref{lem:largeOrthogonal} there is a $W'$ such that $\dim W'\geq n-4$ and $W'\leq W^\bot$. Consider the map
+\begin{align*}
+ g^{-1}|_{\langle ge_n\rangle}\oplus 1_{W'}\colon \langle ge_n\rangle\oplus W'\to \langle e_n\rangle\oplus W'
+\end{align*}
+as $g^{-1}|_{\langle ge_n\rangle}$ and $1_{W'}$ are isometries and $W\bot W'$ Lemma \ref{lem:isomSum} implies that the above map is also an isomtry. By Witt's lemma this isometry can be extended to an isometry $h\colon V\to V$.
 \end{proof}

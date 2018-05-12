@@ -54,9 +54,6 @@
 \usepackage{todonotes}
 \usepackage{csquotes}
 \usepackage{xparse}
-\DeclareDocumentCommand{\DanielSagt}{o m}{
-  \IfValueTF{#1}{\todo[#1]{Daniel sagt: \enquote{#2}}}{\todo[size=\tiny,fancyline]{Daniel sagt: \enquote{#2}}}
-}
 \DeclareDocumentCommand{\FlorianSagt}{o m}{
   \IfValueTF{#1}{\todo[#1,color=green]{Florian sagt: \enquote{#2}}}{\todo[size=\tiny,color=green,fancyline]{Florian sagt: \enquote{#2}}}
 }
