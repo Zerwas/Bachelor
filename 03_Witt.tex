@@ -12,26 +12,30 @@ For all $U\leq V$ there is an $U'\leq V$ such that $U\oplus U'=V$.
 Let $\omega$ be a bilinear form on $V$.
 
 \begin{lemma}\label{lem:dimComplement}
-Let $U\leq V$. Then $\dim U^\bot\geq \dim V-\dim U$.
+Let $U\leq V$. Then $\dim U^\bot= \dim V-\dim U$.
+\end{lemma}
+\begin{lemma}\label{lem:doubleComplement}
+Let $U\leq V$. Then $U^{\bot^\bot}=U$.
 \end{lemma}
 
-\begin{lemma}
+\begin{lemma}\label{lem:decompositionComplement}
 There exists a $U\leq V$ with $\dim U\leq 2$ such that $V=U\oplus U^\bot$.
 \end{lemma}
 \begin{proof}
-Let $e\in V\setminus\{0\}$. By Lemma \ref{lem:dimComplement} $\dim e^\bot\geq n-1$. Since $\omega$ is non degenerate $\omega(e,.)\not=0$ and therefore $e^\bot\not=V$. Hence $\dim e^\bot= n-1$.
+Let $e\in V\setminus\{0\}$. By Lemma \ref{lem:dimComplement} $\dim e^\bot= n-1$. %Since $\omega$ is non degenerate $\omega(e,.)\not=0$ and therefore $e^\bot\not=V$. Hence $\dim e^\bot= n-1$.
 
-If $e\notin e^\bot$, then $V=\langle e\rangle\oplus e^\bot$. and $\langle e\rangle$ is the desired $U$.
+If $e\notin e^\bot$, then $V=\langle e\rangle\oplus e^\bot$ and $\langle e\rangle$ is the desired $U$.
 
-If $e\in e^\bot$, then extend $e$ to a basis $e,b_2,\dots,b_{n-1}$ of $e^\bot$ and consider the subspace $U:=\langle b_2,\dots,b_{n-1}\rangle^\bot$.
+If $e\in e^\bot$, then extend $e$ to a basis $e,b_2,\dots,b_{n-1}$ of $e^\bot$ and consider the 2-dimensional subspace $U:=\langle b_2,\dots,b_{n-1}\rangle^\bot$. Now we have to show that \[U\cap U^\bot=0.\]
+Take $v$ from the intersection. By Lemma \ref{lem:doubleComplement} $U^\bot=\langle b_2,\dots,b_{n-1}\rangle$ and $v\bot b_i$ for all $i\in\{2,\dots,n-1\}$. Since $\langle b_2,\dots,b_{n-1}\rangle\leq e^\bot$ we also have $v\bot e$. Hence $v\in e^{\bot^\bot}=\langle e\rangle$ and $v=\lambda e$. Now $e\notin \langle b_2,\dots,b_{n-1}\rangle$ implies $v=0$. Henceforth $V=U\oplus U^\bot$.
 \end{proof}
 
 
-\begin{lemma}
-Let $U\leq V$ and $f\colon V\to V$ be an isometry such that $f|_U=1_U$. Then $f(U^\bot)\subseteq U^\bot$.
+\begin{lemma}\label{lem:isomStaysInCompl}
+Let $U\leq V$ and $f\colon V\to V$ be an isometry such that $f|_U=1_U$. Then $f(U^\bot)= U^\bot$.
 \end{lemma}
 \begin{proof}
-It suffices to show that $f(u')\bot u$ for all $u\in U$ and $u'\in U^\bot$.
+As $\dim f(U^\bot)=\dim U^\bot$ it suffices to show that $f(u')\bot u$ for all $u\in U$ and $u'\in U^\bot$.
 \begin{align*}
 \omega(f(u'),u)&=\omega(f(u'),f(u))\\
 &=\omega(u',u)\\
@@ -60,6 +64,10 @@ V\to F_q^{\dim W}&& v\mapsto
 Now the statement follows from the rank-nullity theorem.
 \end{proof}
 
+
+\begin{lemma}
+Let $U,W\leq V$ such that $U\bot W$ and $U\cap W=0$. Then $\langle U,W\rangle\cong U\oplus W$.
+\end{lemma}
 \begin{lemma}\label{lem:isomSum}\FlorianSagt{maybe $g\colon U_1\to U_2$ and $h\colon W_1\to W_2$ better}
 Let $g_1\colon U_1\to W_1$ and $g_2\colon U_2\to W_2$ be isometries such that $U_1\bot U_2$, $U_1\cap U_2=0$, $W_1\bot W_2$, and $W_1\cap W_2=0$.
 Then $g_1\oplus g_2\colon U_1\oplus U_2\to W_1\oplus W_2$ is also an isomtry.
@@ -87,12 +95,20 @@ Let $V$ be an orthogonal, symplectic, or unitary space. Let $U$ and $W$ be subsp
 Let $G$ be an orthogonal, symplectic, or unitary group. \dots
 \end{lemma}
 \begin{proof}
-$G=\Aut(V,\omega)$ for some vector space $V$ with  bilinear form $\omega$. Let $\{e_1,\dots,e_n\}$ be a basis of $V$\FlorianSagt{maybe choose the basis in a clever way} and $H=\Aut(\langle e_1,\dots,e_{n-1}\rangle,\omega)$. Our aim is to find for any $g\in G$ an $g'\in H$ such that $d(g,g')\leq\frac{4}{n}$.
-The idea is to find a map $h\in H$ that behaves like the inverse of $g$ on $ge_n$ and like the identity an most of the rest. Then $hg$ is the desired $g'$.\FlorianSagt{not jet, we still need $hg\in H$, i.e. $hg(\langle e_1,\dots,e_{n-1}\rangle)\subseteq\langle e_1,\dots,e_{n-1}\rangle$}
+$G=\Aut(V,\omega)$ for some vector space $V$ with  bilinear form $\omega$. Use Lemma \ref{lem:decompositionComplement} to obtain $U\leq V$ such that $V=U\oplus U^\bot$ and $\dim U\leq2$. Define $H=\Aut(U^\bot,\omega)$. Our aim is to find for any $g\in G$ an $g'\in H$ such that $d(g,g')\leq\frac{4}{n}$.
+The idea is to find a map $h\in H$ that behaves like the inverse of $g$ on $gU$ and like the identity on most of the rest. Then $hg$ is the desired $g'$.
 
-Let $g\in G$ and define $W=\langle e_n,ge_n\rangle$. By Lemma \ref{lem:largeOrthogonal} there is a $W'$ such that $\dim W'\geq n-4$ and $W'\leq W^\bot$. Consider the map
+Let $g\in G$ and define $W=\langle U,gU\rangle$. By Lemma \ref{lem:largeOrthogonal} there is a $W'$ such that $\dim W'\geq n-8$, $W'\leq W^\bot$, and $W'\cap W=0$. Consider the map
 \begin{align*}
- g^{-1}|_{\langle ge_n\rangle}\oplus 1_{W'}\colon \langle ge_n\rangle\oplus W'\to \langle e_n\rangle\oplus W'
+ g^{-1}|_{gU}\oplus 1_{W'}\colon gU\oplus W'\to U\oplus W'
 \end{align*}
-as $g^{-1}|_{\langle ge_n\rangle}$ and $1_{W'}$ are isometries and $W\bot W'$ Lemma \ref{lem:isomSum} implies that the above map is also an isomtry. By Witt's lemma this isometry can be extended to an isometry $h\colon V\to V$.
+as $g^{-1}|_{gU}$ and $1_{W'}$ are isometries and $W\bot W'$ Lemma \ref{lem:isomSum} implies that the above map is also an isomtry. By Witt's lemma this isometry can be extended to an isometry $h\colon V\to V$. 
+\begin{align*}
+n\cdot d(g,hg)&=\dim\im (g-hg)\\
+&\leq 8+\dim \im(g-hg)|_{W'}\tag{$\dim W'\geq n-8$}\\
+&= 8+\dim \im(g-g)|_{W'}\tag{$h|_{W'}=1_{W'}$}\\
+&=8
+\end{align*}
+Finally, we need to show that $hg\in H$, here the choice of $H$ using Lemma \ref{lem:decompositionComplement} comes into play. By construction of $h$ we have that $hg|_U=1_U$. Therefore we can apply Lemma \ref{lem:isomStaysInCompl} and get that $hg(U^\bot)= U^\bot$. Hence $hg\in H$ and $d(g,hg)\leq\frac{8}{n}$.
+
 \end{proof}
