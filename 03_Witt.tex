@@ -1,21 +1,52 @@
 \section{Limits of other Matrix group families are Levy groups too}
-When studying matrices it is often useful to look at the corresponding linear maps of a suitable vector space. In the case of orthogonal, symplectic, or unitary matrices these are linear maps from the vector space to itself preserving an orthogonal, symplectic, or unitary from respectively. Formally, the symplectic group $\Sp_n(q)$ is isomorphic to $\Aut(V,\omega)$, where $V$ is an $n$-dimensional $F(q)$ vector space and $\omega$ is a symplectic form.
+When studying matrices it is often useful to look at the corresponding linear maps of a suitable vector space. In the case of orthogonal, symplectic, or unitary matrices these are linear maps from the vector space to itself preserving an orthogonal, symplectic, or unitary form respectively. Formally, the symplectic group $\Sp_n(q)$ is isomorphic to $\Aut(V,\omega)$, where $V$ is an $n$-dimensional $F(q)$ vector space and $\omega$ is a symplectic form.
 
-As we have to only handle finite dimensional vector spaces here a lot of nice theorems hold. \dots
+As we have to handle only finite dimensional vector spaces here a lot of nice theorems hold. \dots
 
 Let $V$ be an $n$ dimensional vector space.%and e_1,...,e_n\in V a basis
 \begin{lemma}\label{lem:complementExists}
 For all $U\leq V$ there is an $U'\leq V$ such that $U\oplus U'=V$.
 \end{lemma}
 
+
 Let $\omega$ be a bilinear form on $V$.
+
+\begin{lemma}\label{lem:dimComplement}
+Let $U\leq V$. Then $\dim U^\bot\geq \dim V-\dim U$.
+\end{lemma}
+
+\begin{lemma}
+There exists a $U\leq V$ with $\dim U\leq 2$ such that $V=U\oplus U^\bot$.
+\end{lemma}
+\begin{proof}
+Let $e\in V\setminus\{0\}$. By Lemma \ref{lem:dimComplement} $\dim e^\bot\geq n-1$. Since $\omega$ is non degenerate $\omega(e,.)\not=0$ and therefore $e^\bot\not=V$. Hence $\dim e^\bot= n-1$.
+
+If $e\notin e^\bot$, then $V=\langle e\rangle\oplus e^\bot$. and $\langle e\rangle$ is the desired $U$.
+
+If $e\in e^\bot$, then extend $e$ to a basis $e,b_2,\dots,b_{n-1}$ of $e^\bot$ and consider the subspace $U:=\langle b_2,\dots,b_{n-1}\rangle^\bot$.
+\end{proof}
+
+
+\begin{lemma}
+Let $U\leq V$ and $f\colon V\to V$ be an isometry such that $f|_U=1_U$. Then $f(U^\bot)\subseteq U^\bot$.
+\end{lemma}
+\begin{proof}
+It suffices to show that $f(u')\bot u$ for all $u\in U$ and $u'\in U^\bot$.
+\begin{align*}
+\omega(f(u'),u)&=\omega(f(u'),f(u))\\
+&=\omega(u',u)\\
+&=0
+\end{align*}
+This concludes the proof.
+\end{proof}
+
 \begin{lemma}\label{lem:largeOrthogonal}
-For all $W\leq V$ there is a $W'\leq W^\bot$ such that $W\cap W'=\emptyset$ and \[\dim W'\geq \dim V-2\dim W.\]
+For all $W\leq V$ there is a $W'\leq W^\bot$ such that $W\cap W'=0$ and \[\dim W'\geq \dim V-2\dim W.\]
 \end{lemma}
 \begin{proof}
 By Lemma \ref{lem:complementExists} there is a $W'$ such that 
 \[W^\bot=(W^\bot\cap W)\oplus W'.\]
-Clearly, $W\cap W'=\emptyset$ and 
+Clearly, $W\cap W'=0$ and 
 \[\dim W'=\dim W^\bot - \dim (W^\bot\cap W)\geq \dim W^\bot- \dim W.\]
 Whats left is to show that $\dim W^\bot\geq \dim V-\dim W$. Let $b_1,\dots, b_{\dim W}$ be a basis of $W$. Then $W^\bot$ is equal to the kernel of the linear map 
 \begin{align*}
@@ -30,7 +61,7 @@ Now the statement follows from the rank-nullity theorem.
 \end{proof}
 
 \begin{lemma}\label{lem:isomSum}\FlorianSagt{maybe $g\colon U_1\to U_2$ and $h\colon W_1\to W_2$ better}
-Let $g_1\colon U_1\to W_1$ and $g_2\colon U_2\to W_2$ be isometries such that $U_1\bot U_2$, $U_1\cap U_2=\emptyset$, $W_1\bot W_2$, and $W_1\cap W_2=\emptyset$.
+Let $g_1\colon U_1\to W_1$ and $g_2\colon U_2\to W_2$ be isometries such that $U_1\bot U_2$, $U_1\cap U_2=0$, $W_1\bot W_2$, and $W_1\cap W_2=0$.
 Then $g_1\oplus g_2\colon U_1\oplus U_2\to W_1\oplus W_2$ is also an isomtry.
 \end{lemma}
 \begin{proof}
@@ -56,7 +87,7 @@ Let $V$ be an orthogonal, symplectic, or unitary space. Let $U$ and $W$ be subsp
 Let $G$ be an orthogonal, symplectic, or unitary group. \dots
 \end{lemma}
 \begin{proof}
-$G=\Aut(V,\omega)$ for some vector space $V$ with  bilinear form $\omega$. Let $\{e_1,\dots,e_n\}$ be a basis of $V$ and $H=\Aut(\langle e_1,\dots,e_{n-1}\rangle,\omega)$. Our aim is to find for any $g\in G$ an $g'\in H$ such that $d(g,g')\leq\frac{4}{n}$.
+$G=\Aut(V,\omega)$ for some vector space $V$ with  bilinear form $\omega$. Let $\{e_1,\dots,e_n\}$ be a basis of $V$\FlorianSagt{maybe choose the basis in a clever way} and $H=\Aut(\langle e_1,\dots,e_{n-1}\rangle,\omega)$. Our aim is to find for any $g\in G$ an $g'\in H$ such that $d(g,g')\leq\frac{4}{n}$.
 The idea is to find a map $h\in H$ that behaves like the inverse of $g$ on $ge_n$ and like the identity an most of the rest. Then $hg$ is the desired $g'$.\FlorianSagt{not jet, we still need $hg\in H$, i.e. $hg(\langle e_1,\dots,e_{n-1}\rangle)\subseteq\langle e_1,\dots,e_{n-1}\rangle$}
 
 Let $g\in G$ and define $W=\langle e_n,ge_n\rangle$. By Lemma \ref{lem:largeOrthogonal} there is a $W'$ such that $\dim W'\geq n-4$ and $W'\leq W^\bot$. Consider the map
