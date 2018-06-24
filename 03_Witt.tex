@@ -1,3 +1,4 @@
+
 \section{Limits of other Matrix group families are Levy groups too}
 When studying matrices it is often useful to look at the corresponding linear maps of a suitable vector space. In the case of orthogonal, symplectic, or unitary matrices these are linear maps from the vector space to itself preserving an orthogonal, symplectic, or unitary form respectively. Formally, the symplectic group $\Sp_n(q)$ is isomorphic to $\Aut(V,\omega)$, where $V$ is an $n$-dimensional $F(q)$ vector space and $\omega$ is a symplectic form.
 
@@ -95,7 +96,7 @@ Let $V$ be an orthogonal, symplectic, or unitary space. Let $U$ and $W$ be subsp
 Let $G$ be an orthogonal, symplectic, or unitary group. \dots
 \end{lemma}
 \begin{proof}
-$G=\Aut(V,\omega)$ for some vector space $V$ with  bilinear form $\omega$. Use Lemma \ref{lem:decompositionComplement} to obtain $U\leq V$ such that $V=U\oplus U^\bot$ and $\dim U\leq2$. Define $H=\Aut(U^\bot,\omega)$. Our aim is to find for any $g\in G$ an $g'\in H$ such that $d(g,g')\leq\frac{4}{n}$.
+$G=\Aut(V,\omega)$ for some vector space $V$ with  bilinear form $\omega$. Use Lemma \ref{lem:decompositionComplement} to obtain $U\leq V$ such that $V=U\oplus U^\bot$ and $\dim U\leq2$. Define $H=\Aut(U^\bot,\omega)$. Our aim is to find for any $g\in G$ an $g'\in H$ such that $d(g,g')\leq\frac{8}{n}$.
 The idea is to find a map $h\in H$ that behaves like the inverse of $g$ on $gU$ and like the identity on most of the rest. Then $hg$ is the desired $g'$.
 
 Let $g\in G$ and define $W=\langle U,gU\rangle$. By Lemma \ref{lem:largeOrthogonal} there is a $W'$ such that $\dim W'\geq n-8$, $W'\leq W^\bot$, and $W'\cap W=0$. Consider the map
