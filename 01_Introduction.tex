@@ -1,6 +1,7 @@
 \section*{Preface}
 If we have a finite group of matrices, then we can equip it with the rank metric and the normalized Haar measure to obtain a \emph{metric measure space}.
-Carderi and Thom  showed in \cite{thom} that the limit of $\SL_n$ is \emph{extremely amenable}. The goal of this thesis is to generalize this result to limits of other matrix group families, namely unitary, symplectic, and orthogonal matrices. The general strategy will be the following, given a family $(G_n)_{n\in\N}$ of (mm) matrix groups we first find an upper bound for the \emph{concentration function} of $G_n$ using a consequence of Azemas inequality \cite{Azema book}. As the upper bounds converge to zero we conclude that $(G_n)_{n\in\N}$ is a \emph{L\'{e}vy family}, making their limit a \emph{L\'{e}vy group}. Finally, we know from \cite{29} that every L\'{e}vy group is extremely amenable.
+There is a well defined limit of ...
+Carderi and Thom  showed in \cite{thom} that the limit of $\SL_n$ is \emph{extremely amenable}. The goal of this thesis is to generalize this result to limits of other matrix group families, namely unitary, symplectic, and orthogonal matrices. The general strategy will be the following: given a family $(G_n)_{n\in\N}$ of (mm) matrix groups we first find an upper bound for the \emph{concentration function} of $G_n$ using a consequence of Azemas inequality \cite{Azema book}. As the upper bounds converge to zero we conclude that $(G_n)_{n\in\N}$ is a \emph{L\'{e}vy family}, making their limit a \emph{L\'{e}vy group}. Finally, we know from \cite{29} that every L\'{e}vy group is extremely amenable.
 
 \section{Introduction}
 
@@ -10,6 +11,7 @@ Examples of matrices in the limit
 
 structure of thesis:
 
+%extreme amenabiliy
 1. Azema
 
 2. Thoms proof (matrices as automorphisms but without form)
@@ -17,3 +19,23 @@ structure of thesis:
 3. want to generalize this so we need a form Hence extending the automorphism becomes harder so use Witts lemma
 
 4. generalized version of the proof
+
+5. application coloring theorem
+
+
+\section{Limits of matrix groups and extreme amenability}
+Let $\GL_n(q)$ be the general linear group over the $q$ element field $\F_q$ and let $G$ be a subgroup of $\GL_n(q)$. We can equip $G$ with the (normalized) \define{rank-metric} $d(g,h):=\frac{1}{n}\rank(g-h)$. Since all matrices in $G$ have full rank, this metric is left- and right-invariant, i.e. $d(kg,kh)=d(g,h)=d(gk,hk)$ for all $g,h,k\in G$. Let $G_n\leq \GL_{2^n}(q)$ be a family of subgroups, such that 
+$\begin{pmatrix}
+g &0\\
+0&g
+\end{pmatrix}\in G_{n+1}$ for all $g\in G_n$. Note that the map
+\[\varphi_n\colon G_n\mapsto G_{n+1}\text{, where }\varphi_n(g)=\begin{pmatrix}
+g &0\\
+0&g
+\end{pmatrix}\]
+is an isometric homomorphism for all $n\in\N$. Hence we can define the inductive limit of $G_n$ ... We denote the metric completion of this limit by ...
+
+%TODO not extremely amenable for G_n=GL_2^n
+
+%\[\varphi_n\colon g\mapsto\]
+%is a well defined embedding
