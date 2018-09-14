@@ -24,7 +24,10 @@ structure of thesis:
 
 
 \section{Limits of matrix groups and extreme amenability}
-Let $\GL_n(q)$ be the general linear group over the $q$ element field $\F_q$ and let $G$ be a subgroup of $\GL_n(q)$. We can equip $G$ with the (normalized) \define{rank-metric} $d(g,h):=\frac{1}{n}\rank(g-h)$. Since all matrices in $G$ have full rank, this metric is left- and right-invariant, i.e. $d(kg,kh)=d(g,h)=d(gk,hk)$ for all $g,h,k\in G$. Let $G_n\leq \GL_{2^n}(q)$ be a family of subgroups, such that 
+Let $\GL_n(q)$ be the general linear group over the $q$ element field $\F_q$ and let $G$ be a subgroup of $\GL_n(q)$. We can equip $G$ with the (normalized) \define{rank-metric} $d(g,h):=\frac{1}{n}\rank(g-h)$.
+%The group $G$, equipped with the topology induced by $d$, is a topological group.
+Since all matrices in $G$ have full rank, this metric is bi-invariant, i.e. $d(kg,kh)=d(g,h)=d(gk,hk)$ for all $g,h,k\in G$. 
+Let $G_n\leq \GL_{2^n}(q)$ be a family of subgroups, such that 
 $\begin{pmatrix}
 g &0\\
 0&g
@@ -33,9 +36,68 @@ g &0\\
 g &0\\
 0&g
 \end{pmatrix}\]
-is an isometric homomorphism for all $n\in\N$. Hence we can define the inductive limit of $G_n$ ... We denote the metric completion of this limit by ...
+is an isometric homomorphism for all $n\in\N$. Hence we can define the inductive limit of $(G_n)_{n\in\N}$. We denote the metric completion of this limit by $\clim\limits_{n\to\infty} G_n$.%TODO definition environment
 
+
+%\begin{example}
+%Let us consider $G:=\clim_{n\to\infty}\GL_{2^n}(q)$. The elements in $G$ are limits of elements of the form
+%$\begin{pmatrix}
+%g &0&\dots\\
+%0&g\\
+%\vdots&&\ddots
+%\end{pmatrix}$
+%\end{example}
+
+
+\begin{lemma}\label{lem:GroupTopo}
+The group $\clim\limits_{n\to\infty} G_n$ is a topological group.
+\end{lemma}
+\begin{proof}
+The bi-invariance of $d$ is preserved by the limit and the completion. ... 
+\end{proof}
+%TODO clim does not depend on the series
+
+Now that we have a topology on $G:=\clim\limits_{n\to\infty} G_n$ we can ask whether it is \define{extremely amenable}, i.e. every continuous action of $G$ on a compact topological space admits a fixed point. It is hard to show this directly, but we know that every L\'evy group is extremely amenable. Hence we will show that for suitable $(G_n)_{n\in\N}$ the limit $G$ will be a L\'evy group.
+
+%This definition is quite hard to handle. Hence we will approach extreme amenability using L\'evy groups, as every  use the following useful theorem from \cite{levy}.
+Before we can define L\'evy groups we need the following definition.
+\begin{definition}
+A \define{metric measure space} (mm-space) $\boldsymbol{X}$ is a triple $(X,d,\mu)$, where $d$ is a metric on the set $X$ and $\mu$ is a measure on the Borel $\sigma$-algebra induced by $d$. We will always assume that $\mu(X)=1$. 
+For any set $A\subseteq X$ denote the $r-neighborhood$ of $A$, i.e. $\{x\in X\mid\exists y\in A.\  d(x,y)<r\}$, by $N_r(A)$.%TODO definition ugly
+The \define{measure concentration function} of $\boldsymbol{X}$ is defined as 
+\[\alpha_{\boldsymbol{X}}(r)=\sup\{1-\mu(N_r(A))\mid A\subseteq X, \mu(A)\geq\frac{1}{2}\}.\]
+A family of mm-spaces $\boldsymbol{X}_n$ with diameter 1 is called a \define{L\'evy family} if 
+\[\alpha_{\boldsymbol{X}_n}(r)\to 0\]
+for all $r>0$.
+
+A topological space $\boldsymbol{X}$ is a \define{Polish space} if it is homeomorphic to a complete metric space that has a countable dense subset.
+\end{definition}
+
+Now we can come back to groups.
+\begin{definition}
+A \define{Polish group} $G$ is a topological group where the underlying topological space is a Polish space. A \define{L\'evy group} is a group $G$ equipped with a metric $d$, where
+\begin{itemize}
+\item $G$ with the topology induced by $d$ is a Polish group and
+\item there is a sequence $(G_n)_{n\in\N}$ of compact subgroups, such that $(G_n,d|_{G_n},\mu_n)_{n\in\N}$ is a L\'evy family. Here $\mu_n$ is the normalized Haar measure of $G_n$.\FlorianSagt{$\lim G_n$ dense in $G$?}
+\end{itemize}  
+\end{definition}
+
+The following theorem from \cite{Levy} gives the desired connection to extreme amenability.
+\begin{theorem}
+Every L\'evy group is extremely amenable.
+\end{theorem}
+
+To apply this theorem to our setting we need the following lemma.
+\begin{lemma}
+Let $G_n\leq\GL_{2^n}(q)$ and $G=\clim\limits_{n\to\infty} G_n$. Then $G$ is a Polish group. 
+\end{lemma}
+\begin{proof}
+By Lemma \ref{lem:GroupTopo} $G$ is already a topological group and by definition it is also a complete metric space. Furthermore, every $G_n$ is finite. Hence the inductive limit of the $G_n$ is a countable dense subset of $G$.
+\end{proof}
+
+Whether $G$ is also a L\'evy group depends on the particular choice of $(G_n)_{n\in\N}$. 
 %TODO not extremely amenable for G_n=GL_2^n
+To show that for certain sequences $G$ will be a L\'evy group, we will bound $\alpha_{G_n}(r)$. To do this we need methods which are developed in the next section.
 
 %\[\varphi_n\colon g\mapsto\]
 %is a well defined embedding
