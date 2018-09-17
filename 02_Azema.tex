@@ -13,10 +13,10 @@ Note that it follows from the proof that any $A\in\Sigma$ can be written as $\bi
 
 \begin{definition}
 Let $(X,\Sigma,\mu)$ be a probability space, $f\colon X\to \R$ be a measurable function, and $\Sigma'$ be a sub-$\sigma$-algebra of $\Sigma$. Then the \define{conditional expectation} of $f$ with respect to $\Sigma'$ is defined as
-\[\E(f\mid \Sigma'):=\sum_{i=1}^n\E(f\mid A'_i)\cdot \mathbb{1}_{A'_i}.\]
+\[\E(f\mid \Sigma'):=\sum_{i=1}^{n'}\E(f\mid A'_i)\cdot \mathbb{1}_{A'_i}.\]
 \end{definition}
 
-One often thinks of $\Sigma'$ as the available information, a finer partition means more information. Then $\E(f\mid \Sigma')$ is the best approximation of $f$ given only the information from $\Sigma'$. 
+One often thinks of $\Sigma'$ as the available information, a finer partition means more information. The conditional expectation $\E(f\mid \Sigma')$ is the best approximation of $f$ given only the information from $\Sigma'$. 
 With this intuition the statements from the following lemma are not surprising. 
 \begin{lemma}
 Let $(X,\Sigma,\mu)$ be a probability space, $f,g$ be measurable functions, $\Sigma''\subseteq\Sigma'\subseteq\Sigma$ be sub-$\sigma$-algebras. Then
@@ -26,28 +26,64 @@ Let $(X,\Sigma,\mu)$ be a probability space, $f,g$ be measurable functions, $\Si
 \item for any $\Sigma'$-measurable function $h\colon X\to\R$ we have $\E(h f\mid\Sigma')=h\cdot\E(f\mid\Sigma')$.
 \end{enumerate}
 \end{lemma}
+\begin{proof}
+To i): If $f\leq g$, then
+\[\E(f\mid \Sigma')=\sum_{i=1}^n\E(f\mid A'_i)\cdot \mathbb{1}_{A'_i}\leq \sum_{i=1}^n\E(g\mid A'_i)\cdot \mathbb{1}_{A'_i}=\E(g\mid \Sigma').\]
 
 
+To ii): Let $h\colon X\to\R$ be $\Sigma'$-measurable function, then $h=\sum_{i=1}^{n'}h_i\mathbb{1}_{A'_i}$. Now 
+\begin{align*}
+\E(h f\mid\Sigma')&=\sum_{i=1}^{n'}\E(hf\mid A'_i)\mathbb{1}_{A'_i}\\
+&=\sum_{i=1}^{n'}h_i\E(f\mid A'_i)\mathbb{1}_{A'_i}\\
+&=h\cdot\E(f\mid\Sigma').
+\end{align*}
 
-\begin{definition}
-A \define{martingale} is a family $(f_i,\mathcal{F}_i)_{i\in \{0,\dots,n\}}$ such that
-\begin{itemize}
-\item $f_i$ is integrable for all $i\in \{0,\dots,n\}$,
-\item $f_i$ is $\mathcal{F}_i$ measurable for all $i\in \{0,\dots,n\}$, and
-\item $f_i=\mathbb{E}[f_{i+1}|\mathcal{F}_i]$ for all $i\in \{0,\dots,n-1\}$.
-\end{itemize}
-\end{definition}
+To iii): Note that $\E(\E(f\mid \Sigma')\mid A')=\E(f\mid A')$ for all $A'\in\Sigma'$.
+\begin{align*}
+\E(\E(f\mid \Sigma')\mid\Sigma'')&=\sum_{i=1}^{n''}\E(\E(f\mid \Sigma')\mid A''_i)\cdot\mathbb{1}_{A''_i}\\
+&=\sum_{i=1}^{n''}\E(f\mid A''_i)\cdot\mathbb{1}_{A''_i}\tag{$A''_i\in\Sigma'$}\\
+&=\E(f\mid\Sigma'')\\
+&=\sum_{j=1}^{n''}\E(f\mid A''_j)\cdot\mathbb{1}_{A''_j}\cdot\sum_{i=1}^{n'}\mathbb{1}_{A'_i}\\
+&=\sum_{i=1}^{n'}\sum_{j=1}^{n''}\E(\E(f\mid A''_j)\mid A'_i)\cdot\mathbb{1}_{A''_j}\cdot\mathbb{1}_{A'_i}\\
+&=\sum_{i=1}^{n'}\sum_{j=1}^{n''}\E(\E(f\mid A''_j)\cdot\mathbb{1}_{A''_j}\mid A'_i)\cdot\mathbb{1}_{A'_i}\tag{by ii}\\
+&=\E(\E(f\mid \Sigma'')\mid\Sigma')
+\end{align*}
 
+
+This concludes the proof.
+\end{proof}
+
+
+%\begin{definition}
+%A \define{martingale} is a family $(f_i,\mathcal{F}_i)_{i\in \{0,\dots,n\}}$ such that
+%\begin{itemize}
+%\item $f_i$ is integrable for all $i\in \{0,\dots,n\}$,
+%\item $f_i$ is $\mathcal{F}_i$ measurable for all $i\in \{0,\dots,n\}$, and
+%\item $f_i=\mathbb{E}[f_{i+1}|\mathcal{F}_i]$ for all $i\in \{0,\dots,n-1\}$.
+%\end{itemize}
+%\end{definition}
+
+The following lemma might not seem very interesting, but changing the exponent from $x$ to $x^2$ is the very foundation for Azema's inequality.
 \begin{lemma} For all $x\in\R$
 \[e^{x}\leq x+e^{x^2}.\]
-\end{lemma}
+\end{lemma} 
 \begin{proof}
-\begin{tabular}{ll}
-$e^x$&$x+e^{x^2}$\\
-$e^x$&$1+2xe^{x^2}$\\
-$e^x$&$(2+4x^2)e^{x^2}$
-\end{tabular}
+Note that for $x=0$ both sides are equal to 1. As both sides are differentiable it suffices to show that the derivative of the right hand side is larger than the derivative of the left hand side for all $x\geq0$ and smaller for all $x\leq0$. Hence
+\begin{align*}
+e^x\geq 1+2xe^{x^2}\text{ for all $x\leq 0$} &&\text{and}&& e^x\leq 1+2xe^{x^2}\text{ for all $x\geq 0$}.
+\end{align*}
+As for $x=0$ both sides are again equal to 1 we can reduce the problem by similar reasoning to the question whether
+\[e^x\leq 2e^{x^2}+4x^2e^{x^2}\text{ for all $x\in\R$}.\]
+
+\begin{itemize}
+\item For $x=0$ the the terms reduce to $1\leq2$.
+\item For $x<0$ the left hand side is bounded by 1, while the right hand side is still larger that 2.
+\item For $1\leq x$ we have $x^2\geq x$ and the inequality holds trivially.
+\item For $0< x< 1$ note that the both sides are increasing. Hence the inequality holds for all $x$ with $e^x\leq 2$. Finally, $\ln2\geq\frac{1}{2}$ and therefore the right hand side of $\ln2$ is larger then $e$.  
+\end{itemize}
 \end{proof}
+
+%TODO hier gehts weiter: {x | Bed(x)} -> {Bed}
 
 \begin{lemma}[Azema's inequality]
 \[\mu(\{x\in X\mid |f(x)-\mathbb{E}(f)|\geq c\})\leq 2\exp\left(-\frac{c^2}{4\sum_{i=1}^{n}\|d_i\|^2_\infty}\right)\]
