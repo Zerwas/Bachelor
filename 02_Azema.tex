@@ -68,18 +68,18 @@ The following lemma might not seem very interesting, but changing the exponent f
 \[e^{x}\leq x+e^{x^2}.\]
 \end{lemma} 
 \begin{proof}
-Note that for $x=0$ both sides are equal to 1. As both sides are differentiable it suffices to show that the derivative of the right hand side is larger than the derivative of the left hand side for all $x\geq0$ and smaller for all $x\leq0$. Hence
+Note that for $x=0$ both sides are equal to 1. As both sides are differentiable it suffices to show that the derivative of the right hand side is larger than the derivative of the left hand side for all $x\geq0$ and smaller for all $x\leq0$. Hence, we want to show
 \begin{align*}
 e^x\geq 1+2xe^{x^2}\text{ for all $x\leq 0$} &&\text{and}&& e^x\leq 1+2xe^{x^2}\text{ for all $x\geq 0$}.
 \end{align*}
-As for $x=0$ both sides are again equal to 1 we can reduce the problem by similar reasoning to the question whether
+As for $x=0$ both sides are again equal to 1 we can reduce the problem, by similar reasoning, to the question whether
 \[e^x\leq 2e^{x^2}+4x^2e^{x^2}\text{ for all $x\in\R$}.\]
 
 \begin{itemize}
-\item For $x=0$ the the terms reduce to $1\leq2$.
+\item For $x=0$ the terms reduce to $1\leq2$.
 \item For $x<0$ the left hand side is bounded by 1, while the right hand side is still larger that 2.
-\item For $1\leq x$ we have $x^2\geq x$ and the inequality holds trivially.
-\item For $0< x< 1$ note that the both sides are increasing. Hence the inequality holds for all $x$ with $e^x\leq 2$. Finally, $\ln2\geq\frac{1}{2}$ and therefore the right hand side of $\ln2$ is larger then $e$.  
+\item For $1\leq x$ we have $x\leq x^2$ and the inequality holds trivially.
+\item For $0< x< 1$ note that the both sides are increasing. Hence the inequality holds for all $x$ with $e^x\leq 2$. Finally, $\ln2\geq\frac{1}{2}$ and therefore the right hand side with $x=\ln2$ evaluates to a number larger then $e$.  
 \end{itemize}
 \end{proof}
 
@@ -89,6 +89,20 @@ As for $x=0$ both sides are again equal to 1 we can reduce the problem by simila
 \[\mu(\{x\in X\mid |f(x)-\mathbb{E}(f)|\geq c\})\leq 2\exp\left(-\frac{c^2}{4\sum_{i=1}^{n}\|d_i\|^2_\infty}\right)\]
 \[\mu(\{|f-\mathbb{E}(f)|\geq c\})\leq 2\exp\left(-\frac{c^2}{4\sum_{i=1}^{n}\|d_i\|^2_\infty}\right)\]
 \end{lemma}
+\begin{proof}
+\begin{align*}
+\mu(\{f-\mathbb{E}(f)\geq c\})&=\mu(\{\sum_{i=1}^{n}d_i\geq  c\})\\
+&=\mu(\{\lambda\cdot\sum_{i=1}^{n}d_i\geq \lambda c\})\\
+&=\mu(\{e^{\lambda\cdot\sum_{i=1}^{n}d_i-\lambda c}\geq 1\})\\
+&\leq\E(e^{\lambda\cdot\sum_{i=1}^{n}d_i})\cdot e^{-\lambda c}\\
+&=\E(e^{\lambda d_1}\cdot\ldots\cdot e^{\lambda d_{n-1}}\cdot\E(e^{\lambda\cdot d_n}\mid \Sigma_{n-1}))\cdot e^{-\lambda c}\\
+&\leq\E(e^{\lambda d_1}\cdot\ldots\cdot e^{\lambda d_{n-1}})\cdot e^{\lambda\cdot \|d_n\|^2_\infty}\cdot e^{-\lambda c}\\
+&\hspace{3cm}\vdots\\
+&\leq e^{\lambda\cdot \|d_1\|^2_\infty}\cdot\ldots\cdot e^{\lambda\cdot \|d_{n-1}\|^2_\infty}\cdot e^{\lambda\cdot \|d_n\|^2_\infty}\cdot e^{-\lambda c}\\
+&=e^{\lambda\cdot\sum_{i=1}^n\|d_i\|^2_\infty-\lambda c}
+\end{align*}
+\end{proof}
+
 
 \begin{definition}\label{def:length}
 Let $(X,d,\mu)$ be an mm-space.
