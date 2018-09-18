@@ -125,11 +125,80 @@ The same calculations with $-d_i$ instead of $d_i$ yield the dual inequality
 These two statements obviously give us the desired result.
 \end{proof}
 
-
+The next goal is to connect Azema's inequality with the measure concentration function. To achieve this we first need to introduce a new property of mm-spaces.
 \begin{definition}\label{def:length}
-Let $(X,d,\mu)$ be an mm-space.
+Let $\boldsymbol{X}=(X,d,\mu)$ be an mm-space. The \define{length} of $\boldsymbol X$ is the infimum over all $l$ with the following property. There is a refining sequence of partitions 
+\[\{X\}=\Omega_0\prec\dots\prec\Omega_n=\{\{x\}\mid x\in X\},\]
+where for every $i\in\{1,\dots,n\}$ there is an $a_i$ such that $\sum_{i=1}^{n}a^2_i=l^2$ and for every $A\in \Omega_{i-1}$, $x,y\in A$ there is an isomorphism (of metric spaces) $\phi\colon[x]_i\to [y]_i$ with 
+\[d(z,\phi(z))\leq a_i\text{ for all $z\in[x]_i$.}\]
 \end{definition}
-\FlorianSagt{$n$ dimensional cubes with diameter 1 have length $\frac{1}{\sqrt{3}}$ and if $|X|$ is a prime, then the length of $X$ is equal to its diameter, the length of a circle is the same as its diameter}
+
+Note that since $\mu$ is the counting measure $\phi$ is also an isomorphism of mm-spaces.
+As this definition is quite hard we will look at some properties and examples of the length of $\boldsymbol{X}$ before proceeding.
+\begin{lemma}
+Let $\boldsymbol{X}$ be an mm-space. Then the length of $\boldsymbol{X}$ is at most the diameter of $\boldsymbol{X}$.
+\end{lemma}
+\begin{proof}
+Consider only the two partitions $\{X\}\prec\{\{x\}\mid x\in X\}$.
+\end{proof}
+
+\begin{example}
+Let us look at the $n$-dimensional cube $X_n=\{0,1\}^n$.
+
+\begin{center}
+\tikzstyle{dot}=[circle,draw,minimum size=0.8mm,inner sep=0pt,fill]
+\begin{tikzpicture}
+\node[dot] at (0,0) (11) {};
+\node[dot, right of = 11] (12) {};
+\node at (0.5,-0.5) {$X_1$};
+
+\node[dot] at (3,0) (21) {};
+\node[dot, right of = 21] (22) {};
+\node[dot, above of = 22] (23) {};
+\node[dot, above of = 21] (24) {};
+\node at (3.5,-0.5) {$X_2$};
+
+\node[dot] at (6,0) (31) {};
+\node[dot, right of = 31] (32) {};
+\node[dot, above of = 32] (33) {};
+\node[dot, above of = 31] (34) {};
+\node[dot] at (6.5,0.5) (41) {};
+\node[dot, right of = 41] (42) {};
+\node[dot, above of = 42] (43) {};
+\node[dot, above of = 41] (44) {};
+\node at (6.5,-0.5) {$X_3$};
+
+\path (11) edge (12)
+      (21) edge (22)
+      (22) edge (23)
+      (23) edge (24)
+      (24) edge (21)
+      (31) edge (32)
+      (32) edge (33)
+      (33) edge (34)
+      (34) edge (31)
+      (41) edge (42)
+      (42) edge (43)
+      (43) edge (44)
+      (44) edge (41)
+      (31) edge (41)
+      (32) edge (42)
+      (33) edge (43)
+      (34) edge (44);
+
+\end{tikzpicture}
+\end{center}
+We will only consider the following sequence of partitions
+\[\Omega_0\prec\dots\prec\Omega_n\text{ with }\Omega_i=\{wX_{n-i}\mid w\in\{0,1\}^i\}.\]
+
+First, we equip $X_n$ with the euclidean metric and rescale it such that the diameter is 1. To bound the length of the resulting space $\boldsymbol X^E_n$ consider $[x]_i\neq[y]_i$. Note that $x$ and $y$ are w.l.o.g. of the form $w0u$ and $w1v$ for some $w\in\{0,1\}^{i-1}$, $u,v\in\{0,1\}^{n-i}$. The isomorphism $\phi$ takes an element $w0u'$ in $[x]_i$ and maps it to $w1u'$. The length of a side in $\boldsymbol X^E_n$ is $\frac{1}{\sqrt{n}}$, hence every $a_i$ is $\frac{1}{\sqrt{n}}$ and the length of $\boldsymbol{X}^E_n$ is bounded by $\sum_{i=1}^{n}\frac{1}{\sqrt{n}^2}=1$.
+
+Secondly, we use the hemming metric and obtain the mm-space $\boldsymbol{X}^H_n$ with diameter 1. It has side length $\frac{1}{n}$ and therefore the length of $\boldsymbol{X}^H_n$ is bounded by $\sum_{i=1}^{n}\frac{1}{n^2}=\frac{1}{n}$. We see that here the length of $\boldsymbol{X}^H_n$ converges to 0 as $n$ tends to infinity. We will show that this means that the measure concentration function $\alpha_{\boldsymbol{X}^H_n}(r)$ also goes to 0 for any fixed $r>0$. 
+\end{example}
+
+
+
+%\FlorianSagt{$n$ dimensional cubes with diameter 1 have length $\frac{1}{\sqrt{3}}$ and if $|X|$ is a prime, then the length of $X$ is equal to its diameter, the length of a circle is the same as its diameter}
 
 Between any two points in $X$ there is almost surely a path $x_0,\dots,x_n$ such that \[\sum_{i=1}^n d(x_{i-1},x_i)^2\leq \operatorname{len}(X)^2\] (this path probably has some special properties).
 
