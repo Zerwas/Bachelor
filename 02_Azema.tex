@@ -18,12 +18,12 @@ Let $(X,\Sigma,\mu)$ be a probability space, $f\colon X\to \R$ be a measurable f
 
 One often thinks of $\Sigma'$ as the available information, a finer partition means more information. The conditional expectation $\E(f\mid \Sigma')$ is the best approximation of $f$ given only the information from $\Sigma'$. 
 With this intuition the statements from the following lemma are not surprising. 
-\begin{lemma}
-Let $(X,\Sigma,\mu)$ be a probability space, $f,g$ be measurable functions, $\Sigma''\subseteq\Sigma'\subseteq\Sigma$ be sub-$\sigma$-algebras. Then
+\begin{lemma}\label{lem:condExp}
+Let $(X,\Sigma,\mu)$ be a probability space, $f,g\colon X\to \R$ be measurable functions, $\Sigma''\subseteq\Sigma'\subseteq\Sigma$ be sub-$\sigma$-algebras. Then
 \begin{enumerate}[label=\roman*)]
 \item if $f\leq g$, then $\E(f\mid \Sigma')\leq\E(g\mid \Sigma')$,
-\item also $\E(\E(f\mid \Sigma')\mid\Sigma'')=\E(f\mid\Sigma'')=\E(\E(f\mid \Sigma'')\mid\Sigma')$, and
-\item for any $\Sigma'$-measurable function $h\colon X\to\R$ we have $\E(h f\mid\Sigma')=h\cdot\E(f\mid\Sigma')$.
+\item for any $\Sigma'$-measurable function $h\colon X\to\R$ we have $\E(h f\mid\Sigma')=h\cdot\E(f\mid\Sigma')$,
+\item also $\E(\E(f\mid \Sigma')\mid\Sigma'')=\E(f\mid\Sigma'')=\E(\E(f\mid \Sigma'')\mid\Sigma')$.
 \end{enumerate}
 \end{lemma}
 \begin{proof}
@@ -64,7 +64,7 @@ This concludes the proof.
 %\end{definition}
 
 The following lemma might not seem very interesting, but changing the exponent from $x$ to $x^2$ is the very foundation for Azema's inequality.
-\begin{lemma} For all $x\in\R$
+\begin{lemma}\label{lem:exToex2} For all $x\in\R$
 \[e^{x}\leq x+e^{x^2}.\]
 \end{lemma} 
 \begin{proof}
@@ -83,24 +83,46 @@ As for $x=0$ both sides are again equal to 1 we can reduce the problem, by simil
 \end{itemize}
 \end{proof}
 
-%TODO hier gehts weiter: {x | Bed(x)} -> {Bed}
+Before we will prove Azema's inequality let us introduce some useful notation. Whenever there is no danger of confusion we will abbreviate sets of the form
+\begin{align*}
+\{x\in X\mid \operatorname{Condition}(x)\text{ holds}\}&&\text{by}&&\{\operatorname{Condition}\}.
+\end{align*}
+For example $\{x\in X\mid f(x)= c\}$ becomes $\{f= c\}$.
 
 \begin{lemma}[Azema's inequality]
-\[\mu(\{x\in X\mid |f(x)-\mathbb{E}(f)|\geq c\})\leq 2\exp\left(-\frac{c^2}{4\sum_{i=1}^{n}\|d_i\|^2_\infty}\right)\]
-\[\mu(\{|f-\mathbb{E}(f)|\geq c\})\leq 2\exp\left(-\frac{c^2}{4\sum_{i=1}^{n}\|d_i\|^2_\infty}\right)\]
+Let $(X,\Sigma,\mu)$ be a probability space, $f\colon X\to\R$ a measurable function, and $\{X\}=\Sigma_0\subseteq\dots\subseteq\Sigma_n=\Sigma$ a chain of sub-$\sigma$-algebras. Define $f_i:=\E(f\mid\Sigma_i)$ and $d_i:=f_i-f_{i-1}$. Then for every $c\geq0$
+%\[\mu(\{x\in X\mid |f(x)-\mathbb{E}(f)|\geq c\})\leq 2\exp\left(-\frac{c^2}{4\sum_{i=1}^{n}\|d_i\|^2_\infty}\right)\]
+\[\mu(\{|f-\E(f)|\geq c\})\leq 2\cdot\exp\left(-\frac{c^2}{4\cdot\sum_{i=1}^{n}\|d_i\|^2_\infty}\right).\]
 \end{lemma}
-\begin{proof}
+Note that $(f_i,\Sigma_i)_{0\leq i\leq n}$ is a discrete martingale. 
+\begin{proof} First, observe that $f_0=\E(f\mid \{X\})=\E(f)$ and $f_n=\E(f\mid\Sigma)=f$. Using a simple telescoping sum we obtain $f-\E(f)=d_1+\dots+d_n$. Therefore
 \begin{align*}
-\mu(\{f-\mathbb{E}(f)\geq c\})&=\mu(\{\sum_{i=1}^{n}d_i\geq  c\})\\
-&=\mu(\{\lambda\cdot\sum_{i=1}^{n}d_i\geq \lambda c\})\\
+\mu(\{f-\E(f)\geq c\})&=\mu(\{\sum_{i=1}^{n}d_i\geq  c\})\\
+&=\mu(\{\lambda\cdot\sum_{i=1}^{n}d_i\geq \lambda c\})\tag{for $\lambda>0$}\\
 &=\mu(\{e^{\lambda\cdot\sum_{i=1}^{n}d_i-\lambda c}\geq 1\})\\
-&\leq\E(e^{\lambda\cdot\sum_{i=1}^{n}d_i})\cdot e^{-\lambda c}\\
-&=\E(e^{\lambda d_1}\cdot\ldots\cdot e^{\lambda d_{n-1}}\cdot\E(e^{\lambda\cdot d_n}\mid \Sigma_{n-1}))\cdot e^{-\lambda c}\\
-&\leq\E(e^{\lambda d_1}\cdot\ldots\cdot e^{\lambda d_{n-1}})\cdot e^{\lambda\cdot \|d_n\|^2_\infty}\cdot e^{-\lambda c}\\
+&\leq\E(e^{\lambda\cdot\sum_{i=1}^{n}d_i})\cdot e^{-\lambda c}\tag{$\ast$}\\
+&=\E(e^{\lambda d_1}\cdot\ldots\cdot e^{\lambda d_{n-1}}\cdot\E(e^{\lambda d_n}\mid \Sigma_{n-1}))\cdot e^{-\lambda c}\tag{Lemma \ref{lem:condExp}}\\
+&\leq\E(e^{\lambda d_1}\cdot\ldots\cdot e^{\lambda d_{n-1}})\cdot e^{\lambda^2\cdot \|d_n\|^2_\infty}\cdot e^{-\lambda c}\tag{$\ast\ast$}\\
 &\hspace{3cm}\vdots\\
-&\leq e^{\lambda\cdot \|d_1\|^2_\infty}\cdot\ldots\cdot e^{\lambda\cdot \|d_{n-1}\|^2_\infty}\cdot e^{\lambda\cdot \|d_n\|^2_\infty}\cdot e^{-\lambda c}\\
-&=e^{\lambda\cdot\sum_{i=1}^n\|d_i\|^2_\infty-\lambda c}
+&\leq e^{\lambda^2\cdot \|d_1\|^2_\infty}\cdot\ldots\cdot e^{\lambda^2\cdot \|d_{n-1}\|^2_\infty}\cdot e^{\lambda^2\cdot \|d_n\|^2_\infty}\cdot e^{-\lambda c}\\
+&=e^{\lambda^2\cdot\sum_{i=1}^n\|d_i\|^2_\infty-\lambda c}.
 \end{align*}
+
+For $(\ast)$ note that for any measurable function $g\colon X\to\R$ with $g\geq0$ we have %$\mu(\{g\geq1\})\leq\E(g)$.
+\[\mu(\{g\geq1\})=\E(\mathbb{1}_{\{g\geq1\}})\leq\E(g).\]
+
+For $(\ast\ast)$ we need to use Lemma \ref{lem:exToex2}
+\begin{align*}
+\E(e^{\lambda d_i}\mid \Sigma_{i-1})&\leq \E(\lambda d_i\mid\Sigma_{i-1})+\E(e^{\lambda^2 d^2_i}\mid\Sigma_{i-1})\\
+&=\lambda\cdot\E( f_i-f_{i-1}\mid\Sigma_{i-1}) + \E(e^{\lambda^2 d^2_i}\mid\Sigma_{i-1})\\
+&\leq 0 + e^{\lambda^2 \|d_i\|_\infty^2}.\tag{Lemma \ref{lem:condExp}}
+\end{align*}
+
+Substituting $-\frac{c^2}{\sum_{i=1}^{n}\|d_i\|_\infty^2}$ for $\lambda$ we conclude that
+\[\mu(\{f-\mathbb{E}(f)\geq c\})\leq\exp\left(-\frac{c^2}{4\cdot\sum_{i=1}^{n}\|d_i\|^2_\infty}\right). \]
+The same calculations with $-d_i$ instead of $d_i$ yield the dual inequality
+\[\mu(\{f-\mathbb{E}(f)\leq -c\})\leq\exp\left(-\frac{c^2}{4\cdot\sum_{i=1}^{n}\|d_i\|^2_\infty}\right). \]
+These two statements obviously give us the desired result.
 \end{proof}
 
 
