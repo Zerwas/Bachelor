@@ -228,7 +228,7 @@ This gives us the desired connection.
 
 %Between any two points in $X$ there is almost surely a path $x_0,\dots,x_n$ such that \[\sum_{i=1}^n d(x_{i-1},x_i)^2\leq \operatorname{len}(X)^2\] (this path probably has some special properties).
 
-\begin{theorem}
+\begin{theorem}\label{thm:measureConcetration}
 If a finite mm-space $\boldsymbol{X}=(X,d,\mu)$ has length $l$, then the concentration function of $\boldsymbol X$ satisfies
 \[\alpha_{\boldsymbol{X}}(\varepsilon)\leq 2\exp\left(-\frac{\varepsilon^2}{16l^2}\right)\text{ for all $\varepsilon>0$}.\]
 \end{theorem}
@@ -246,16 +246,49 @@ If $\E(d_A)>\varepsilon$, then $A\subseteq \{|d_A-\E(d_A)|\geq\varepsilon\}$. Co
 \[\mu(\{d_A\geq\varepsilon\})\leq \mu(X\setminus A)\leq \frac{1}{2}\leq \mu(A)\leq \mu(\{|d_A-\E(d_A)|\geq\varepsilon\})\leq 2\exp\left(-\frac{\varepsilon^2}{4l^2}\right).\]
 This proves the theorem.
 \end{proof}
-Note that in the second case the upper bound is at least $\frac{1}{2}$, which means that if $l$ is large enough then we are in the first case and the expected distance to a set with at least half measure is less then $\varepsilon$.
+Note that in the second case the upper bound is at least $\frac{1}{2}$, which means that if $l$ is large enough then we are in the first case and the expected distance to a set with at least half measure is less then $\varepsilon$. 
+Our goal is to apply Theorem to groups and as it turns out we can bound the length of a group using sequences of subgroups. Before we can write down the corollary we need to make a quick excursion to factor metrics. 
 
+\begin{definition}
+Let $(X,d)$ be a metric space and let $\sim$ be an equivalence relation on $X$. Then \[d_\sim([x],[y])=\inf\{d(p_1,q_1)+\dots+d(p_n,q_n)\mid q_i\sim p_{i+1}, x\sim p_1, q_n\sim y\}\] defines a pseudometric on $X/{\sim}$.
+\end{definition}
+
+In case that $X$ is a group with bi-invariant metric this definition simplifies.
+\begin{lemma}
+Let $G$ be a finite group with bi invariant metric $d$ and $H$ a (not necessarily normal) subgroup of $G$. Then the factor metric $d_H$ on $G/H=\{gH\mid g\in G\}$ is a proper metric and satisfies $d_H(gH,g'H)=\inf\{d(g,g'h)\mid h\in H\}$.
+\end{lemma}
+\begin{proof}
+Let $x,y\in G$. We show that for any path $p_1,q_1,\dots,p_n,q_n$ as in the definition there are $x\sim p$ and $q\sim y$ such that $d(p,q)\leq d(p_1,q_1)+\dots+d(p_n,q_n)$. It suffices to show this for $n=2$. 
+By definition $p_1,q_1,p_2,q_2$ are of the form $g,g',g'h,g''$ form some $g,g',g''\in G$ and $h\in H$. Since $d$ is bi-invariant 
+\[d(gh,g'')\leq d(gh,g'h)+d(g'h,g'')=d(g,g')+d(g'h,g'').\]
+Furthermore we are given that $G$ is finite. Hence the infimum becomes a minimum and $d_H([x],[y])=0$ only if $[x]=[y]$.
+%$d(g,g')=d(gh,g'h)$.
+\end{proof}
+
+Equipped with this knowledge we can formulate the final statement for this section. 
 \begin{corollary}
-Let $G$ be a compact group with a bi-invariant metric $d$, and let
+Let $G$ be a finite group with a bi-invariant metric $d$, and let
 \[\{e\}=G_0<G_1<\dots <G_n=G\]
-be a chain of subgroups. Denote the diameter of $G_i/G_{i_-1}$ with respect to the factor metric by $a_i$. Then the concentration function of the mm-space $(G,d,\mu)$, where $\mu$ is the normalized Haar measure, satisfies
+be a chain of subgroups. Denote the diameter of $G_i/G_{i_-1}$ with respect to the factor metric by $a_i$. Then the concentration function of the mm-space $(G,d,\mu)$, where $\mu$ is the normalized counting measure, satisfies
 \[\alpha_X(\varepsilon)\leq 2\exp\left(-\frac{\varepsilon^2}{16\sum_{i=1}^{n}a_i^2}\right).\]
 \end{corollary}
-%rank from 2 to 3 in proof
+\begin{proof}
+We show that the length of $(G,d,\mu)$ is bounded by $\left(\sum_{i=1}^{n}a_i^2\right)^{\frac{1}{2}}$ and apply Theorem \ref{thm:measureConcetration}. Define the sequence of partitions $\Omega_i:=\{g G_i\mid g\in G\}$
+\begin{align*}
+\{\{g\}\mid g\in G\}=\Omega_0\succ\Omega_1\succ&\dots\succ\Omega_n=\{G\}\\
+\{e\}=\parbox{\widthof{$\Omega_0\succ\Omega_1\succ$}}{$G_0<G_1<$}&\parbox{\widthof{${}\dots\succ\Omega_n$}}{$\dots <G_n$}=G.
+\end{align*}
+Take $A\in \Omega_{i+1}$ and $g,g'\in A$. Then the map
+\begin{align*}
+\phi\colon g G_i&{}\to g'G_i\\
+gh&{}\mapsto g'h
+\end{align*}
+is, by bi-invariance of $d$, an isomorphism of metric spaces.
+\end{proof}
 
+
+\section{The limit of $\SL_n(q)$ is extremely amenable}
+%rank from 2 to 3 in proof
 \begin{theorem}
 The normalized counting measure on the groups $\SL_{2^n}(q)$ concentrates with respect to the rank-metric, i.e. for all $r>0$
 \[\lim_{n\to\infty} \alpha_{\SL_{2^n}}(r)=0 .\]
@@ -330,5 +363,3 @@ By Lemma \ref{lem:extend} we can extend the map $g^{-1}|_{gU'}$ to a map $h'$ on
 d(g,g')=\frac{1}{n}\dim \operatorname{im} g-g'\leq \frac{\dim V'}{n}
 \end{align*}
 \end{proof}
-
-\section{The limit of $\SL_n(q)$ is extremely amenable}
