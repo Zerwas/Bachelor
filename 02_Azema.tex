@@ -273,17 +273,18 @@ be a chain of subgroups. Denote the diameter of $G_i/G_{i_-1}$ with respect to t
 \[\alpha_X(\varepsilon)\leq 2\exp\left(-\frac{\varepsilon^2}{16\sum_{i=1}^{n}a_i^2}\right).\]
 \end{corollary}
 \begin{proof}
-We show that the length of $(G,d,\mu)$ is bounded by $\left(\sum_{i=1}^{n}a_i^2\right)^{\frac{1}{2}}$ and apply Theorem \ref{thm:measureConcetration}. Define the sequence of partitions $\Omega_i:=\{g G_i\mid g\in G\}$
+We show that the length $l$ of $(G,d,\mu)$ is bounded by $\left(\sum_{i=1}^{n}a_i^2\right)^{\frac{1}{2}}$ and apply Theorem \ref{thm:measureConcetration}. Define the sequence of partitions $\Omega_i:=\{g G_i\mid g\in G\}$
 \begin{align*}
 \{\{g\}\mid g\in G\}=\Omega_0\succ\Omega_1\succ&\dots\succ\Omega_n=\{G\}\\
 \{e\}=\parbox{\widthof{$\Omega_0\succ\Omega_1\succ$}}{$G_0<G_1<$}&\parbox{\widthof{${}\dots\succ\Omega_n$}}{$\dots <G_n$}=G.
 \end{align*}
-Take $A\in \Omega_{i+1}$ and $g,g'\in A$. Then the map
+Take $A\in \Omega_{i+1}$ and $g,g'\in A$. Since the distance of $gG_i$ and $g'G_i$ with respect to the factor metric is at most $a_i$ there is an $h'\in G_i$ such that $d(g,g'h')\leq a_i$. Hence the map 
 \begin{align*}
 \phi\colon g G_i&{}\to g'G_i\\
-gh&{}\mapsto g'h
+gh&{}\mapsto g'h'h
 \end{align*}
-is, by bi-invariance of $d$, an isomorphism of metric spaces.
+is, by bi-invariance of $d$, an isomorphism of metric spaces with $d(gh,g'h'h)=d(g,g'h')\leq a_i$ for all $gh\in gG_i$.
+Therefore $\left(\sum_{i=1}^{n}a_i^2\right)$ is an upper bound for $l^2$. 
 \end{proof}
 
 
