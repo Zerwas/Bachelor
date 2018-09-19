@@ -229,7 +229,7 @@ This gives us the desired connection.
 %Between any two points in $X$ there is almost surely a path $x_0,\dots,x_n$ such that \[\sum_{i=1}^n d(x_{i-1},x_i)^2\leq \operatorname{len}(X)^2\] (this path probably has some special properties).
 
 \begin{theorem}\label{thm:measureConcetration}
-If a finite mm-space $\boldsymbol{X}=(X,d,\mu)$ has length $l$, then the concentration function of $\boldsymbol X$ satisfies
+If a finite mm-space $\boldsymbol{X}=(X,d,\mu)$ has length $l$, then the measure concentration function of $\boldsymbol X$ satisfies
 \[\alpha_{\boldsymbol{X}}(\varepsilon)\leq 2\exp\left(-\frac{\varepsilon^2}{16l^2}\right)\text{ for all $\varepsilon>0$}.\]
 \end{theorem}
 \begin{proof}
@@ -254,7 +254,7 @@ Let $(X,d)$ be a metric space and let $\sim$ be an equivalence relation on $X$. 
 \end{definition}
 
 In case that $X$ is a group with bi-invariant metric this definition simplifies.
-\begin{lemma}
+\begin{lemma}\label{lem:factorMetric}
 Let $G$ be a finite group with bi invariant metric $d$ and $H$ a (not necessarily normal) subgroup of $G$. Then the factor metric $d_H$ on $G/H=\{gH\mid g\in G\}$ is a proper metric and satisfies $d_H(gH,g'H)=\inf\{d(g,g'h)\mid h\in H\}$.
 \end{lemma}
 \begin{proof}
@@ -266,11 +266,11 @@ Furthermore we are given that $G$ is finite. Hence the infimum becomes a minimum
 \end{proof}
 
 Equipped with this knowledge we can formulate the final statement for this section. 
-\begin{corollary}
+\begin{corollary}\label{cor:meaContractionGroups}
 Let $G$ be a finite group with a bi-invariant metric $d$, and let
 \[\{e\}=G_0<G_1<\dots <G_n=G\]
-be a chain of subgroups. Denote the diameter of $G_i/G_{i_-1}$ with respect to the factor metric by $a_i$. Then the concentration function of the mm-space $(G,d,\mu)$, where $\mu$ is the normalized counting measure, satisfies
-\[\alpha_X(\varepsilon)\leq 2\exp\left(-\frac{\varepsilon^2}{16\sum_{i=1}^{n}a_i^2}\right).\]
+be a chain of subgroups. Denote the diameter of $G_i/G_{i-1}$ with respect to the factor metric by $a_i$. Then the measure concentration function of the mm-space $(G,d,\mu)$, where $\mu$ is the normalized counting measure, satisfies
+\[\alpha_{\boldsymbol{X}}(\varepsilon)\leq 2\exp\left(-\frac{\varepsilon^2}{16\sum_{i=1}^{n}a_i^2}\right).\]
 \end{corollary}
 \begin{proof}
 We show that the length $l$ of $(G,d,\mu)$ is bounded by $\left(\sum_{i=1}^{n}a_i^2\right)^{\frac{1}{2}}$ and apply Theorem \ref{thm:measureConcetration}. Define the sequence of partitions $\Omega_i:=\{g G_i\mid g\in G\}$
@@ -290,11 +290,31 @@ Carderi and Thom used this result to show that the limit of $\SL_{2^n}(q)$ is ex
 
 
 \section{The limit of $\SL_{2^n}(q)$ is extremely amenable}
+
+When studying matrices it is often useful to look at the corresponding linear maps of a suitable vector space. \FlorianSagt{proof for $\SL$ and $\GL$ te same?}
+In the case of $\SL_n(q)$ a $n$ dimensional $\F_q$ vector space $V$ suffices. Fixing a basis $e_1,\dots,e_n$ gives us an embedding from $\SL_n(q)$ into $\Aut(V)$. 
 %rank from 2 to 3 in proof
 \begin{theorem}
 The normalized counting measure on the groups $\SL_{2^n}(q)$ concentrates with respect to the rank-metric, i.e. for all $r>0$
-\[\lim_{n\to\infty} \alpha_{\SL_{2^n}}(r)=0 .\]
+\[\lim_{n\to\infty} \alpha_{\SL_{2^n}(q)}(r)=0 .\]\FlorianSagt{Boldsymbol or tuple}
 \end{theorem}
+\begin{proof}
+We will apply Corollary \ref{cor:meaContractionGroups} to a sequence of subgroups which also shows that the length of  $\SL_n(q)$ is bounded by $3n^{-\frac{1}{2}}$.
+Let $e_1,\dots,e_n$ be a basis of an $n$ dimensional $\F_q$ vector space $V$. Look at the sequence
+\[\SL_0(q)<\SL_1(q)<\dots<\SL_n(q),\]
+where $\SL_{i-1}(q)$ becomes a subgroup of $\SL_i(q)$ via the embedding $g\mapsto g\oplus 1_{\langle e_i\rangle}$. Next we want to bound the diameter of $\SL_{i}(q)/\SL_{i-1}(q)$ by $\frac{3}{n}$. By Lemma \ref{lem:factorMetric} it suffices to show that for any $g,g'\in\SL_i(q)$ there is a $h\in \SL_{i-1}(q)$ such that $d(g,g'h)\leq\frac{3}{n}$. Since $d$ is bi-invariant we can assume w.l.o.g. that $g'=1_V$.
+
+$U'=\langle e_1,\dots,e_{i-1}\rangle$, $U=\langle e_i\rangle$, $U''=\langle e_{i+1},\dots, e_n\rangle$
+
+\begin{align*}
+d(g,(h'\oplus 1)g)=d(1_V,h'\oplus 1)\leq \frac{2}{n}
+\end{align*}
+
+$h:=(1_{U'}\oplus 0_U)(h'\oplus 1)g+ (0_{U'}\oplus1_{U})$, $h\in\SL_{i-1}$?
+\begin{align*}
+d((h'\oplus 1)g,h)
+\end{align*}
+\end{proof}
 
 \begin{lemma}
 Let $(X,d,\mu)$ be an mm-space with diameter $d$ and \FlorianSagt{could be that this only holds for finite $X$ as conditions in definition of length are just almost surely}
