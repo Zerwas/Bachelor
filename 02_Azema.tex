@@ -89,7 +89,7 @@ Before we will prove Azema's inequality let us introduce some useful notation. W
 \end{align*}
 For example $\{x\in X\mid f(x)= c\}$ becomes $\{f= c\}$.
 
-\begin{lemma}[Azema's inequality]
+\begin{lemma}\label{lem:azema}[Azema's inequality]
 Let $(X,\Sigma,\mu)$ be a probability space, $f\colon X\to\R$ a measurable function, and $\{X\}=\Sigma_0\subseteq\dots\subseteq\Sigma_n=\Sigma$ a chain of sub-$\sigma$-algebras. Define $f_i:=\E(f\mid\Sigma_i)$ and $d_i:=f_i-f_{i-1}$. Then for every $c\geq0$
 %\[\mu(\{x\in X\mid |f(x)-\mathbb{E}(f)|\geq c\})\leq 2\exp\left(-\frac{c^2}{4\sum_{i=1}^{n}\|d_i\|^2_\infty}\right)\]
 \[\mu(\{|f-\E(f)|\geq c\})\leq 2\cdot\exp\left(-\frac{c^2}{4\cdot\sum_{i=1}^{n}\|d_i\|^2_\infty}\right).\]
@@ -125,9 +125,11 @@ The same calculations with $-d_i$ instead of $d_i$ yield the dual inequality
 These two statements obviously give us the desired result.
 \end{proof}
 
-The next goal is to connect Azema's inequality with the measure concentration function. To achieve this we first need to introduce a new property of mm-spaces.
+Since $\mu$ is the counting measure Azema's inequality bounds the number of elements for which $f$ differs more than $\varepsilon$ from its mean. This seems at least somewhat connected to the measure concentration function, as there we want to show that for any set $A$ with $\mu(A)\geq\frac{1}{2}$ only a few elements are more than $\varepsilon$ away from $A$.
+The next goal is to formalize this connection % Azema's inequality with the measure concentration function. 
+To achieve this we first need to introduce a new property of mm-spaces.
 \begin{definition}\label{def:length}
-Let $\boldsymbol{X}=(X,d,\mu)$ be an mm-space. The \define{length} of $\boldsymbol X$ is the infimum over all $l$ with the following property. There is a refining sequence of partitions 
+Let $\boldsymbol{X}=(X,d,\mu)$ be a finite mm-space. The \define{length} of $\boldsymbol X$ is the minimum over all $l$ with the following property. There is a refining sequence of partitions 
 \[\{X\}=\Omega_0\prec\dots\prec\Omega_n=\{\{x\}\mid x\in X\},\]
 where for every $i\in\{1,\dots,n\}$ there is an $a_i$ such that $\sum_{i=1}^{n}a^2_i=l^2$ and for every $A\in \Omega_{i-1}$, $x,y\in A$ there is an isomorphism (of metric spaces) $\phi\colon[x]_i\to [y]_i$ with 
 \[d(z,\phi(z))\leq a_i\text{ for all $z\in[x]_i$.}\]
@@ -136,7 +138,7 @@ where for every $i\in\{1,\dots,n\}$ there is an $a_i$ such that $\sum_{i=1}^{n}a
 Note that since $\mu$ is the counting measure $\phi$ is also an isomorphism of mm-spaces.
 As this definition is quite hard we will look at some properties and examples of the length of $\boldsymbol{X}$ before proceeding.
 \begin{lemma}
-Let $\boldsymbol{X}$ be an mm-space. Then the length of $\boldsymbol{X}$ is at most the diameter of $\boldsymbol{X}$.
+Let $\boldsymbol{X}$ be a finite mm-space. Then the length of $\boldsymbol{X}$ is at most the diameter of $\boldsymbol{X}$.
 \end{lemma}
 \begin{proof}
 Consider only the two partitions $\{X\}\prec\{\{x\}\mid x\in X\}$.
@@ -191,29 +193,53 @@ Let us look at the $n$-dimensional cube $X_n=\{0,1\}^n$.
 We will only consider the following sequence of partitions
 \[\Omega_0\prec\dots\prec\Omega_n\text{ with }\Omega_i=\{wX_{n-i}\mid w\in\{0,1\}^i\}.\]
 
-First, we equip $X_n$ with the euclidean metric and rescale it such that the diameter is 1. To bound the length of the resulting space $\boldsymbol X^E_n$ consider $[x]_i\neq[y]_i$. Note that $x$ and $y$ are w.l.o.g. of the form $w0u$ and $w1v$ for some $w\in\{0,1\}^{i-1}$, $u,v\in\{0,1\}^{n-i}$. The isomorphism $\phi$ takes an element $w0u'$ in $[x]_i$ and maps it to $w1u'$. The length of a side in $\boldsymbol X^E_n$ is $\frac{1}{\sqrt{n}}$, hence every $a_i$ is $\frac{1}{\sqrt{n}}$ and the length of $\boldsymbol{X}^E_n$ is bounded by $\sum_{i=1}^{n}\frac{1}{\sqrt{n}^2}=1$.
+First, we equip $X_n$ with the euclidean metric and rescale it such that the diameter is 1. To bound the length of the resulting space $\boldsymbol X^E_n$ consider $[x]_i\neq[y]_i$. Note that $x$ and $y$ are w.l.o.g. of the form $w0u$ and $w1v$ for some $w\in\{0,1\}^{i-1}$, $u,v\in\{0,1\}^{n-i}$. The isomorphism $\phi$ takes an element $w0u'$ in $[x]_i$ and maps it to $w1u'$. The length of a side in $\boldsymbol X^E_n$ is $\frac{1}{\sqrt{n}}$, hence every $a_i$ is $\frac{1}{\sqrt{n}}$ for every $i$ and the length of $\boldsymbol{X}^E_n$ is bounded by $\sum_{i=1}^{n}\frac{1}{\sqrt{n}^2}=1$.
 
 Secondly, we use the hemming metric and obtain the mm-space $\boldsymbol{X}^H_n$ with diameter 1. It has side length $\frac{1}{n}$ and therefore the length of $\boldsymbol{X}^H_n$ is bounded by $\sum_{i=1}^{n}\frac{1}{n^2}=\frac{1}{n}$. We see that here the length of $\boldsymbol{X}^H_n$ converges to 0 as $n$ tends to infinity. We will show that this means that the measure concentration function $\alpha_{\boldsymbol{X}^H_n}(r)$ also goes to 0 for any fixed $r>0$. 
 \end{example}
 
 
 
+\begin{lemma}
+Let $\boldsymbol{X}=(X,d,\mu)$ be a finite mm-space of length $l$ and $f\colon X\to\R$ be a 1-Lipschitz function. Then
+\[\mu(\{|f-\E(f)|\geq\varepsilon\})\leq 2\exp\left(-\frac{\varepsilon^2}{4l^2}\right)\text{ for every $\varepsilon>0$.}\] 
+\end{lemma}
+\begin{proof}
+Let 
+$\Omega_0\prec\dots\prec\Omega_n$
+be a refining sequence of partitions with $a_1,\dots,a_n$ as in Definition \ref{def:length} such that $\sum_{i=1}^{n}a_i^2=l^2$. These partitions correspond to $\sigma$-algebras $\Sigma_0\subseteq\dots\subseteq\Sigma_n$. Now we can apply Azema's inequality to obtain
+\[\mu(\{|f-\E(f)|\geq c\})\leq 2\cdot\exp\left(-\frac{c^2}{4\cdot\sum_{i=1}^{n}\|d_i\|^2_\infty}\right),\]
+where $f_i=\E(f\mid \Sigma_i)$ and $d_i=f_i-f_{i-1}$ as before. Therefore we only need to show that $\|d_i\|_\infty\leq a_i$. Since on any $A\in\Omega_{i-1}$ we have $f_{i-1}=\E(f_i\mid A)$ it suffices to show that for all $A\in\Omega_{i-1}$ it holds that $f_i(x)-f_i(y)\leq a_i$ for all $x,y\in A$.
+Let $\phi\colon [x]_i\to [y]_i$ be the isomorphism from Definition \ref{def:length}.
+\begin{align*}
+f_i(x)-f_i(y)&=\E(f\mid [x]_i)-\E(f\mid [y]_i)\\
+&=\E(f\mid [x]_i)-\E(f\circ\phi\mid [x]_i)\\
+&=\E(f-f\circ\phi\mid [x]_i)\\
+&\leq \E(d(\ .\ ,\phi(\ .\ ))\mid [x]_i)\tag{$f$ is 1-Lipschitz}\\
+&\leq a_i
+\end{align*}
+This concludes the proof.
+\end{proof}
+
+Let $\boldsymbol{X}=(X,d,\mu)$ be a finite mm-space and $A\subseteq X$ measurable. Observe that $d_A\colon X\to\R$, $d_A(x):=\inf_{y\in A}d(x,y)$ is a 1-Lipschitz function. Using this we can rewrite the definition of the measure concentration function 
+\[\alpha_{\boldsymbol{X}}(\varepsilon)=\sup\{\mu(\{d_A>\varepsilon\})\mid \mu(A)\geq\frac{1}{2}\}.\]
+This gives us the desired connection.
 %\FlorianSagt{$n$ dimensional cubes with diameter 1 have length $\frac{1}{\sqrt{3}}$ and if $|X|$ is a prime, then the length of $X$ is equal to its diameter, the length of a circle is the same as its diameter}
 
-Between any two points in $X$ there is almost surely a path $x_0,\dots,x_n$ such that \[\sum_{i=1}^n d(x_{i-1},x_i)^2\leq \operatorname{len}(X)^2\] (this path probably has some special properties).
+%Between any two points in $X$ there is almost surely a path $x_0,\dots,x_n$ such that \[\sum_{i=1}^n d(x_{i-1},x_i)^2\leq \operatorname{len}(X)^2\] (this path probably has some special properties).
 
 \begin{theorem}
-If an mm-space $(X,d,\mu)$ has length $l$, then the concentration function of $X$ satisfies
-\[\alpha_X(\varepsilon)\leq 2\exp\left(-\frac{\varepsilon^2}{16l^2}\right).\]
+If a finite mm-space $\boldsymbol{X}=(X,d,\mu)$ has length $l$, then the concentration function of $\boldsymbol X$ satisfies
+\[\alpha_{\boldsymbol{X}}(\varepsilon)\leq 2\exp\left(-\frac{\varepsilon^2}{16l^2}\right).\]
 \end{theorem}
 
 
-\begin{theorem}
+\begin{corollary}
 Let $G$ be a compact group with a bi-invariant metric $d$, and let
 \[\{e\}=G_0<G_1<\dots <G_n=G\]
 be a chain of subgroups. Denote the diameter of $G_i/G_{i_-1}$ with respect to the factor metric by $a_i$. Then the concentration function of the mm-space $(G,d,\mu)$, where $\mu$ is the normalized Haar measure, satisfies
 \[\alpha_X(\varepsilon)\leq 2\exp\left(-\frac{\varepsilon^2}{16\sum_{i=1}^{n}a_i^2}\right).\]
-\end{theorem}
+\end{corollary}
 %rank from 2 to 3 in proof
 
 \begin{theorem}
@@ -234,10 +260,6 @@ If $x_{i_0}=y$, then we are done. Otherwise let $i_1$ be the smallest number suc
 \[d(x,y)\leq d(x,x_{i_0})+d(x_{i_0},x_{i_1})+\dots+d(x_{i_{k-1}},x_{i_k})\leq a_{i_0}+\dots +a_{i_k}\leq\sum_{i=1}^{n}a_i.\] 
 \end{proof}
 
-
-\begin{lemma}Why is this not the case? (it contradicts the main theorem)
-\[\frac{1}{\sqrt{3}}\operatorname{diam}(X)\leq\operatorname{len}(X)\leq \operatorname{diam}(X)\]
-\end{lemma}
 
 \begin{lemma}
 Let $(X,d,\mu)$ be an mm-space with diameter 1 and $\Delta=\min d$. Then the length of $X$ is at least $\Delta^{\frac{1}{2}}$.
