@@ -200,7 +200,7 @@ Secondly, we use the hemming metric and obtain the mm-space $\boldsymbol{X}^H_n$
 
 
 
-\begin{lemma}
+\begin{lemma}\label{lem:lipschitz}
 Let $\boldsymbol{X}=(X,d,\mu)$ be a finite mm-space of length $l$ and $f\colon X\to\R$ be a 1-Lipschitz function. Then
 \[\mu(\{|f-\E(f)|\geq\varepsilon\})\leq 2\exp\left(-\frac{\varepsilon^2}{4l^2}\right)\text{ for every $\varepsilon>0$.}\] 
 \end{lemma}
@@ -222,7 +222,7 @@ This concludes the proof.
 \end{proof}
 
 Let $\boldsymbol{X}=(X,d,\mu)$ be a finite mm-space and $A\subseteq X$ measurable. Observe that $d_A\colon X\to\R$, $d_A(x):=\inf_{y\in A}d(x,y)$ is a 1-Lipschitz function. Using this we can rewrite the definition of the measure concentration function 
-\[\alpha_{\boldsymbol{X}}(\varepsilon)=\sup\{\mu(\{d_A>\varepsilon\})\mid \mu(A)\geq\frac{1}{2}\}.\]
+\[\alpha_{\boldsymbol{X}}(\varepsilon)=\sup\{\mu(\{d_A\geq\varepsilon\})\mid \mu(A)\geq\frac{1}{2}\}.\]
 This gives us the desired connection.
 %\FlorianSagt{$n$ dimensional cubes with diameter 1 have length $\frac{1}{\sqrt{3}}$ and if $|X|$ is a prime, then the length of $X$ is equal to its diameter, the length of a circle is the same as its diameter}
 
@@ -230,9 +230,23 @@ This gives us the desired connection.
 
 \begin{theorem}
 If a finite mm-space $\boldsymbol{X}=(X,d,\mu)$ has length $l$, then the concentration function of $\boldsymbol X$ satisfies
-\[\alpha_{\boldsymbol{X}}(\varepsilon)\leq 2\exp\left(-\frac{\varepsilon^2}{16l^2}\right).\]
+\[\alpha_{\boldsymbol{X}}(\varepsilon)\leq 2\exp\left(-\frac{\varepsilon^2}{16l^2}\right)\text{ for all $\varepsilon>0$}.\]
 \end{theorem}
+\begin{proof}
+Let $\varepsilon>0$ and $A\subseteq X$ be measurable with $\mu(A)\geq\frac{1}{2}$. As mentioned above $d_A$ is 1-Lipschitz and therefore, by Lemma \ref{lem:lipschitz},
 
+\[\mu(\{|d_A-\E(d_A)|\geq\varepsilon\})\leq 2\exp\left(-\frac{\varepsilon^2}{4l^2}\right).\]
+Now there are two cases to consider, the first case is the more interesting one.
+
+If $\E(d_A)\leq\varepsilon$, then for any $x$ with $d_A(x)\geq2\varepsilon$ we know $d_A(x)\geq \varepsilon+\E(d_A)$ and therefore $|d_A(x)-\E(d_A)|\geq \varepsilon$. As a consequence %then for any $x$ with $|d_A(x)-\E(d_A)|<\varepsilon$ we have, by non-negativity of $d_A$, that $d_A(x)-\E(d_A)<\varepsilon$. Hence $d_A(x)<2\varepsilon$ and in general 
+\[\mu(\{d_A\geq2\varepsilon\})\leq \mu(\{|d_A-\E(d_A)|\geq\varepsilon\})\leq2\exp\left(-\frac{\varepsilon^2}{4l^2}\right) .\]
+Replacing $\varepsilon$ by $\frac{\varepsilon}{2}$ gives the desired inequality.
+
+If $\E(d_A)>\varepsilon$, then $A\subseteq \{|d_A-\E(d_A)|\geq\varepsilon\}$. Consequently,
+\[\mu(\{d_A\geq\varepsilon\})\leq \mu(X\setminus A)\leq \frac{1}{2}\leq \mu(A)\leq \mu(\{|d_A-\E(d_A)|\geq\varepsilon\})\leq 2\exp\left(-\frac{\varepsilon^2}{4l^2}\right).\]
+This proves the theorem.
+\end{proof}
+Note that in the second case the upper bound is at least $\frac{1}{2}$, which means that if $l$ is large enough then we are in the first case and the expected distance to a set with at least half measure is less then $\varepsilon$.
 
 \begin{corollary}
 Let $G$ be a compact group with a bi-invariant metric $d$, and let
