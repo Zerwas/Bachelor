@@ -1,5 +1,5 @@
 \section{An upper bound for the measure concentration function}
-In this section we will prove Azema's inequality and as a consequence, we will obtain an upper bound for the measure concentration function. As the next results rely heavily on stochastic methods we will briefly introduce the necessary notions. Since the $G_n$ are all finite and equipped with the normalized counting measure we will only consider \define{probability spaces} $(X,\Sigma,\mu)$, where $X$ is finite, $\Sigma$ is a $\sigma$-algebra over $X$, and $\mu(A)=|A|/|X|$ for $A\subseteq X$. For a more general approach see \cite{azema}. Note that $\Sigma$ has a very nice representation.%Note that $\Sigma$ is the smallest $\sigma$-algebra containing $A_1,\dots,A_n$, where $$ 
+In this section we will prove Azema's inequality and as a consequence, we will obtain an upper bound for the measure concentration function. As the next results rely heavily on stochastic methods we will briefly introduce the necessary notions. Since the $G_n$ are all finite and equipped with the normalized counting measure we will only consider \define{probability spaces} $(X,\Sigma,\mu)$, where $X$ is finite, $\Sigma$ is a $\sigma$-algebra over $X$, and $\mu(A)=|A|/|X|$ for $A\subseteq X$. Most of the statements in this section hold in a more general setting \cite{azema}. Note that $\Sigma$ has a very nice representation.%Note that $\Sigma$ is the smallest $\sigma$-algebra containing $A_1,\dots,A_n$, where $$ 
 
 \begin{lemma}
 Let $\Sigma$ be a $\sigma$-algebra over a finite set $X$, then $\Sigma$ is the smallest $\sigma$-algebra containing the partition $A_1,\dots,A_n$, where the $A_i$'s are the minimal nonempty sets in $\Sigma$.
@@ -90,22 +90,22 @@ Before we will prove Azema's inequality let us introduce some useful notation. W
 For example $\{x\in X\mid f(x)= c\}$ becomes $\{f= c\}$.
 
 \begin{lemma}\label{lem:azema}[Azema's inequality]
-Let $(X,\Sigma,\mu)$ be a probability space, $f\colon X\to\R$ a measurable function, and $\{X\}=\Sigma_0\subseteq\dots\subseteq\Sigma_n=\Sigma$ a chain of sub-$\sigma$-algebras. Define $f_i:=\E(f\mid\Sigma_i)$ and $d_i:=f_i-f_{i-1}$. Then for every $c\geq0$
+Let $(X,\Sigma,\mu)$ be a probability space, $f\colon X\to\R$ a measurable function, and $\{X\}=\Sigma_0\subseteq\dots\subseteq\Sigma_n=\Sigma$ a chain of sub-$\sigma$-algebras. Define $f_i:=\E(f\mid\Sigma_i)$ and $d_i:=f_i-f_{i-1}$. Then for every $\varepsilon\geq0$
 %\[\mu(\{x\in X\mid |f(x)-\mathbb{E}(f)|\geq c\})\leq 2\exp\left(-\frac{c^2}{4\sum_{i=1}^{n}\|d_i\|^2_\infty}\right)\]
-\[\mu(\{|f-\E(f)|\geq c\})\leq 2\cdot\exp\left(-\frac{c^2}{4\cdot\sum_{i=1}^{n}\|d_i\|^2_\infty}\right).\]
+\[\mu(\{|f-\E(f)|\geq \varepsilon\})\leq 2\cdot\exp\left(-\frac{\varepsilon^2}{4\cdot\sum_{i=1}^{n}\|d_i\|^2_\infty}\right).\]
 \end{lemma}
 Note that $(f_i,\Sigma_i)_{0\leq i\leq n}$ is a discrete martingale. 
 \begin{proof} First, observe that $f_0=\E(f\mid \{X\})=\E(f)$ and $f_n=\E(f\mid\Sigma)=f$. Using a simple telescoping sum we obtain $f-\E(f)=d_1+\dots+d_n$. Therefore
 \begin{align*}
-\mu(\{f-\E(f)\geq c\})&=\mu(\{\sum_{i=1}^{n}d_i\geq  c\})\\
-&=\mu(\{\lambda\cdot\sum_{i=1}^{n}d_i\geq \lambda c\})\tag{for $\lambda>0$}\\
-&=\mu(\{e^{\lambda\cdot\sum_{i=1}^{n}d_i-\lambda c}\geq 1\})\\
-&\leq\E(e^{\lambda\cdot\sum_{i=1}^{n}d_i})\cdot e^{-\lambda c}\tag{$\ast$}\\
-&=\E(e^{\lambda d_1}\cdot\ldots\cdot e^{\lambda d_{n-1}}\cdot\E(e^{\lambda d_n}\mid \Sigma_{n-1}))\cdot e^{-\lambda c}\tag{Lemma \ref{lem:condExp}}\\
-&\leq\E(e^{\lambda d_1}\cdot\ldots\cdot e^{\lambda d_{n-1}})\cdot e^{\lambda^2\cdot \|d_n\|^2_\infty}\cdot e^{-\lambda c}\tag{$\ast\ast$}\\
+\mu(\{f-\E(f)\geq \varepsilon\})&=\mu(\{\sum_{i=1}^{n}d_i\geq  \varepsilon\})\\
+&=\mu(\{\lambda\cdot\sum_{i=1}^{n}d_i\geq \lambda \varepsilon\})\tag{for $\lambda>0$}\\
+&=\mu(\{e^{\lambda\cdot\sum_{i=1}^{n}d_i-\lambda \varepsilon}\geq 1\})\\
+&\leq\E(e^{\lambda\cdot\sum_{i=1}^{n}d_i})\cdot e^{-\lambda \varepsilon}\tag{$\ast$}\\
+&=\E(e^{\lambda d_1}\cdot\ldots\cdot e^{\lambda d_{n-1}}\cdot\E(e^{\lambda d_n}\mid \Sigma_{n-1}))\cdot e^{-\lambda \varepsilon}\tag{Lemma \ref{lem:condExp}}\\
+&\leq\E(e^{\lambda d_1}\cdot\ldots\cdot e^{\lambda d_{n-1}})\cdot e^{\lambda^2\cdot \|d_n\|^2_\infty}\cdot e^{-\lambda \varepsilon}\tag{$\ast\ast$}\\
 &\hspace{3cm}\vdots\\
-&\leq e^{\lambda^2\cdot \|d_1\|^2_\infty}\cdot\ldots\cdot e^{\lambda^2\cdot \|d_{n-1}\|^2_\infty}\cdot e^{\lambda^2\cdot \|d_n\|^2_\infty}\cdot e^{-\lambda c}\\
-&=e^{\lambda^2\cdot\sum_{i=1}^n\|d_i\|^2_\infty-\lambda c}.
+&\leq e^{\lambda^2\cdot \|d_1\|^2_\infty}\cdot\ldots\cdot e^{\lambda^2\cdot \|d_{n-1}\|^2_\infty}\cdot e^{\lambda^2\cdot \|d_n\|^2_\infty}\cdot e^{-\lambda \varepsilon}\\
+&=e^{\lambda^2\cdot\sum_{i=1}^n\|d_i\|^2_\infty-\lambda \varepsilon}.
 \end{align*}
 
 For $(\ast)$ note that for any measurable function $g\colon X\to\R$ with $g\geq0$ we have %$\mu(\{g\geq1\})\leq\E(g)$.
@@ -118,10 +118,10 @@ For $(\ast\ast)$ we need to use Lemma \ref{lem:exToex2}
 &\leq 0 + e^{\lambda^2 \|d_i\|_\infty^2}.\tag{Lemma \ref{lem:condExp}}
 \end{align*}
 
-Substituting $-\frac{c^2}{\sum_{i=1}^{n}\|d_i\|_\infty^2}$ for $\lambda$ we conclude that
-\[\mu(\{f-\mathbb{E}(f)\geq c\})\leq\exp\left(-\frac{c^2}{4\cdot\sum_{i=1}^{n}\|d_i\|^2_\infty}\right). \]
+Substituting $-\frac{\varepsilon^2}{\sum_{i=1}^{n}\|d_i\|_\infty^2}$ for $\lambda$ we conclude that
+\[\mu(\{f-\mathbb{E}(f)\geq \varepsilon\})\leq\exp\left(-\frac{\varepsilon^2}{4\cdot\sum_{i=1}^{n}\|d_i\|^2_\infty}\right). \]
 The same calculations with $-d_i$ instead of $d_i$ yield the dual inequality
-\[\mu(\{f-\mathbb{E}(f)\leq -c\})\leq\exp\left(-\frac{c^2}{4\cdot\sum_{i=1}^{n}\|d_i\|^2_\infty}\right). \]
+\[\mu(\{f-\mathbb{E}(f)\leq -\varepsilon\})\leq\exp\left(-\frac{\varepsilon^2}{4\cdot\sum_{i=1}^{n}\|d_i\|^2_\infty}\right). \]
 These two statements obviously give us the desired result.
 \end{proof}
 
@@ -208,7 +208,7 @@ Let $\boldsymbol{X}=(X,d,\mu)$ be a finite mm-space of length $l$ and $f\colon X
 Let 
 $\Omega_0\prec\dots\prec\Omega_n$
 be a refining sequence of partitions with $a_1,\dots,a_n$ as in Definition \ref{def:length} such that $\sum_{i=1}^{n}a_i^2=l^2$. These partitions correspond to $\sigma$-algebras $\Sigma_0\subseteq\dots\subseteq\Sigma_n$. Now we can apply Azema's inequality to obtain
-\[\mu(\{|f-\E(f)|\geq c\})\leq 2\cdot\exp\left(-\frac{c^2}{4\cdot\sum_{i=1}^{n}\|d_i\|^2_\infty}\right),\]
+\[\mu(\{|f-\E(f)|\geq \varepsilon\})\leq 2\cdot\exp\left(-\frac{\varepsilon^2}{4\cdot\sum_{i=1}^{n}\|d_i\|^2_\infty}\right),\]
 where $f_i=\E(f\mid \Sigma_i)$ and $d_i=f_i-f_{i-1}$ as before. Therefore we only need to show that $\|d_i\|_\infty\leq a_i$. Since on any $A\in\Omega_{i-1}$ we have $f_{i-1}=\E(f_i\mid A)$ it suffices to show that for all $A\in\Omega_{i-1}$ it holds that $f_i(x)-f_i(y)\leq a_i$ for all $x,y\in A$.
 Let $\phi\colon [x]_i\to [y]_i$ be the isomorphism from Definition \ref{def:length}.
 \begin{align*}
@@ -286,9 +286,10 @@ gh&{}\mapsto g'h'h
 is, by bi-invariance of $d$, an isomorphism of metric spaces with $d(gh,g'h'h)=d(g,g'h')\leq a_i$ for all $gh\in gG_i$.
 Therefore $\left(\sum_{i=1}^{n}a_i^2\right)$ is an upper bound for $l^2$. 
 \end{proof}
+Carderi and Thom used this result to show that the limit of $\SL_{2^n}(q)$ is extremely amenable \cite{thom}. We will recreate this proof in the next section. 
 
 
-\section{The limit of $\SL_n(q)$ is extremely amenable}
+\section{The limit of $\SL_{2^n}(q)$ is extremely amenable}
 %rank from 2 to 3 in proof
 \begin{theorem}
 The normalized counting measure on the groups $\SL_{2^n}(q)$ concentrates with respect to the rank-metric, i.e. for all $r>0$
