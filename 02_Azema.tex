@@ -270,7 +270,7 @@ Equipped with this knowledge we can formulate the final statement for this secti
 Let $G$ be a finite group with a bi-invariant metric $d$, and let
 \[\{e\}=G_0<G_1<\dots <G_n=G\]
 be a chain of subgroups. Denote the diameter of $G_i/G_{i-1}$ with respect to the factor metric by $a_i$. Then the measure concentration function of the mm-space $(G,d,\mu)$, where $\mu$ is the normalized counting measure, satisfies
-\[\alpha_{\boldsymbol{X}}(\varepsilon)\leq 2\exp\left(-\frac{\varepsilon^2}{16\sum_{i=1}^{n}a_i^2}\right).\]
+\[\alpha_{\boldsymbol{X}}(\varepsilon)\leq 2\exp\left(-\frac{\varepsilon^2}{16\cdot\sum_{i=1}^{n}a_i^2}\right).\]
 \end{corollary}
 \begin{proof}
 We show that the length $l$ of $(G,d,\mu)$ is bounded by $\left(\sum_{i=1}^{n}a_i^2\right)^{\frac{1}{2}}$ and apply Theorem \ref{thm:measureConcetration}. Define the sequence of partitions $\Omega_i:=\{g G_i\mid g\in G\}$
@@ -294,26 +294,85 @@ Carderi and Thom used this result to show that the limit of $\SL_{2^n}(q)$ is ex
 When studying matrices it is often useful to look at the corresponding linear maps of a suitable vector space. \FlorianSagt{proof for $\SL$ and $\GL$ te same?}
 In the case of $\SL_n(q)$ a $n$ dimensional $\F_q$ vector space $V$ suffices. Fixing a basis $e_1,\dots,e_n$ gives us an embedding from $\SL_n(q)$ into $\Aut(V)$. 
 %rank from 2 to 3 in proof
-\begin{theorem}
-The normalized counting measure on the groups $\SL_{2^n}(q)$ concentrates with respect to the rank-metric, i.e. for all $r>0$
-\[\lim_{n\to\infty} \alpha_{\SL_{2^n}(q)}(r)=0 .\]\FlorianSagt{Boldsymbol or tuple}
+\begin{theorem}\label{thm:SLConcentrates}
+The normalized counting measure on the groups $\SL_{n}(q)$ concentrates with respect to the rank-metric, i.e. for all $r>0$
+\[\lim_{n\to\infty} \alpha_{\SL_{n}(q)}(r)=0 .\]\FlorianSagt{Boldsymbol or tuple}
 \end{theorem}
 \begin{proof}
 We will apply Corollary \ref{cor:meaContractionGroups} to a sequence of subgroups which also shows that the length of  $\SL_n(q)$ is bounded by $3n^{-\frac{1}{2}}$.
 Let $e_1,\dots,e_n$ be a basis of an $n$ dimensional $\F_q$ vector space $V$. Look at the sequence
 \[\SL_0(q)<\SL_1(q)<\dots<\SL_n(q),\]
-where $\SL_{i-1}(q)$ becomes a subgroup of $\SL_i(q)$ via the embedding $g\mapsto g\oplus 1_{\langle e_i\rangle}$. Next we want to bound the diameter of $\SL_{i}(q)/\SL_{i-1}(q)$ by $\frac{3}{n}$. By Lemma \ref{lem:factorMetric} it suffices to show that for any $g,g'\in\SL_i(q)$ there is a $h\in \SL_{i-1}(q)$ such that $d(g,g'h)\leq\frac{3}{n}$. Since $d$ is bi-invariant we can assume w.l.o.g. that $g'=1_V$.
+where $\SL_{i-1}(q)$ becomes a subgroup of $\SL_i(q)$ via the embedding $g\mapsto 
+\begin{pmatrix}
+g&0\\
+0&1
+\end{pmatrix}$. Next we want to bound the diameter of $\SL_{i}(q)/\SL_{i-1}(q)$ by $\frac{3}{n}$. By Lemma \ref{lem:factorMetric} it suffices to show that for any $g,g'\in\SL_i(q)$ there is an $h\in \SL_{i-1}(q)$ such that $d(g,g'h)\leq\frac{3}{n}$. Since $d$ is bi-invariant we can assume w.l.o.g. that $g'=1_V$. 
+Our goal is now to find a $g'\in\SL_i(q)$ that is the identity on $e_i$.
 
-$U'=\langle e_1,\dots,e_{i-1}\rangle$, $U=\langle e_i\rangle$, $U''=\langle e_{i+1},\dots, e_n\rangle$
-
+Take a closer look at $ge_i$. If $e_i$ is an eigenvector of $g$ with eigenvalue $\lambda$, then $\lambda\not=0$ and $g$ is of the form 
+$\begin{pmatrix}
+A&0\\
+c^\bot&\lambda
+\end{pmatrix}$.
+Define $h':=
+\begin{pmatrix}
+\lambda&0\\
+0&\lambda^{-1}
+\end{pmatrix}
+$
+and $g':=
+\begin{pmatrix}
+I_{i-2}&0\\
+0&h'
+\end{pmatrix}\cdot g$.
+By construction $g'\in\SL_i(q)$ and it is of the form 
+$\begin{pmatrix}
+A'&0\\
+c'^\bot&1
+\end{pmatrix}$. Since $\det g'=1$ we have that $\det A'=1$ and therefore $A'\in\SL_{i-1}(q)$ making it a suitable candidate for $h$. Using the triangle inequality we obtain
 \begin{align*}
-d(g,(h'\oplus 1)g)=d(1_V,h'\oplus 1)\leq \frac{2}{n}
+d(g,h)&\leq d(g,g')+d(g',h)\\
+&=d(I_i,\begin{pmatrix}
+I_{i-2}&0\\
+0&h'
+\end{pmatrix})+\frac{1}{n}\rank(\begin{pmatrix}
+0&0\\
+-c'^\bot&0
+\end{pmatrix})\\
+&\leq \frac{2}{n}+ \frac{1}{n}
 \end{align*}
+as desired.
 
-$h:=(1_{U'}\oplus 0_U)(h'\oplus 1)g+ (0_{U'}\oplus1_{U})$, $h\in\SL_{i-1}$?
-\begin{align*}
-d((h'\oplus 1)g,h)
-\end{align*}
+If $e_i$ is not an eigenvector of $g$, then we can make a change of basis of $\langle e_1,\dots,e_{i-1}\rangle$ such that $ge_i=e_{i-1}+\lambda e_i$. Henceforth we can assume w.l.o.g. that $g$ is of the form 
+$\begin{pmatrix}
+&&0\\
+\multicolumn{2}{c}
+      {\raisebox{\dimexpr\normalbaselineskip+.2\ht\strutbox-0.9\height}[0pt][0pt]
+        {\scalebox{2.3}{$A$}}} &1\\
+c^\bot&c_{i-1}&\lambda
+\end{pmatrix}
+$.
+Define $h'=
+\begin{pmatrix}
+\lambda&-1\\
+1&0
+\end{pmatrix}
+$ and as before $g':=
+\begin{pmatrix}
+I_{i-2}&0\\
+0&h'
+\end{pmatrix}\cdot g$.
+Now we can apply the argument from above to get an $h\in \SL_{i-1}(q)$ such that $d(g,h)\leq\frac{3}{n}$. Applying Corollary \ref{cor:meaContractionGroups} we obtain
+\[\alpha_{\SL_n(q)}(\varepsilon)\leq 2\exp\left(-\frac{\varepsilon^2}{16\cdot\sum_{i=1}^{n}\frac{9}{n^2}}\right)=2\exp\left(-\frac{\varepsilon^2 n}{16\cdot9}\right),\]
+which tends to 0 as $n$ goes to infinity. 
+
+\end{proof}
+
+\begin{corollary}
+The Polish group $\clim \SL_{2^n}(q)$ is extremely amenable.
+\end{corollary}
+\begin{proof}
+Theorem \ref{thm:SLConcentrates} implies that $\clim \SL_{2^n}(q)$ is a Levy group and is therefore extremely amenable, by Theorem \ref{thm:LevyImpliesExAm}.
 \end{proof}
 
 \begin{lemma}
