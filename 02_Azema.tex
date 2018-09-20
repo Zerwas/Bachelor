@@ -193,9 +193,9 @@ Let us look at the $n$-dimensional cube $X_n=\{0,1\}^n$.
 We will only consider the following sequence of partitions
 \[\Omega_0\prec\dots\prec\Omega_n\text{ with }\Omega_i=\{wX_{n-i}\mid w\in\{0,1\}^i\}.\]
 
-First, we equip $X_n$ with the euclidean metric and rescale it such that the diameter is 1. To bound the length of the resulting space $\boldsymbol X^E_n$ consider $[x]_i\neq[y]_i$. Note that $x$ and $y$ are w.l.o.g. of the form $w0u$ and $w1v$ for some $w\in\{0,1\}^{i-1}$, $u,v\in\{0,1\}^{n-i}$. The isomorphism $\phi$ takes an element $w0u'$ in $[x]_i$ and maps it to $w1u'$. The length of a side in $\boldsymbol X^E_n$ is $\frac{1}{\sqrt{n}}$, hence every $a_i$ is $\frac{1}{\sqrt{n}}$ for every $i$ and the length of $\boldsymbol{X}^E_n$ is bounded by $\sum_{i=1}^{n}\frac{1}{\sqrt{n}^2}=1$.
+First, we equip $X_n$ with the euclidean metric and rescale it such that the diameter is 1. To bound the length of the resulting space $\boldsymbol X^E_n$ consider $[x]_i\neq[y]_i$. Note that $x$ and $y$ are w.l.o.g. of the form $w0u$ and $w1v$ for some $w\in\{0,1\}^{i-1}$, $u,v\in\{0,1\}^{n-i}$. The isomorphism $\phi$ takes an element $w0u'$ in $[x]_i$ and maps it to $w1u'$. The length of a side in $\boldsymbol X^E_n$ is $\frac{1}{\sqrt{n}}$, hence every $a_i$ is $\frac{1}{\sqrt{n}}$ for every $i$ and the length of $\boldsymbol{X}^E_n$ is bounded by $(\sum_{i=1}^{n}\frac{1}{\sqrt{n}^2})^{\frac{1}{2}}=1$.
 
-Secondly, we use the hemming metric and obtain the mm-space $\boldsymbol{X}^H_n$ with diameter 1. It has side length $\frac{1}{n}$ and therefore the length of $\boldsymbol{X}^H_n$ is bounded by $\sum_{i=1}^{n}\frac{1}{n^2}=\frac{1}{n}$. We see that here the length of $\boldsymbol{X}^H_n$ converges to 0 as $n$ tends to infinity. We will show that this means that the measure concentration function $\alpha_{\boldsymbol{X}^H_n}(r)$ also goes to 0 for any fixed $r>0$. 
+Secondly, we use the hemming metric and obtain the mm-space $\boldsymbol{X}^H_n$ with diameter 1. It has side length $\frac{1}{n}$ and therefore the length of $\boldsymbol{X}^H_n$ is bounded by $(\sum_{i=1}^{n}\frac{1}{n^2})^{\frac{1}{2}}=n^{-\frac{1}{2}}$. We see that here the length of $\boldsymbol{X}^H_n$ converges to 0 as $n$ tends to infinity. We will show that this means that the measure concentration function $\alpha_{\boldsymbol{X}^H_n}(r)$ also goes to 0 for any fixed $r>0$. 
 \end{example}
 
 
@@ -295,8 +295,8 @@ When studying matrices it is often useful to look at the corresponding linear ma
 In the case of $\SL_n(q)$ an $n$ dimensional $\F_q$ vector space $V$ suffices. Fixing a basis $e_1,\dots,e_n$ gives us an embedding from $\SL_n(q)$ into $\Aut(V)$. Next we will apply the methods from the previous section to show that $\clim \SL_{2^n}(q)$ is extremely amenable.
 %rank from 2 to 3 in proof
 \begin{theorem}\label{thm:SLConcentrates}
-The normalized counting measure on the groups $\SL_{n}(q)$ concentrates with respect to the normalized rank-metric, i.e. for all $r>0$
-\[\lim_{n\to\infty} \alpha_{\SL_{n}(q)}(r)=0 .\]\FlorianSagt{Boldsymbol or tuple}
+The normalized counting measure on the groups $\SL_{n}(q)$ concentrates with respect to the normalized rank-metric, i.e. for all $\varepsilon>0$
+\[\lim_{n\to\infty} \alpha_{(\SL_{n}(q), d, \mu)}(\varepsilon)=0 .\]\FlorianSagt{Boldsymbol or tuple}
 \end{theorem}
 \begin{proof}\FlorianSagt{proof for $\SL$ and $\GL$ te same?}
 We will apply Corollary \ref{cor:meaContractionGroups} to a sequence of subgroups which also shows that the length of  $\SL_n(q)$ is bounded by $3n^{-\frac{1}{2}}$.
@@ -363,7 +363,7 @@ I_{i-2}&0\\
 0&h'
 \end{pmatrix}\cdot g$.
 Now we can apply the argument from above to get an $h\in \SL_{i-1}(q)$ such that $d(g,h)\leq\frac{3}{n}$. Applying Corollary \ref{cor:meaContractionGroups} we obtain
-\[\alpha_{\SL_n(q)}(\varepsilon)\leq 2\exp\left(-\frac{\varepsilon^2}{16\cdot\sum_{i=1}^{n}\frac{9}{n^2}}\right)=2\exp\left(-\frac{\varepsilon^2 n}{16\cdot9}\right),\]
+\[\alpha_{(\SL_n(q), d, \mu)}(\varepsilon)\leq 2\exp\left(-\frac{\varepsilon^2}{16\cdot\sum_{i=1}^{n}\frac{9}{n^2}}\right)=2\exp\left(-\frac{\varepsilon^2 n}{16\cdot9}\right),\]
 which tends to 0 as $n$ goes to infinity. 
 
 \end{proof}
@@ -379,7 +379,7 @@ Theorem \ref{thm:SLConcentrates} implies that $\clim \SL_{2^n}(q)$ is a Levy gro
 
 As a byproduct we found an upper bound for the length of $\SL_n(q)$. We now ask how good this upper bound is. Therefore we our next goal is to determining also a lower bound. This part is not essential to the rest of the thesis but still interesting.
 
-\begin{lemma}
+\begin{lemma}\label{lem:diamLen}
 Let $(X,d,\mu)$ be a finite mm-space with diameter $\Delta$ and %\FlorianSagt{could be that this only holds for finite $X$ as conditions in definition of length are just almost surely}
 \[\Omega_0=\{X\}\prec\dots\prec\Omega_n=\{\{x\}\mid x\in X\}\]
 with $a_1,\dots,a_n$ as in Definition \ref{def:length}. Then 
@@ -399,9 +399,22 @@ From this the claim immediately follows.
 Let $(X,d,\mu)$ be a finite mm-space with diameter $\Delta$ and $\delta=\min_{x\not=x} d(x,y)$. Then the length of $X$ is at least $(\Delta\cdot\delta)^{\frac{1}{2}}$.
 \end{lemma}
 \begin{proof}
-We show by induction on $n$ that for any $0\leq a_1\leq\dots\leq a_n$ with $\delta=\min_{1\leq i\leq n} a_i=a_1$ we have
+We show by induction on $n$ that for any nonnegative $a_1,\dots, a_n$ with $\delta=\min_{1\leq i\leq n} a_i$ we have
 \[\sum_{i=1}^{n}a_i\geq \Delta\implies \sum_{i=1}^{n}a_i^2\geq \Delta\cdot\delta.\]
-%TODO continue here
+
+For $n=1$: Note that $\Delta\geq\delta$. Hence 
+\[\sum_{i=1}^{n}a_i^2=a_1^2=\delta^2\geq \Delta\cdot \delta.\]
+
+For $n>1$: Assume w.l.o.g. that $a_1\leq\dots\leq a_n$. Then 
+\begin{align*}
+&\sum_{i=1}^{n}a_i\geq \Delta\\
+\implies &\sum_{i=2}^{n}a_i\geq \Delta-\delta\tag{$a_1=\delta$}\\
+\stackrel{\text{I.H.}}\implies &\sum_{i=2}^{n}a_i^2\geq (\Delta-\delta)\cdot \delta'\tag{with $\delta'=a_2$}\\
+\implies &\sum_{i=2}^{n}a_i^2\geq \Delta\cdot\delta-\delta^2\tag{$\delta\leq\delta'$}\\
+\implies &\sum_{i=1}^{n}a_i^2\geq \Delta\cdot\delta\tag{$a_1^2=\delta^2$}.
+\end{align*}
+
+From this claim together with Lemma \ref{lem:diamLen} the lemma immediately follows.
 
 \end{proof}
 
