@@ -291,14 +291,14 @@ Carderi and Thom used this result to show that the limit of $\SL_{2^n}(q)$ is ex
 
 \section{The limit of $\SL_{2^n}(q)$ is extremely amenable}
 
-When studying matrices it is often useful to look at the corresponding linear maps of a suitable vector space. \FlorianSagt{proof for $\SL$ and $\GL$ te same?}
-In the case of $\SL_n(q)$ a $n$ dimensional $\F_q$ vector space $V$ suffices. Fixing a basis $e_1,\dots,e_n$ gives us an embedding from $\SL_n(q)$ into $\Aut(V)$. 
+When studying matrices it is often useful to look at the corresponding linear maps of a suitable vector space. 
+In the case of $\SL_n(q)$ an $n$ dimensional $\F_q$ vector space $V$ suffices. Fixing a basis $e_1,\dots,e_n$ gives us an embedding from $\SL_n(q)$ into $\Aut(V)$. Next we will apply the methods from the previous section to show that $\clim \SL_{2^n}(q)$ is extremely amenable.
 %rank from 2 to 3 in proof
 \begin{theorem}\label{thm:SLConcentrates}
-The normalized counting measure on the groups $\SL_{n}(q)$ concentrates with respect to the rank-metric, i.e. for all $r>0$
+The normalized counting measure on the groups $\SL_{n}(q)$ concentrates with respect to the normalized rank-metric, i.e. for all $r>0$
 \[\lim_{n\to\infty} \alpha_{\SL_{n}(q)}(r)=0 .\]\FlorianSagt{Boldsymbol or tuple}
 \end{theorem}
-\begin{proof}
+\begin{proof}\FlorianSagt{proof for $\SL$ and $\GL$ te same?}
 We will apply Corollary \ref{cor:meaContractionGroups} to a sequence of subgroups which also shows that the length of  $\SL_n(q)$ is bounded by $3n^{-\frac{1}{2}}$.
 Let $e_1,\dots,e_n$ be a basis of an $n$ dimensional $\F_q$ vector space $V$. Look at the sequence
 \[\SL_0(q)<\SL_1(q)<\dots<\SL_n(q),\]
@@ -352,7 +352,7 @@ $\begin{pmatrix}
 c^\bot&c_{i-1}&\lambda
 \end{pmatrix}
 $.
-Define $h'=
+Define $h':=
 \begin{pmatrix}
 \lambda&-1\\
 1&0
@@ -368,12 +368,16 @@ which tends to 0 as $n$ goes to infinity.
 
 \end{proof}
 
+From this theorem the main result of this section easily follows.
+
 \begin{corollary}
 The Polish group $\clim \SL_{2^n}(q)$ is extremely amenable.
 \end{corollary}
 \begin{proof}
 Theorem \ref{thm:SLConcentrates} implies that $\clim \SL_{2^n}(q)$ is a Levy group and is therefore extremely amenable, by Theorem \ref{thm:LevyImpliesExAm}.
 \end{proof}
+
+As a byproduct we found an upper bound for the length of $\SL_n(q)$. We now ask how good this upper bound is. Therefore we our next goal is to determining also a lower bound. This part is not essential to the rest of the thesis but still interesting.
 
 \begin{lemma}
 Let $(X,d,\mu)$ be an mm-space with diameter $d$ and \FlorianSagt{could be that this only holds for finite $X$ as conditions in definition of length are just almost surely}
@@ -392,6 +396,17 @@ If $x_{i_0}=y$, then we are done. Otherwise let $i_1$ be the smallest number suc
 \begin{lemma}
 Let $(X,d,\mu)$ be an mm-space with diameter 1 and $\Delta=\min d$. Then the length of $X$ is at least $\Delta^{\frac{1}{2}}$.
 \end{lemma}
+
+Using this we can give an interval for the length of $\SL_n(q)$.
+
+\begin{corollary}
+Consider $(\SL_{n}(q),d,\mu)$, where $d$ is the normalized rank-metric and $\mu$ is the normalized counting measure. Then the length $l$ of this mm-space satisfies
+\[n^{-\frac{1}{2}}\leq l\leq 3n^{-\frac{1}{2}}.\]
+\end{corollary}
+
+The next goal is to show that limits of symplectic groups are also extremely amenable. Theses groups can be seen as automorphism groups of a vector space together with a symplectic form. The proof will be similar to the one for the special linear groups but extending the partial inverse $h'$ becomes much harder. This is why in the next section we will prove Witt's Lemma which does exactly what we need, i.e. extending isometries.
+
+\section*{Not sure whether this is still needed}
 
 \begin{definition}
 The \define{symplectic group} of degree $2n$ over a field $q$, denoted by $\Sp(2n,q)$, is the subgroup of $\SL(2n,q)$ containing all matrices $A$ such that
