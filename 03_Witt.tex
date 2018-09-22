@@ -1,4 +1,45 @@
 \section{Witts Lemma}
+In this section we will prove Witt's Lemma. It states that an isometry between subspaces of a finite dimensional vector space can always be extended to an isomtry on the whole space.  We will roughly follow the proof in \cite{Witt}. Since we are mainly interested in symplectic spaces we will only show Witt's Lemma for those but it also holds for unitary and orthogonal spaces.
+
+\begin{definition}
+A bilinear form $\omega$ on $V$ is called \define{symplectic} if $\omega$ is nondegenerate, i.e. $\omega(x,\ .\ )\not=0_V$ for all $x\in V\setminus\{0\}$, and $\omega(x,y)=-\omega(y,x)$ for all $x,y\in V$. Then we say $(V,\omega)$ is a \define{symplectic space}.
+
+A finite group $G$ is called \define{symplectic} if there is a symplectic space $(V,\omega)$ such that $G\cong\Aut(V,\omega)$. 
+
+A subspace $U\leq V$ is \define{nondegenerate} if $\omega$ restricted to $U$ is nondegenerate (iff $U\cap U^\bot=\{0\}$). 
+
+%For $x,y\in V$ with $\omega(x,y)$ we will write $x\bot y$ and for a set $X\subseteq V$ define
+%\[X^\bot=\{y\in V\mid \omega(x,y)=0\}.\]
+\end{definition}
+Throughout this section let $(V,\omega)$ be a finite dimensional symplectic $\F_q$ vector space.
+Note that $\omega(x,y)=0$ iff $\omega(y,x)=0$, also $\omega(x,x)=0$ for all $x\in V$.
+We will start of with some technical lemmas.
+
+
+\FlorianSagt{make shortversion for each section?}
+\begin{lemma}
+For an $x\in V$ and a subspace $U\leq V$ with $x\notin U^\bot$ we have 
+\[\dim( x^\bot\cap U)= \dim U -1.\]
+\end{lemma}
+
+\begin{lemma}
+For a subspace $U\leq V$ we have 
+\[\dim U^\bot= \dim V -\dim U.\]
+\end{lemma}
+
+The following lemma is an immediate consequence of the previous one.
+\begin{lemma}
+For a subspace $U\leq V$ we have 
+\begin{enumerate}
+\item $U$ is nondegenerate iff $V=U\oplus U^\bot$ and
+\item $U^{\bot\bot}=U$.
+\end{enumerate}
+\end{lemma}
+
+\begin{lemma}[Witt's Lemma]
+Let $\alpha\colon U\to W$ be an isometrie between subspaces $U,W\leq V$. Then $\alpha$ can be extended to an isometrie $\tilde{\alpha}\colon V\to V$.
+\end{lemma}
+
 
 \section{Limits of other Matrix group families are Levy groups too}
 When studying matrices it is often useful to look at the corresponding linear maps of a suitable vector space. In the case of orthogonal, symplectic, or unitary matrices these are linear maps from the vector space to itself preserving an orthogonal, symplectic, or unitary form respectively. Formally, the symplectic group $\Sp_n(q)$ is isomorphic to $\Aut(V,\omega)$, where $V$ is an $n$-dimensional $F(q)$ vector space and $\omega$ is a symplectic form.
