@@ -1,5 +1,5 @@
 \section{Witts Lemma}
-In this section we will prove Witt's Lemma. It states that an isometry between subspaces of a finite dimensional vector space can always be extended to an isomtry on the whole space.  We will roughly follow the proof in \cite{Witt}. Since we are mainly interested in symplectic spaces we will only show Witt's Lemma for those but it also holds for unitary and orthogonal spaces.
+In this section we will prove Witt's Lemma and explore the structure of symplectic spaces. Witt's Lemma states that an isometry between subspaces of a finite dimensional vector space can always be extended to an isomtry on the whole space.  We will roughly follow the proof in \cite{Witt}. Since we are mainly interested in symplectic spaces we will only show Witt's Lemma for those but it also holds for unitary and orthogonal spaces.
 
 \begin{definition}
 A bilinear form $\omega$ on $V$ is called \define{symplectic} if $\omega$ is nondegenerate, i.e. $\omega(x,\ .\ )\not=0_V$ for all $x\in V\setminus\{0\}$, and $\omega(x,y)=-\omega(y,x)$ for all $x,y\in V$. Then we say $(V,\omega)$ is a \define{symplectic space}.
@@ -40,7 +40,7 @@ By definition the kernel of $g$ is $U^\bot$ and since $\omega$ is nondegenerate 
 
 
 The following lemma is an immediate consequence of the previous one.
-\begin{lemma}
+\begin{lemma}\label{lem:Ubotbot}
 Let $U\leq V$. Then
 \begin{enumerate}[label=\roman{*})]
 \item $U$ is nondegenerate iff $V=U\oplus U^\bot$ and
@@ -48,47 +48,96 @@ Let $U\leq V$. Then
 \end{enumerate}
 \end{lemma}
 \begin{proof}
-The first claim is clear from the definition. For the second one note that $U\subseteq U^{\bot\bot}$. By Lemma \ref{lem:dimUBot} they also have the same dimension and are therefore equal.
+If $U$ is nondegenerate then $U\cap U^\bot=\{0\}$. By Lemma \ref{lem:dimUBot} \[U\oplus U^\bot=\langle U,U^\bot\rangle=V.\]
+The other direction is clear from the definition
+
+For $ii)$ note that $U\subseteq U^{\bot\bot}$. By Lemma \ref{lem:dimUBot} they also have the same dimension and are therefore equal.
 \end{proof}
 
 Next we want to better understand the structure of symplectic spaces. 
 A symplectic space is a \define{hyperbolic plane} if it is 2-dimensional.
 
 
-\begin{lemma}
+\begin{lemma}\label{lem:oneHypPlane}
 There is only one hyperbolic plane up to isomorphism.
 \end{lemma}
 \begin{proof}
 Let $(V,\omega)$, $(V',\omega')$ be hyperbolic planes with basis $r,s$ and $r',s'$, respectively. 
-Then $r\mapsto r', s\mapsto \lambda s'$ with $\lambda=\omega'(r',s')^{-1}$ is an isomorphism.
+Then $r\mapsto r', s\mapsto \lambda s'$ with $\lambda=\omega'(r',s')^{-1}\cdot\omega(r,s)$ is an isomorphism. 
 \end{proof}
-Next we will strengthen this result and show that a symplectic space is uniquely determined by its dimension.
+Next we will strengthen this result and show that any symplectic space is the direct sum of hyperbolic planes.
+%Next we will strengthen this result and show that any symplectic space is uniquely determined by its dimension.
 
-\begin{lemma}
-Let $r\in V\setminus\{0\}$. Then there is a hyperbolic plane $U\leq V$ such that $V=U\oplus U^\bot$. Furthermore if $W\leq V$ with $W\bot r$ and $r\notin W$, then we can get a $U$ as before that also fulfills $W\subseteq U^\bot$.
-\end{lemma}
+\begin{theorem}\label{thm:hypDecomp}
+Let $r\in V\setminus\{0\}$. Then there is a hyperbolic plane $U\leq V$ containing $r$ such that $V=U\oplus U^\bot$. Furthermore if $W\leq V$ with $W\bot r$ and $r\notin W$, then there is a $U$ as before that also fulfills $W\bot U$.
+\end{theorem}
+\begin{proof}
+Since $\omega(r,r)=0$ we know that $r\in r^\bot$. Let $H\leq r^\bot$ containing $W$ such that $\langle r\rangle\oplus H=r^\bot$. Then, by Lemma \ref{lem:dimUBot}, $\dim r^\bot=\dim V-1$, $\dim H^\bot=2$, and $r\in H^\bot$. In particular $\dim V>1$.
+Our goal is to show that \[V=H^\bot\oplus H,\] so $H^\bot$ would be a suitable choice for $U$.
+It suffices to show that $H^\bot$ is nondegenerate, as then the claim follows from Lemma \ref{lem:Ubotbot}. Let $s\in H^\bot$ such that $H^\bot=\langle r,s\rangle$. Now $H^\bot$ is nondegenerate iff $\omega(r,s)\not=0$. 
 
-\begin{theorem}
+Assume $\omega(r,s)=0$. Then $r\in s^\bot$ and $H\subseteq s^\bot$. Since, by construction, $r\notin H$ we have $r^\bot=\langle r,H\rangle=s^\bot$. Hence $r$ and $s$ are linearly dependent contradicting that $r,s$ is a basis of $H^\bot$.
+
+\end{proof}
+
+Using Theorem \ref{thm:hypDecomp} we can describe the structure of symplectic spaces.
+
+\begin{corollary}\label{cor:structureSympl}
 %The symplectic space $(V,\omega)$ is of even dimension $2n$ and can be written as the orthogonal sum of hyperbolic planes $U_1,\dots, U_n$, i.e. $V=U_1\oplus\dots\oplus U_n$.
 
 Let $(V,\omega)$ be a symplectic space. Then $V$ is of even dimension $2n$ and there are hyperbolic planes $U_1,\dots, U_n\leq V$ such that $V=U_1\oplus\dots\oplus U_n$ and $U_i\bot U_j$ for $i\not=j$.
-\end{theorem}
+In particular for any $n$ there is exactly one symplectic space of dimension $2n$.
+\end{corollary}
+\begin{proof}
+We use induction on $n=\dim V$.
 
-For the remainder of this section let $\alpha\colon U\to W$ be an isometrie between subspaces $U,W\leq V$.
-\begin{lemma}
+If $n=1$ then $V=\langle v\rangle$ for $v\in V\setminus\{0\}$. But $\omega(v,v)=0$ and therefore $\omega$ is degenerate which is a contradiction.
+
+If $n=2$ then the claim follows from Lemma \ref{lem:oneHypPlane}.
+
+If $n>2$ then by Theorem \ref{thm:hypDecomp} there is a hyperbolic plane $U_1\leq V$ such that $V=U_1\oplus U_1^\bot$. Then, by induction hypothesis, $n$ is even and $U^\bot =U_2\oplus\dots \oplus U_m$ for some hyperbolic planes $U_2,\dots,U_m\leq U^\bot$ with $m=\frac{n}{2}$ and $U_i\bot U_j$ for $i\not=j$.
+\end{proof}
+
+%\begin{corollary}
+%Every symplectic space is of even dimension and for any $n$ there is exactly one symplectic space of dimension $2n$.
+%\end{corollary}
+With these powerful tools we can easily prove Witt's Lemma.
+%For the remainder of this section 
+Let $\alpha\colon U\to W$ be an isometrie between subspaces $U,W\leq V$.
+\begin{lemma}\label{lem:wittPrep1}
 There are subspaces $U'\geq U$ and $W'\geq W$ with $U',W'$ nondegenerate such that $\alpha$ can be extended to an isometrie $\tilde{\alpha}\colon U'\to W'$.
 \end{lemma}
+\begin{proof}
+We show this claim using induction on $n=\dim (U\cap U^\bot)$.
 
-\begin{lemma}
+If $n=0$ then $U$ itself is nondegenerate and we are done.
+
+If $n>0$ then let $r\in (U\cap U^\bot)\setminus\{0\}$ and $\tilde U\leq V$ such that $\langle r\rangle\oplus \tilde U=U$. By Theorem \ref{thm:hypDecomp} there is a hyperbolic plane $H\leq V$ containing $r$ such that $\tilde U\bot H$. 
+Similarly, there is a hyperbolic plane $H'\leq V$ containing $r':=\alpha(r)$ such that $H'\bot\tilde{W}$ with $\tilde{W}=\alpha(\tilde{U})$. Let $r,s$ and $r',s'$ be a basis of $H$ and $H'$, respectively. Note that $\omega(r,s)\not=0$ and $r\bot U$ imply $s\notin U$. We can assume w.l.o.g. that $\omega(r,s)=\omega(r',s')$. Then we can extend $\alpha$ to $\tilde{\alpha}\colon \langle U,s\rangle\to \langle W,s'\rangle$ by $\tilde\alpha (s)= s'$. Note that $\langle U,s\rangle=\langle \tilde{U},H\rangle$. Since $\tilde{U}\bot H$ we have
+\begin{align*}
+\dim(\langle \tilde{U},H\rangle \cap \langle \tilde{U},H\rangle^\bot)&=\dim(\tilde{U}\cap \tilde{U}^\bot)<\dim(U\cap U^\bot).\\
+%\tilde{\alpha}\colon \langle \tilde{U},r,s\rangle\to \langle \tilde W,r',s'\rangle
+\end{align*}
+Hence we can apply the induction hypothesis to $\tilde{\alpha}$.
+\end{proof}
+
+\begin{lemma}\label{lem:wittPrep2}
 If $U$ is nondegenerate. Then $\alpha$ can be extended to an isometrie $\tilde{\alpha}\colon V\to V$.
 \end{lemma}
+\begin{proof}
+Since $U$ and $W$ are nondegenerate we can apply Lemma \ref{lem:Ubotbot} and obtain \[V=U\oplus U^\bot=W\oplus W^\bot.\]
+By Lemma \ref{lem:dimUBot} we have $\dim U^\bot=\dim W^\bot$. Hence, by Corollary \ref{cor:structureSympl}, there is an isometry $\beta\colon U^\bot\to W^\bot$. Finally, $\alpha\oplus \beta\colon V\to V$ is an isometry extending $\alpha$.
+\end{proof}
 
-
-
-\begin{corollary}[Witt's Lemma]
+With this preparation we can now come to the main result.
+\begin{corollary}[Witt's Lemma]\label{lem:witt}
 The map $\alpha$ can be extended to an isometrie $\tilde{\alpha}\colon V\to V$.
 \end{corollary}
+\begin{proof}
+Using Lemma \ref{lem:wittPrep1} extend $\alpha$ to $\tilde{\alpha}\colon U'\to W'$ for some $U'\geq U$, $W'\geq W$ nondegenerate. Now apply Lemma \ref{lem:wittPrep2} to extend $\tilde{\alpha}$ to $\tilde{\tilde{\alpha}}\colon V\to V$.
+\end{proof}
 
+Now that we understand symplectic spaces and can extend isometries we are well equipped for the next section, where will show that $\clim \SL_{2^n}(q)$ is also extremely amenable.
 
 
 \section{Limits of other Matrix group families are Levy groups too}
