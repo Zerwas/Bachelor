@@ -17,29 +17,52 @@ We will start of with some technical lemmas.
 
 
 \FlorianSagt{make shortversion for each section?}
-\begin{lemma}
-For an $x\in V$ and a subspace $U\leq V$ with $x\notin U^\bot$ we have 
-\[\dim( x^\bot\cap U)= \dim U -1.\]
-\end{lemma}
+%\begin{lemma}
+%For an $x\in V$ and a subspace $U\leq V$ with $x\notin U^\bot$ we have 
+%\[\dim( x^\bot\cap U)= \dim U -1.\]
+%\end{lemma}
 
-\begin{lemma}
+\begin{lemma}\label{lem:dimUBot}
 For a subspace $U\leq V$ we have 
 \[\dim U^\bot= \dim V -\dim U.\]
 \end{lemma}
+\begin{proof}
+Let $u_1,\dots,u_m$ be a basis of $U$ and consider the linear map
+\begin{align*}g\colon V\to \F_q&&\text{ with }&&g(v)=
+\begin{pmatrix}
+\omega(v,u_1)\\
+\vdots\\
+\omega(v,u_m)
+\end{pmatrix}.
+\end{align*}
+By definition the kernel of $g$ is $U^\bot$ and since $\omega$ is nondegenerate $g$ is also surjective. Therefore the claim follows from the Rank-Nullity Theorem.
+\end{proof}
+
 
 The following lemma is an immediate consequence of the previous one.
 \begin{lemma}
-For a subspace $U\leq V$ we have 
-\begin{enumerate}
+Let $U\leq V$. Then
+\begin{enumerate}[label=\roman{*})]
 \item $U$ is nondegenerate iff $V=U\oplus U^\bot$ and
 \item $U^{\bot\bot}=U$.
 \end{enumerate}
 \end{lemma}
+\begin{proof}
+The first claim is clear from the definition. For the second one note that $U\subseteq U^{\bot\bot}$. By Lemma \ref{lem:dimUBot} they also have the same dimension and are therefore equal.
+\end{proof}
+
+Next we want to better understand the structure of symplectic spaces. 
+A symplectic space is a \define{hyperbolic plane} if it is 2-dimensional.
+
 
 \begin{lemma}
-If $V$ is 2-dimensional. Then $V$ is a hyperbolic plane.
+There is only one hyperbolic plane up to isomorphism.
 \end{lemma}
-Note that there is only one hyperbolic plane up to isomorphism. Next we will strengthen this result and show that a symplectic space is uniquely determined by its dimension.
+\begin{proof}
+Let $(V,\omega)$, $(V',\omega')$ be hyperbolic planes with basis $r,s$ and $r',s'$, respectively. 
+Then $r\mapsto r', s\mapsto \lambda s'$ with $\lambda=\omega'(r',s')^{-1}$ is an isomorphism.
+\end{proof}
+Next we will strengthen this result and show that a symplectic space is uniquely determined by its dimension.
 
 \begin{lemma}
 Let $r\in V\setminus\{0\}$. Then there is a hyperbolic plane $U\leq V$ such that $V=U\oplus U^\bot$. Furthermore if $W\leq V$ with $W\bot r$ and $r\notin W$, then we can get a $U$ as before that also fulfills $W\subseteq U^\bot$.
@@ -51,9 +74,20 @@ Let $r\in V\setminus\{0\}$. Then there is a hyperbolic plane $U\leq V$ such that
 Let $(V,\omega)$ be a symplectic space. Then $V$ is of even dimension $2n$ and there are hyperbolic planes $U_1,\dots, U_n\leq V$ such that $V=U_1\oplus\dots\oplus U_n$ and $U_i\bot U_j$ for $i\not=j$.
 \end{theorem}
 
-\begin{lemma}[Witt's Lemma]
-Let $\alpha\colon U\to W$ be an isometrie between subspaces $U,W\leq V$. Then $\alpha$ can be extended to an isometrie $\tilde{\alpha}\colon V\to V$.
+For the remainder of this section let $\alpha\colon U\to W$ be an isometrie between subspaces $U,W\leq V$.
+\begin{lemma}
+There are subspaces $U'\geq U$ and $W'\geq W$ with $U',W'$ nondegenerate such that $\alpha$ can be extended to an isometrie $\tilde{\alpha}\colon U'\to W'$.
 \end{lemma}
+
+\begin{lemma}
+If $U$ is nondegenerate. Then $\alpha$ can be extended to an isometrie $\tilde{\alpha}\colon V\to V$.
+\end{lemma}
+
+
+
+\begin{corollary}[Witt's Lemma]
+The map $\alpha$ can be extended to an isometrie $\tilde{\alpha}\colon V\to V$.
+\end{corollary}
 
 
 
