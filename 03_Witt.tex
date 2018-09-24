@@ -222,7 +222,7 @@ As $\dim \alpha(U^\bot)=\dim U^\bot$ it suffices to show that $\alpha(u')\bot u$
 This concludes the proof.
 \end{proof}
 
-The next lemma gives us a large subspace on which $h'$ can be the identity without interfering with the inverse of $g$ on $U$ part.
+The next lemma gives us a large subspace on which $h'$ can be the identity without interfering with the part where it is the inverse of $g$.
 
 \begin{lemma}\label{lem:largeOrthogonal}
 For all $W\leq V$ there is a $W'\leq W^\bot$ such that $W\cap W'=0$ and \[\dim W'\geq \dim V-2\dim W.\]
@@ -260,30 +260,52 @@ This concludes the proof.
 %Hence $g_1\oplus g_2$ preserves $\omega$.
 %\end{proof}
 
+Now we can proof the analogue of Theorem \ref{thm:SLConcentrates} from Section \ref{sec:thom}.
 
+%Let $G$ be a symplectic, unitary, or orthogonal group. Then the \define{dimension} of $G$ is the minimum of $\dim V'$ such that there is an $\omega'$ with $G\cong\Aut(V',\omega')$. 
 
-\begin{theorem}
-Let $G$ be an orthogonal, symplectic, or unitary group. \dots
+\begin{theorem}\label{thm:suoBoundDiam}
+%Let $G$ be a symplectic, unitary, or orthogonal group of dimension $n\geq2$ equipped with the rank metric $d$, where $d(g,g')=\lambda \cdot\rank(g-g')$. Then there is a subgroup $H\leq G$ of dimension at most $n-1$ such that the diameter of $G/H$ is at most $8\lambda$.
+
+Let $G$ be a symplectic, unitary, or orthogonal group equipped with the rank metric $d$ and of diameter $n$. Then there is a symplectic, unitary, or orthogonal subgroup $H\leq G$ with diameter at most $n-1$ such that the diameter of $G/H$ is at most $8$.
 \end{theorem}
 \begin{proof}
-$G=\Aut(V,\omega)$ for some vector space $V$ with  bilinear form $\omega$. Use Lemma \ref{lem:decompositionComplement} to obtain $U\leq V$ such that $V=U\oplus U^\bot$ and $\dim U\leq2$. Define $H=\Aut(U^\bot,\omega)$. Our aim is to find for any $g\in G$ an $g'\in H$ such that $d(g,g')\leq\frac{8}{n}$.
-The idea is to find a map $h\in H$ that behaves like the inverse of $g$ on $gU$ and like the identity on most of the rest. Then $hg$ is the desired $g'$.
+$G=\Aut(V,\omega)$ for some vector space $V$ with  bilinear form $\omega$. Use Lemma \ref{lem:decompositionComplement} to obtain $U\leq V$ such that $V=U\oplus U^\bot$ and $\dim U\leq2$. Define $H=\Aut(U^\bot,\omega)$. Our aim is to find for any $g\in G$ an $g'\in H$ such that $d(g,g')\leq8$.
+The idea is to find a map $h'\in G$ that behaves like the inverse of $g$ on $gU$ and like the identity on most of the rest. Then $h'g$ is the desired $g'$.
 
 Let $g\in G$ and define $W=\langle U,gU\rangle$. By Lemma \ref{lem:largeOrthogonal} there is a $W'$ such that $\dim W'\geq n-8$, $W'\leq W^\bot$, and $W'\cap W=0$. Consider the map
 \begin{align*}
  g^{-1}|_{gU}\oplus 1_{W'}\colon gU\oplus W'\to U\oplus W'
 \end{align*}
-as $g^{-1}|_{gU}$ and $1_{W'}$ are isometries and $W\bot W'$ Lemma \ref{lem:isomSum} implies that the above map is also an isomtry. By Witt's lemma this isometry can be extended to an isometry $h\colon V\to V$. 
+as $g^{-1}|_{gU}$ and $1_{W'}$ are isometries and $W\bot W'$ we have that the above map is also an isomtry. By Theorem \ref{thm:Witt} this isometry can be extended to an isometry $h'\colon V\to V$. Furthermore,
 \begin{align*}
-n\cdot d(g,hg)&=\dim\im (g-hg)\\
-&\leq 8+\dim \im(g-hg)|_{W'}\tag{$\dim W'\geq n-8$}\\
-&= 8+\dim \im(g-g)|_{W'}\tag{$h|_{W'}=1_{W'}$}\\
-&=8
+ d(g,h'g)&=\dim\im (g-h'g)\\
+&\leq 8+\dim \im(g-h'g)|_{W'}\tag{$\dim W'\geq n-8$}\\
+&= 8+\dim \im(g-g)|_{W'}\tag{$h'|_{W'}=1_{W'}$}\\
+&=8.
 \end{align*}
-Finally, we need to show that $hg\in H$, here the choice of $H$ using Lemma \ref{lem:decompositionComplement} comes into play. By construction of $h$ we have that $hg|_U=1_U$. Therefore we can apply Lemma \ref{lem:isomStaysInCompl} and get that $hg(U^\bot)= U^\bot$. Hence $hg\in H$ and $d(g,hg)\leq\frac{8}{n}$.
+Finally, we need to show that $h'g\in H$, here the choice of $H$ using Lemma \ref{lem:decompositionComplement} comes into play. By construction of $h'$ we have that $h'g|_U=1_U$. Therefore we can apply Lemma \ref{lem:isomStaysInCompl} and get that $h'g(U^\bot)= U^\bot$. Hence $h'g\in H$ and $d(g,h'g)\leq8$.
 
 \end{proof}
 
-\begin{corollary}
-
+\begin{corollary}\label{cor:suoConcentrates}
+Let $G=\Aut(V,\omega)$ be a symplectic, unitary, or orthogonal group equipped with the normalized rank metric $d$ and the normalized counting measure $\mu$, where $V$ is $n$ dimensional. Then for all $\varepsilon>0$
+\[\alpha_{(G,d,\mu)}(\varepsilon)\leq 2\exp\left(-\frac{\varepsilon^2n}{16\cdot64}\right).\]
 \end{corollary}
+\begin{proof}
+Applying Theorem \ref{thm:suoBoundDiam} multiple times gives us a sequence of subgroups $\{e\}=G_0\leq \dots\leq G_m=G$ such that $m\leq n$ and the diameter of $G_i/G_{i-1}$ is at most $\frac{8}{n}$. Now we can use Corollary \ref{cor:meaContractionGroups} to obtain the desired upper bound.
+\end{proof}
+
+
+Now we can prove the main result of this thesis.
+\begin{corollary}
+Let $(V_0,\omega_0)\subset (V_1,\omega_1)\subset \dots$ be a sequence of $\F_q$ vector spaces such that $(V_n,\omega_n)$ is a symplectic, unitary, or orthogonal space of dimension $2^n$ and $\omega_{n+1}|_{V_n}=\omega_n$ for all $n\in\N$. Let $G_{n}=\Aut(V_n,\omega_n)$ equipped with the normalized rank metric $d_n$ and the normalized counting measure $\mu_n$. 
+Then \[\lim_{n\to\infty}\alpha_{(G_n,d_n,\mu_n)}(\varepsilon)=0\] for all $\varepsilon>0$ and $\clim G_n$ is extremely amenable.
+\end{corollary}
+\begin{proof}
+Immediate from Corollary \ref{cor:suoConcentrates} and Theorem \ref{thm:LevyImpliesExAm}.
+\end{proof}
+
+\section{Application}
+
+\section{Conclusion}
