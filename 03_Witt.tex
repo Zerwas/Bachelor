@@ -103,9 +103,9 @@ If $n>2$ then by Theorem \ref{thm:hypDecomp} there is a hyperbolic plane $U_1\le
 %\end{corollary}
 With these powerful tools we can easily prove Witt's Lemma.
 %For the remainder of this section 
-Let $\alpha\colon U\to W$ be an isometrie between subspaces $U,W\leq V$.
+Let $\alpha\colon U\to W$ be an isometry between subspaces $U,W\leq V$.
 \begin{lemma}\label{lem:wittPrep1}
-There are subspaces $U'\geq U$ and $W'\geq W$ with $U',W'$ nondegenerate such that $\alpha$ can be extended to an isometrie $\tilde{\alpha}\colon U'\to W'$.
+There are subspaces $U'\geq U$ and $W'\geq W$ with $U',W'$ nondegenerate such that $\alpha$ can be extended to an isometry $\tilde{\alpha}\colon U'\to W'$.
 \end{lemma}
 \begin{proof}
 We show this claim using induction on $n=\dim (U\cap U^\bot)$.
@@ -122,7 +122,7 @@ Hence we can apply the induction hypothesis to $\tilde{\alpha}$.
 \end{proof}
 
 \begin{lemma}\label{lem:wittPrep2}
-If $U$ is nondegenerate. Then $\alpha$ can be extended to an isometrie $\tilde{\alpha}\colon V\to V$.
+If $U$ is nondegenerate. Then $\alpha$ can be extended to an isometry $\tilde{\alpha}\colon V\to V$.
 \end{lemma}
 \begin{proof}
 Since $U$ and $W$ are nondegenerate we can apply Lemma \ref{lem:Ubotbot} and obtain \[V=U\oplus U^\bot=W\oplus W^\bot.\]
@@ -131,66 +131,104 @@ By Lemma \ref{lem:dimUBot} we have $\dim U^\bot=\dim W^\bot$. Hence, by Corollar
 
 With this preparation we can now come to the main result.
 \begin{corollary}[Witt's Lemma]\label{lem:witt}
-The map $\alpha$ can be extended to an isometrie $\tilde{\alpha}\colon V\to V$.
+The map $\alpha$ can be extended to an isometry $\tilde{\alpha}\colon V\to V$.
 \end{corollary}
 \begin{proof}
 Using Lemma \ref{lem:wittPrep1} extend $\alpha$ to $\tilde{\alpha}\colon U'\to W'$ for some $U'\geq U$, $W'\geq W$ nondegenerate. Now apply Lemma \ref{lem:wittPrep2} to extend $\tilde{\alpha}$ to $\tilde{\tilde{\alpha}}\colon V\to V$.
 \end{proof}
 
-Now that we understand symplectic spaces and can extend isometries we are well equipped for the next section, where will show that $\clim \SL_{2^n}(q)$ is also extremely amenable.
+Now that we understand symplectic spaces and can extend isometries we are well equipped for the next section, where will show that $\clim \Sp_{2^n}(q)$ is also extremely amenable.
 
 
 \section{Limits of other Matrix group families are Levy groups too}
-When studying matrices it is often useful to look at the corresponding linear maps of a suitable vector space. In the case of orthogonal, symplectic, or unitary matrices these are linear maps from the vector space to itself preserving an orthogonal, symplectic, or unitary form respectively. Formally, the symplectic group $\Sp_n(q)$ is isomorphic to $\Aut(V,\omega)$, where $V$ is an $n$-dimensional $F(q)$ vector space and $\omega$ is a symplectic form.
+%When studying matrices it is often useful to look at the corresponding linear maps of a suitable vector space. In the case of orthogonal, symplectic, or unitary matrices these are linear maps from the vector space to itself preserving an orthogonal, symplectic, or unitary form respectively. Formally, the symplectic group $\Sp_n(q)$ is isomorphic to $\Aut(V,\omega)$ from Corollary \ref{cor:structureSympl} it follows that $\Sp_n(q)$ is well defined, where $V$ is an $n$-dimensional $F(q)$ vector space and $\omega$ is a symplectic form.
 
-As we have to handle only finite dimensional vector spaces here a lot of nice theorems hold. \dots
+%As we have to handle only finite dimensional vector spaces here a lot of nice theorems hold. \dots
 
-Let $V$ be an $n$ dimensional vector space.%and e_1,...,e_n\in V a basis
-\begin{lemma}\label{lem:complementExists}
-For all $U\leq V$ there is an $U'\leq V$ such that $U\oplus U'=V$.
-\end{lemma}
+Our goal in this section is to show that $\clim \Sp_{2^n}(q)$ is extremely amenable. The structure of the proof is the same as in Section \ref{sec:thom} for special linear groups. We will bound the length of $\Sp_n(q)\cong\Aut(V,\omega)$ by applying Corollary \ref{cor:meaContractionGroups} to a chain of subgroups $(G_i)_i$. To bound the diameter of $G_i/G_{i-1}$ we will construct for any $g\in G_i$ an $h'\in G_i$ such that the distance between $g$ and $h'g$ is small and $h'g\in G_{i-1}$. The $h'$ will behave like the inverse of $g$ on a small subspace of $V$ and like the identity on most of the rest.    The proof can be generalized to unitary and orthogonal groups.
+
+\begin{definition}
+Let $V$ be a finite dimensional $\F_q$ vector space and $\omega$ a nondegenerate map from $V\times V$ to $\F_q$.
+
+Then $(V,\omega)$ is an \define{orthogonal space} if $\omega$ is bilinear, $\omega(x,y)=\omega(y,x)$ for all $x,y\in V$, and if $q=2$ then $\omega(x,x)=0$ for all $x\in V$.
+
+And $(V,\omega)$ is a \define{unitary space} if there is a $h\in\Aut(\F_q)$ with $h^2=1$ such that 
+\begin{align*}
+\omega(ax+y,z)&=a\omega(x,z)+\omega(y,z)\\
+\omega(x,ay+z)&=h(a)\omega(x,y)+\omega(x,z)\\
+\omega(x,y)&=h(\omega(y,x))
+\end{align*}
+for all $x,y,z\in V$ and $a\in\F_q$.
+
+\define{Orthogonal} and \define{unitary groups} are the automorphism groups of unitary and orthogonal spaces, respectively.
+\end{definition}
+
+In the following let $(V,\omega)$ be a symplectic, unitary, or orthogonal space.
+Note that $\omega$ is nondegenerate and 
+\begin{align*}
+\omega(x,y)=0 \text{ iff }\omega(y,x)=0\text{ for all $x,y\in V$}.
+\end{align*}
+Obviously, Lemmas \ref{lem:dimUBot} and \ref{lem:Ubotbot} from the previous section still hold in  unitary and orthogonal spaces. Furthermore, Witt's Lemma also holds in unitary and orthogonal spaces, for a proof see \cite{Witt}
+\begin{theorem}[Witt's Lemma]\label{thm:Witt}
+Let $(V,\omega)$ be a symplectic, unitary, or orthogonal space and $\alpha\colon U\to W$ be an isometry between subspaces $U,W\leq V$.
+Then $\alpha$ can be extended to an isometry $\tilde{\alpha}\colon V\to V$.
+\end{theorem}
+
+The next lemma is necessary to construct the chain of subgroups, in the case of symplectic spaces it is a trivial consequence of Theorem \ref{thm:hypDecomp}.
+
+%Let $V$ be an $n$ dimensional vector space.%and e_1,...,e_n\in V a basis
+%\begin{lemma}\label{lem:complementExists}
+%For all $U\leq V$ there is an $U'\leq V$ such that $U\oplus U'=V$.
+%\end{lemma}
 
 
-Let $\omega$ be a bilinear form on $V$.
+%Let $\omega$ be a bilinear form on $V$.
 
-\begin{lemma}\label{lem:dimComplement}
-Let $U\leq V$. Then $\dim U^\bot= \dim V-\dim U$.
-\end{lemma}
-\begin{lemma}\label{lem:doubleComplement}
-Let $U\leq V$. Then $U^{\bot^\bot}=U$.
-\end{lemma}
+%\begin{lemma}\label{lem:dimComplement}
+%Let $U\leq V$. Then $\dim U^\bot= \dim V-\dim U$.
+%\end{lemma}
+%\begin{lemma}\label{lem:doubleComplement}
+%Let $U\leq V$. Then $U^{\bot^\bot}=U$.
+%\end{lemma}
+
 
 \begin{lemma}\label{lem:decompositionComplement}
-There exists a $U\leq V$ with $\dim U\leq 2$ such that $V=U\oplus U^\bot$.
+Then there exists a $U\leq V$ with $\dim U\leq 2$ such that $V=U\oplus U^\bot$.
 \end{lemma}
 \begin{proof}
-Let $e\in V\setminus\{0\}$. By Lemma \ref{lem:dimComplement} $\dim e^\bot= n-1$. %Since $\omega$ is non degenerate $\omega(e,.)\not=0$ and therefore $e^\bot\not=V$. Hence $\dim e^\bot= n-1$.
+Let $r\in V\setminus\{0\}$. By Lemma \ref{lem:dimUBot} $\dim r^\bot= n-1$. %Since $\omega$ is non degenerate $\omega(e,.)\not=0$ and therefore $e^\bot\not=V$. Hence $\dim e^\bot= n-1$.
 
-If $e\notin e^\bot$, then $V=\langle e\rangle\oplus e^\bot$ and $\langle e\rangle$ is the desired $U$.
+If $r\notin r^\bot$, then $V=\langle r\rangle\oplus r^\bot$ and $\langle r\rangle$ is the desired $U$.
 
-If $e\in e^\bot$, then extend $e$ to a basis $e,b_2,\dots,b_{n-1}$ of $e^\bot$ and consider the 2-dimensional subspace $U:=\langle b_2,\dots,b_{n-1}\rangle^\bot$. Now we have to show that \[U\cap U^\bot=0.\]
-Take $v$ from the intersection. By Lemma \ref{lem:doubleComplement} $U^\bot=\langle b_2,\dots,b_{n-1}\rangle$ and $v\bot b_i$ for all $i\in\{2,\dots,n-1\}$. Since $\langle b_2,\dots,b_{n-1}\rangle\leq e^\bot$ we also have $v\bot e$. Hence $v\in e^{\bot^\bot}=\langle e\rangle$ and $v=\lambda e$. Now $e\notin \langle b_2,\dots,b_{n-1}\rangle$ implies $v=0$. Henceforth $V=U\oplus U^\bot$.
+If $r\in r^\bot$, then let $H\leq r^\bot$ such that $\langle r\rangle\oplus H=r^\bot$. Now procces as in the proof of Theorem  \ref{thm:hypDecomp} to show that $H^\bot$ is a suitable $U$.
+
+
+%extend $e$ to a basis $e,b_2,\dots,b_{n-1}$ of $e^\bot$ and consider the 2-dimensional subspace $U:=\langle b_2,\dots,b_{n-1}\rangle^\bot$. Now we have to show that \[U\cap U^\bot=0.\]
+%Take $v$ from the intersection. By Lemma \ref{lem:Ubotbot} $U^\bot=\langle b_2,\dots,b_{n-1}\rangle$ and $v\bot b_i$ for all $i\in\{2,\dots,n-1\}$. Since $\langle b_2,\dots,b_{n-1}\rangle\leq e^\bot$ we also have $v\bot e$. Hence $v\in e^{\bot^\bot}=\langle e\rangle$ and $v=\lambda e$. Now $e\notin \langle b_2,\dots,b_{n-1}\rangle$ implies $v=0$. Henceforth $V=U\oplus U^\bot$.
 \end{proof}
 
+The following lemma shows that isometries interact nicely with the complement.
 
 \begin{lemma}\label{lem:isomStaysInCompl}
-Let $U\leq V$ and $f\colon V\to V$ be an isometry such that $f|_U=1_U$. Then $f(U^\bot)= U^\bot$.
+Let $U\leq V$ and $\alpha\colon V\to V$ be an isometry such that $\alpha(U)=U$. Then $\alpha(U^\bot)= U^\bot$.
 \end{lemma}
 \begin{proof}
-As $\dim f(U^\bot)=\dim U^\bot$ it suffices to show that $f(u')\bot u$ for all $u\in U$ and $u'\in U^\bot$.
+As $\dim \alpha(U^\bot)=\dim U^\bot$ it suffices to show that $\alpha(u')\bot u$ for all $u\in U$ and $u'\in U^\bot$. Let $v\in U$ with $\alpha(v)=u$. Then
 \begin{align*}
-\omega(f(u'),u)&=\omega(f(u'),f(u))\\
-&=\omega(u',u)\\
-&=0
+\omega(\alpha(u'),u)&=\omega(\alpha(u'),\alpha(v))\\
+&=\omega(u',v)\\
+&=0.
 \end{align*}
 This concludes the proof.
 \end{proof}
+
+The next lemma gives us a large subspace on which $h'$ can be the identity without interfering with the inverse of $g$ on $U$ part.
 
 \begin{lemma}\label{lem:largeOrthogonal}
 For all $W\leq V$ there is a $W'\leq W^\bot$ such that $W\cap W'=0$ and \[\dim W'\geq \dim V-2\dim W.\]
 \end{lemma}
 \begin{proof}
-By Lemma \ref{lem:complementExists} there is a $W'$ such that 
+Let $W'\leq W^\bot$ such that 
 \[W^\bot=(W^\bot\cap W)\oplus W'.\]
 Clearly, $W\cap W'=0$ and 
 \[\dim W'=\dim W^\bot - \dim (W^\bot\cap W)\geq \dim W^\bot- \dim W.\]
@@ -207,31 +245,27 @@ Now the statement follows from the rank-nullity theorem.
 \end{proof}
 
 
-\begin{lemma}
-Let $U,W\leq V$ such that $U\bot W$ and $U\cap W=0$. Then $\langle U,W\rangle\cong U\oplus W$.
-\end{lemma}
-\begin{lemma}\label{lem:isomSum}\FlorianSagt{maybe $g\colon U_1\to U_2$ and $h\colon W_1\to W_2$ better}
-Let $g_1\colon U_1\to W_1$ and $g_2\colon U_2\to W_2$ be isometries such that $U_1\bot U_2$, $U_1\cap U_2=0$, $W_1\bot W_2$, and $W_1\cap W_2=0$.
-Then $g_1\oplus g_2\colon U_1\oplus U_2\to W_1\oplus W_2$ is also an isomtry.
-\end{lemma}
-\begin{proof}
-Obviously, $g_1\oplus g_2$ is again a bijective linear map. Consider $v_1+v_2, u_1+u_2\in U_1\oplus U_2$
-\begin{align*}
-\omega(v_1+v_2, u_1+u_2)&=\omega(v_1, u_1)+\omega(v_1, u_2)+\omega(v_2, u_1)+\omega(v_2, u_2)\\
-&=\omega(v_1, u_1)+0+0+\omega(v_2, u_2) \tag{$U_1\bot U_2$}\\
-&=\omega(g_1(v_1), g_1(u_1))+\omega(g_2(v_2), g_2(u_2))\\
-&=\omega(g_1(v_1), g_1(u_1))+\omega(g_1(v_1), g_2(u_2))\\ &\phantom{={}}+\omega(g_2(v_2), g_1(u_1))+\omega(g_2(v_2), g_2(u_2))\tag{$W_1\bot W_2$}\\
-&=\omega(g_1\oplus g_2(v_1+v_2), g_1\oplus g_2(u_1+u_2))
-\end{align*}
-Hence $g_1\oplus g_2$ preserves $\omega$.
-\end{proof}
+%\begin{lemma}
+%Let $U,W\leq V$ such that $U\bot W$ and $U\cap W=0$. Then $\langle U,W\rangle\cong U\oplus W$.
+%\end{lemma}
+%\begin{lemma}\label{lem:isomSum}\FlorianSagt{maybe $g\colon U_1\to U_2$ and $h\colon W_1\to W_2$ better}
+%Let $g_1\colon U_1\to W_1$ and $g_2\colon U_2\to W_2$ be isometries such that $U_1\bot U_2$, $U_1\cap U_2=0$, $W_1\bot W_2$, and $W_1\cap W_2=0$.
+%Then $g_1\oplus g_2\colon U_1\oplus U_2\to W_1\oplus W_2$ is also an isomtry.
+%\end{lemma}
+%\begin{proof}
+%Obviously, $g_1\oplus g_2$ is again a bijective linear map. Consider $v_1+v_2, u_1+u_2\in U_1\oplus U_2$
+%\begin{align*}
+%\omega(v_1+v_2, u_1+u_2)&=\omega(v_1, u_1)+\omega(v_1, u_2)+\omega(v_2, u_1)+\omega(v_2, u_2)\\
+%&=\omega(v_1, u_1)+0+0+\omega(v_2, u_2) \tag{$U_1\bot U_2$}\\
+%&=\omega(g_1(v_1), g_1(u_1))+\omega(g_2(v_2), g_2(u_2))\\
+%&=\omega(g_1(v_1), g_1(u_1))+\omega(g_1(v_1), g_2(u_2))\\ &\phantom{={}}+\omega(g_2(v_2), g_1(u_1))+\omega(g_2(v_2), g_2(u_2))\tag{$W_1\bot W_2$}\\
+%&=\omega(g_1\oplus g_2(v_1+v_2), g_1\oplus g_2(u_1+u_2))
+%\end{align*}
+%Hence $g_1\oplus g_2$ preserves $\omega$.
+%\end{proof}
 
 [other useful theorems]
 
-
-\begin{theorem}[Witt]
-Let $V$ be an orthogonal, symplectic, or unitary space. Let $U$ and $W$ be subspaces of $V$ and suppose $\alpha\colon U\to W$ is an isometry. Then $\alpha$ extends to an isometry of $V$.
-\end{theorem}
 
 \begin{lemma}
 Let $G$ be an orthogonal, symplectic, or unitary group. \dots
