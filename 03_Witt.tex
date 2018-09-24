@@ -231,17 +231,13 @@ For all $W\leq V$ there is a $W'\leq W^\bot$ such that $W\cap W'=0$ and \[\dim W
 Let $W'\leq W^\bot$ such that 
 \[W^\bot=(W^\bot\cap W)\oplus W'.\]
 Clearly, $W\cap W'=0$ and 
-\[\dim W'=\dim W^\bot - \dim (W^\bot\cap W)\geq \dim W^\bot- \dim W.\]
-Whats left is to show that $\dim W^\bot\geq \dim V-\dim W$. Let $b_1,\dots, b_{\dim W}$ be a basis of $W$. Then $W^\bot$ is equal to the kernel of the linear map 
+%\[\dim W'=\dim W^\bot - \dim (W^\bot\cap W)\geq \dim W^\bot- \dim W.\]
 \begin{align*}
-V\to F_q^{\dim W}&& v\mapsto
-\begin{pmatrix}
-\omega(b_1,v)\\
-\vdots\\
-\omega(b_{\dim W},v)
-\end{pmatrix}.
+\dim W'&=\dim W^\bot - \dim (W^\bot\cap W)\\
+&\geq \dim W^\bot- \dim W\\
+&=\dim V-\dim W-\dim W .\tag{Lemma \ref{lem:dimUBot}}
 \end{align*}
-Now the statement follows from the rank-nullity theorem.
+This concludes the proof.
 \end{proof}
 
 
@@ -264,12 +260,11 @@ Now the statement follows from the rank-nullity theorem.
 %Hence $g_1\oplus g_2$ preserves $\omega$.
 %\end{proof}
 
-[other useful theorems]
 
 
-\begin{lemma}
+\begin{theorem}
 Let $G$ be an orthogonal, symplectic, or unitary group. \dots
-\end{lemma}
+\end{theorem}
 \begin{proof}
 $G=\Aut(V,\omega)$ for some vector space $V$ with  bilinear form $\omega$. Use Lemma \ref{lem:decompositionComplement} to obtain $U\leq V$ such that $V=U\oplus U^\bot$ and $\dim U\leq2$. Define $H=\Aut(U^\bot,\omega)$. Our aim is to find for any $g\in G$ an $g'\in H$ such that $d(g,g')\leq\frac{8}{n}$.
 The idea is to find a map $h\in H$ that behaves like the inverse of $g$ on $gU$ and like the identity on most of the rest. Then $hg$ is the desired $g'$.
@@ -288,3 +283,7 @@ n\cdot d(g,hg)&=\dim\im (g-hg)\\
 Finally, we need to show that $hg\in H$, here the choice of $H$ using Lemma \ref{lem:decompositionComplement} comes into play. By construction of $h$ we have that $hg|_U=1_U$. Therefore we can apply Lemma \ref{lem:isomStaysInCompl} and get that $hg(U^\bot)= U^\bot$. Hence $hg\in H$ and $d(g,hg)\leq\frac{8}{n}$.
 
 \end{proof}
+
+\begin{corollary}
+
+\end{corollary}
