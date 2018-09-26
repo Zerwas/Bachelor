@@ -289,7 +289,7 @@ Finally, we need to show that $h'g\in H$, here the choice of $H$ using Lemma \re
 \end{proof}
 
 \begin{corollary}\label{cor:suoConcentrates}
-Let $G=\Aut(V,\omega)$ be a symplectic, unitary, or orthogonal group equipped with the normalized rank metric $d$ and the normalized counting measure $\mu$, where $V$ is $n$ dimensional. Then for all $\varepsilon>0$
+Let $G=\Aut(V,\omega)$ be a symplectic, unitary, or orthogonal group equipped with the normalized rank metric $d$ and the normalized counting measure $\mu$, where $V$ is $n$ dimensional. Then the length of $G$ is at most $8n^{-\frac{1}{2}}$ and for all $\varepsilon>0$
 \[\alpha_{(G,d,\mu)}(\varepsilon)\leq 2\exp\left(-\frac{\varepsilon^2n}{16\cdot64}\right).\]
 \end{corollary}
 \begin{proof}
@@ -306,6 +306,26 @@ Then \[\lim_{n\to\infty}\alpha_{(G_n,d_n,\mu_n)}(\varepsilon)=0\] for all $\vare
 Immediate from Corollary \ref{cor:suoConcentrates} and Theorem \ref{thm:LevyImpliesExAm}.
 \end{proof}
 
-\section{Application}
+\section{Application}\label{sec:ramsey}
+In this section we will use the upper bound obtained for the length of symplectic, unitary, and orthogonal groups to deduce a Ramsey theoretic result. %The proof is the same as in \cite{thom} we just replaced $\SL_n(q)$ by a symplectic, unitary, or orthogonal group.
+
+
+The first lemma is very similar to Theorem \ref{thm:measureConcetration}.
+\begin{lemma}[Lemma 2.7 in \cite{thom}]
+Let $(X,d,\mu)$ be a finite mm-space with length $l$. Then for $\varepsilon>0$ and $A\subseteq X$ with $\mu(A)>2\exp\left(-\frac{\varepsilon^2}{l^2}\right)$ we have
+\[\mu(N_\varepsilon(A))\geq 1-2\exp\left(-\frac{\varepsilon^2}{16l^2}\right).\]
+\end{lemma}
+
+
+A covering $\mathcal{U}$ of a metric space $(X,d)$ is an \define{$\varepsilon$-covering} if for every $x\in X$ the $\varepsilon$-neighborhood of $x$ is contained in some $U\in\mathcal{U}$.
+
+\begin{theorem}
+Let $\varepsilon>0$, $k,m\in\N$. Define $N:=16\cdot 64\varepsilon^2\max\{\ln(2k),\ln(2m)\}$ and let $G=\Aut(V,\omega)$, where $(V,\omega)$ is a symplectic, unitary, or orthogonal space of dimension $n>N$, with an $\varepsilon$-cover $\mathcal{U}$ of cardinality at most $m$. Then there is a $U\in\mathcal{U}$ such that for all $F\subseteq G$ satisfying $|F|\leq k$ there is a $g\in G$ with $gF\subseteq U$.
+\end{theorem}
+Intuitively the theorem says that whenever we color $G$ with $m$ colors, where a single element can have multiple colors, such that all elements of $\varepsilon$-balls have at least one color in common, then there is one color such that for every $F$ with at most $k$ elements there is a $g$ where the elements of $gF$ all have this one color.
+\begin{proof}
+
+\end{proof}
+
 
 \section{Conclusion}

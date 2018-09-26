@@ -195,7 +195,7 @@ We will only consider the following sequence of partitions
 
 First, we equip $X_n$ with the euclidean metric and rescale it such that the diameter is 1. To bound the length of the resulting space $\boldsymbol X^E_n$ consider $[x]_i\neq[y]_i$. Note that $x$ and $y$ are w.l.o.g. of the form $w0u$ and $w1v$ for some $w\in\{0,1\}^{i-1}$, $u,v\in\{0,1\}^{n-i}$. The isomorphism $\phi$ takes an element $w0u'$ in $[x]_i$ and maps it to $w1u'$. The length of a side in $\boldsymbol X^E_n$ is $\frac{1}{\sqrt{n}}$, hence every $a_i$ is $\frac{1}{\sqrt{n}}$ for every $i$ and the length of $\boldsymbol{X}^E_n$ is bounded by $(\sum_{i=1}^{n}\frac{1}{\sqrt{n}^2})^{\frac{1}{2}}=1$.
 
-Secondly, we use the hemming metric and obtain the mm-space $\boldsymbol{X}^H_n$ with diameter 1. It has side length $\frac{1}{n}$ and therefore the length of $\boldsymbol{X}^H_n$ is bounded by $(\sum_{i=1}^{n}\frac{1}{n^2})^{\frac{1}{2}}=n^{-\frac{1}{2}}$. We see that here the length of $\boldsymbol{X}^H_n$ converges to 0 as $n$ tends to infinity. We will show that this means that the measure concentration function $\alpha_{\boldsymbol{X}^H_n}(r)$ also goes to 0 for any fixed $r>0$. 
+Secondly, we use the hemming metric and obtain the mm-space $\boldsymbol{X}^H_n$ with diameter 1. It has side length $\frac{1}{n}$ and therefore the length of $\boldsymbol{X}^H_n$ is bounded by $(\sum_{i=1}^{n}\frac{1}{n^2})^{\frac{1}{2}}=n^{-\frac{1}{2}}$. We see that here the length of $\boldsymbol{X}^H_n$ converges to 0 as $n$ tends to infinity. We will show that this means that the measure concentration function $\alpha_{\boldsymbol{X}^H_n}(\varepsilon)$ also goes to 0 for any fixed $\varepsilon>0$. 
 \end{example}
 
 
@@ -246,8 +246,8 @@ If $\E(d_A)>\varepsilon$, then $A\subseteq \{|d_A-\E(d_A)|\geq\varepsilon\}$. Co
 \[\mu(\{d_A\geq\varepsilon\})\leq \mu(X\setminus A)\leq \frac{1}{2}\leq \mu(A)\leq \mu(\{|d_A-\E(d_A)|\geq\varepsilon\})\leq 2\exp\left(-\frac{\varepsilon^2}{4l^2}\right).\]
 This proves the theorem.
 \end{proof}
-Note that in the second case the upper bound is at least $\frac{1}{2}$, which means that if $l$ is large enough then we are in the first case and the expected distance to a set with at least half measure is less then $\varepsilon$. 
-Our goal is to apply Theorem to groups and as it turns out we can bound the length of a group using sequences of subgroups. Before we can write down the corollary we need to make a quick excursion to factor metrics. 
+Note that in the second case the upper bound is at least $\frac{1}{2}$, which means that if $l$ is large enough then we are in the first case and the expected distance to a set with at least half measure is less then $\varepsilon$. In Section \ref{sec:ramsey} we will se a slight modification of this lemma.
+But for now our goal is to apply Theorem \ref{thm:LevyImpliesExAm} to groups and as it turns out we can bound the length of a group using sequences of subgroups. Before we can write down the corollary we need to make a quick excursion to factor metrics. 
 
 \begin{definition}
 Let $(X,d)$ be a metric space and let $\sim$ be an equivalence relation on $X$. Then \[d_\sim([x],[y])=\inf\{d(p_1,q_1)+\dots+d(p_n,q_n)\mid q_i\sim p_{i+1}, x\sim p_1, q_n\sim y\}\] defines a pseudometric on $X/{\sim}$.
@@ -428,4 +428,4 @@ Consider $(\SL_{n}(q),d,\mu)$, where $d$ is the normalized rank-metric and $\mu$
 The diameter of $\SL_n(q)$ is equal to 1 and for any $g\not=g'\in\SL_n(q)$ we have $d(g,g')\geq \frac1n$.
 \end{proof}
 
-The next goal is to show that limits of symplectic groups are also extremely amenable. Theses groups can be seen as automorphism groups of a vector space together with a symplectic form. The proof will be similar to the one for the special linear groups but extending the partial inverse $h'$ becomes much harder. This is why in the next section we will prove Witt's Lemma which does exactly what we need, i.e. extending isometries.
+The next goal is to show that the limit of symplectic groups is also extremely amenable. Theses groups can be seen as automorphism groups of a vector space together with a symplectic form. The proof will be similar to the one for the special linear groups but extending the partial inverse $h'$ becomes much harder. This is why in the next section we will prove Witt's Lemma which does exactly what we need, i.e. extending isometries.
