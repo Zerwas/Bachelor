@@ -1,29 +1,31 @@
-\section*{Preface}
-If we have a finite group of matrices, then we can equip it with the rank metric and the normalized Haar measure to obtain a \emph{metric measure space}.
-There is a well defined limit of ...
-Carderi and Thom  showed in \cite{thom} that the limit of $\SL_n$ is \emph{extremely amenable}. The goal of this thesis is to generalize this result to limits of other matrix group families, namely unitary, symplectic, and orthogonal matrices. The general strategy will be the following: given a family $(G_n)_{n\in\N}$ of (mm) matrix groups we first find an upper bound for the \emph{concentration function} of $G_n$ using a consequence of Azemas inequality \cite{Azema book}. As the upper bounds converge to zero we conclude that $(G_n)_{n\in\N}$ is a \emph{L\'{e}vy family}, making their limit a \emph{L\'{e}vy group}. Finally, we know from \cite{29} that every L\'{e}vy group is extremely amenable.
+%\section*{Preface}
 
 \section{Introduction}
+If we have a finite group of matrices, then we can equip it with the normalized rank metric and the normalized Haar measure to obtain a \emph{metric measure space}.
+For some sequences of matrix groups of ever larger matrices there is a well defined limit.
+Carderi and Thom  showed in \cite{thom} that the closure of the limit of $\SL_n(q)$ is \emph{extremely amenable}. The goal of this thesis is to generalize this result to limits of other matrix group families, namely symplectic, unitary, and orthogonal matrices. The general strategy will be the following: given a family $(G_n)_{n\in\N}$ of (mm) matrix groups we first find an upper bound for the \emph{concentration function} of $G_n$ using a consequence of Azema's inequality \cite{Azema book}. As the upper bounds converge to zero we conclude that $(G_n)_{n\in\N}$ is a \emph{L\'{e}vy family}, making the closure of their limit a \emph{L\'{e}vy group}. Finally, we know from \cite{29} that every L\'{e}vy group is extremely amenable.
 
-Define limit of $G_n$
+This thesis is structured as follows. In Section \ref{sec:generalDefns} we will give a short introduction on how to see matrix groups as metric measure spaces and how to define a limit of a sequence of matrix groups. Furthermore we will introduce the notion of extreme amenability and its connection to Levy groups. In Section \ref{sec:azema} we will briefly look at conditional expectation to show Azema's inequality. This will allow us to connect the length of a metric measure space with the measure concentration function. This connection is used in Section \ref{sec:thom} to show that the closure of the limit of $\SL_n$ is extremely amenable. To generalize this result we prove Witt's lemma, which says that isometries can be extended, in Section \ref{sec:witt}. In Section \ref{sec:mySec} we generalize the result from Section \ref{sec:thom} to symplectic, unitary, and orthogonal groups. Finally, in Section \ref{sec:ramsey} a Ramsey theoretic result from \cite{thom} about $\SL_n(q)$ is generalized to symplectic, unitary, and orthogonal groups.
 
-Examples of matrices in the limit
+%Define limit of $G_n$
 
-structure of thesis:
+%Examples of matrices in the limit
+
+%structure of thesis:
 
 %extreme amenabiliy
-1. Azema
+%1. Azema
 
-2. Thoms proof (matrices as automorphisms but without form)
+%2. Thoms proof (matrices as automorphisms but without form)
 
-3. want to generalize this so we need a form Hence extending the automorphism becomes harder so use Witts lemma
+%3. want to generalize this so we need a form Hence extending the automorphism becomes harder so use Witts lemma
 
-4. generalized version of the proof
+%4. generalized version of the proof
 
-5. application coloring theorem
+%5. application coloring theorem
 
 
-\section{Limits of matrix groups and extreme amenability}
+\section{Limits of matrix groups and extreme amenability}\label{sec:generalDefns}
 Let $\GL_n(q)$ be the general linear group over the $q$ element field $\F_q$ and let $G$ be a subgroup of $\GL_n(q)$. We can equip $G$ with the (normalized) \define{rank-metric} $d(g,h):=\frac{1}{n}\rank(g-h)$.
 %The group $G$, equipped with the topology induced by $d$, is a topological group.
 Since all matrices in $G$ have full rank, this metric is bi-invariant, i.e. $d(kg,kh)=d(g,h)=d(gk,hk)$ for all $g,h,k\in G$. 

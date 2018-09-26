@@ -1,4 +1,4 @@
-\section{Witts Lemma}
+\section{Witts Lemma}\label{sec:witt}
 In this section we will prove Witt's Lemma and explore the structure of symplectic spaces. Witt's Lemma states that an isometry between subspaces of a finite dimensional vector space can always be extended to an isomtry on the whole space.  We will roughly follow the proof in \cite{Witt}. Since we are mainly interested in symplectic spaces we will only show Witt's Lemma for those but it also holds for unitary and orthogonal spaces.
 
 \begin{definition}
@@ -140,7 +140,7 @@ Using Lemma \ref{lem:wittPrep1} extend $\alpha$ to $\tilde{\alpha}\colon U'\to W
 Now that we understand symplectic spaces and can extend isometries we are well equipped for the next section, where will show that $\clim \Sp_{2^n}(q)$ is also extremely amenable.
 
 
-\section{Limits of other Matrix group families are Levy groups too}
+\section{Limits of other Matrix group families are Levy groups too}\label{sec:mySec}
 %When studying matrices it is often useful to look at the corresponding linear maps of a suitable vector space. In the case of orthogonal, symplectic, or unitary matrices these are linear maps from the vector space to itself preserving an orthogonal, symplectic, or unitary form respectively. Formally, the symplectic group $\Sp_n(q)$ is isomorphic to $\Aut(V,\omega)$ from Corollary \ref{cor:structureSympl} it follows that $\Sp_n(q)$ is well defined, where $V$ is an $n$-dimensional $F(q)$ vector space and $\omega$ is a symplectic form.
 
 %As we have to handle only finite dimensional vector spaces here a lot of nice theorems hold. \dots
@@ -308,11 +308,11 @@ Immediate from Corollary \ref{cor:suoConcentrates} and Theorem \ref{thm:LevyImpl
 
 \section{Application}\label{sec:ramsey}
 In this section we will use the upper bound obtained for the length of symplectic, unitary, and orthogonal groups to deduce a Ramsey theoretic result. %The proof is the same as in \cite{thom} we just replaced $\SL_n(q)$ by a symplectic, unitary, or orthogonal group.
-
+As in Section \ref{sec:mySec} the results from this section are already shown in \cite{thom} for special linear groups. 
 
 The first lemma is very similar to Theorem \ref{thm:measureConcetration}.
-\begin{lemma}[Lemma 2.7 in \cite{thom}]
-Let $(X,d,\mu)$ be a finite mm-space with length $l$. Then for $\varepsilon>0$ and $A\subseteq X$ with $\mu(A)>2\exp\left(-\frac{\varepsilon^2}{l^2}\right)$ we have
+\begin{lemma}[Lemma 2.7 in \cite{thom}]\label{lem:measureOfNeigh}
+Let $(X,d,\mu)$ be a finite mm-space with length $l$. Then for $\varepsilon>0$ and $A\subseteq X$ with $\mu(A)>2\exp\left(-\frac{\varepsilon^2}{16l^2}\right)$ we have
 \[\mu(N_\varepsilon(A))\geq 1-2\exp\left(-\frac{\varepsilon^2}{16l^2}\right).\]
 \end{lemma}
 
@@ -320,12 +320,22 @@ Let $(X,d,\mu)$ be a finite mm-space with length $l$. Then for $\varepsilon>0$ a
 A covering $\mathcal{U}$ of a metric space $(X,d)$ is an \define{$\varepsilon$-covering} if for every $x\in X$ the $\varepsilon$-neighborhood of $x$ is contained in some $U\in\mathcal{U}$.
 
 \begin{theorem}
-Let $\varepsilon>0$, $k,m\in\N$. Define $N:=16\cdot 64\varepsilon^2\max\{\ln(2k),\ln(2m)\}$ and let $G=\Aut(V,\omega)$, where $(V,\omega)$ is a symplectic, unitary, or orthogonal space of dimension $n>N$, with an $\varepsilon$-cover $\mathcal{U}$ of cardinality at most $m$. Then there is a $U\in\mathcal{U}$ such that for all $F\subseteq G$ satisfying $|F|\leq k$ there is a $g\in G$ with $gF\subseteq U$.
+Let $\varepsilon>0$, $k,m\in\N$. Define $N:=16\cdot64\varepsilon^{-2}\cdot\max\{\ln(2k),\ln(2m)\}$ and let $G=\Aut(V,\omega)$, where $(V,\omega)$ is a symplectic, unitary, or orthogonal space of dimension $n>N$, with an $\varepsilon$-cover $\mathcal{U}$ of cardinality at most $m$. Then there is a $U\in\mathcal{U}$ such that for all $F\subseteq G$ satisfying $|F|\leq k$ there is a $g\in G$ with $gF\subseteq U$.
 \end{theorem}
-Intuitively the theorem says that whenever we color $G$ with $m$ colors, where a single element can have multiple colors, such that all elements of $\varepsilon$-balls have at least one color in common, then there is one color such that for every $F$ with at most $k$ elements there is a $g$ where the elements of $gF$ all have this one color.
+Intuitively the theorem says that whenever we color $G$ with $m$ colors, where a single element can have multiple colors, such that all elements of $\varepsilon$-balls have at least one color in common, then there is one color $c$ such that for every $F$ with at most $k$ elements there is a $g$ where the elements of $gF$ all have the color $c$.
 \begin{proof}
+\def\core{\operatorname{Core}}
+Look at $G$ as the usual mm-space with normalized rank metric and normalized counting measure.
+Let $l$ be the length of $G$, observe that, by Corollary \ref{cor:suoConcentrates}, $l\leq 8n^{-\frac{1}{2}}$.
+For $U\in \mathcal{U}$ define $\core(U):=\{x\in U\mid N_\varepsilon(x)\subseteq U\}$. Since $\mathcal{U}$ is an $\varepsilon$-covering we have $\bigcup_{U\in\mathcal{U}}\core(U)=G$. Therefore there is a $U\in\mathcal{U}$ such that $\mu(\core(U))\geq\frac{1}{m}$. As $n>16\cdot64\varepsilon^{-2}\cdot\ln(2m)$ we have
+\[\frac{1}{m}>2\exp\left(-\frac{\varepsilon^2n}{16\cdot64}\right)\geq 2\exp\left(-\frac{\varepsilon^2}{ 16l^2}\right).\]
+Now we can apply Lemma \ref{lem:measureOfNeigh} to $\core(U)$ and obtain
+\[\mu(U)\geq\mu(N_\varepsilon(\core(U)))\geq 1-2\exp\left(-\frac{\varepsilon^2}{ 16l^2}\right)\geq1-2\exp\left(-\frac{\varepsilon^2n}{16\cdot64}\right). \]
 
+Let $F\subseteq G$ with $|F|\leq k$. Note that 
+\[\{g\in G\mid gF\subseteq U\}=\bigcap_{h\in F}\{g\in G\mid gh\in U\}=\bigcap_{h\in F}Uh^{-1}.\]
+Therefore, $\mu(\{g\in G\mid gF\subseteq U\})\geq 1-k\cdot2\exp\left(-\frac{\varepsilon^2n}{16\cdot64}\right)$. By assumption $n>16\cdot64\varepsilon^{-2}\cdot\ln(2k)$, hence $\mu(\{g\in G\mid gF\subseteq U\})>0$ and there is a suitable $g$. 
 \end{proof}
 
 
-\section{Conclusion}
+%\section{Conclusion}
