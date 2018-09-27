@@ -126,8 +126,8 @@ These two statements obviously give us the desired result.
 \end{proof}
 
 Since $\mu$ is the counting measure Azema's inequality bounds the number of elements for which $f$ differs at least $\varepsilon$ from its mean. This seems at least somewhat connected to the measure concentration function, as there we want to show that for any set $A$ with $\mu(A)\geq\frac{1}{2}$ only a few elements are more than $\varepsilon$ away from $A$.
-The next goal is to formalize this connection % Azema's inequality with the measure concentration function. 
-To achieve this we first need to introduce a new property of mm-spaces.
+The next goal is to formalize this connection. % Azema's inequality with the measure concentration function. 
+But to achieve this we first need to introduce a new property of mm-spaces.
 \begin{definition}\label{def:length}
 Let $\boldsymbol{X}=(X,d,\mu)$ be a finite mm-space. The \define{length} of $\boldsymbol X$ is the minimum over all $l$ with the following property. There is a refining sequence of partitions 
 \[\{X\}=\Omega_0\prec\dots\prec\Omega_n=\{\{x\}\mid x\in X\},\]
@@ -141,8 +141,10 @@ As this definition is quite hard we will look at some properties and examples of
 Let $\boldsymbol{X}$ be a finite mm-space. Then the length of $\boldsymbol{X}$ is at most the diameter of $\boldsymbol{X}$.
 \end{lemma}
 \begin{proof}
-Consider only the two partitions $\{X\}\prec\{\{x\}\mid x\in X\}$.
+Consider only the two partitions $\{X\}\prec\{\{x\}\mid x\in X\}$. Clearly,  $x\to y$ is an isomorpism between $\{x\}$ and $\{y\}$ for all $x,y\in X$.
 \end{proof}
+
+We will see more properties later in Lemma \ref{lem:diamLen} and Lemma \ref{lem:lengthLowerBound}.
 
 \begin{example}
 Let us look at the $n$-dimensional cube $X_n=\{0,1\}^n$.
@@ -193,12 +195,12 @@ Let us look at the $n$-dimensional cube $X_n=\{0,1\}^n$.
 We will only consider the following sequence of partitions
 \[\Omega_0\prec\dots\prec\Omega_n\text{ with }\Omega_i=\{wX_{n-i}\mid w\in\{0,1\}^i\}.\]
 
-First, we equip $X_n$ with the euclidean metric and rescale it such that the diameter is 1. To bound the length of the resulting space $\boldsymbol X^E_n$ consider $[x]_i\neq[y]_i$. Note that $x$ and $y$ are w.l.o.g. of the form $w0u$ and $w1v$ for some $w\in\{0,1\}^{i-1}$, $u,v\in\{0,1\}^{n-i}$. The isomorphism $\phi$ takes an element $w0u'$ in $[x]_i$ and maps it to $w1u'$. The length of a side in $\boldsymbol X^E_n$ is $\frac{1}{\sqrt{n}}$, hence every $a_i$ is $\frac{1}{\sqrt{n}}$ for every $i$ and the length of $\boldsymbol{X}^E_n$ is bounded by $(\sum_{i=1}^{n}\frac{1}{\sqrt{n}^2})^{\frac{1}{2}}=1$.
+First, we equip $X_n$ with the euclidean metric and rescale it such that the diameter is 1. To bound the length of the resulting space $\boldsymbol X^E_n$ consider $[x]_i\neq[y]_i$. Note that $x$ and $y$ are w.l.o.g. of the form $w0u$ and $w1v$ for some $w\in\{0,1\}^{i-1}$, $u,v\in\{0,1\}^{n-i}$. The isomorphism $\phi$ takes an element $w0u'$ in $[x]_i$ and maps it to $w1u'$. The length of a side in $\boldsymbol X^E_n$ is $\frac{1}{\sqrt{n}}$, hence $a_i$ is $\frac{1}{\sqrt{n}}$ for every $i$ and the length of $\boldsymbol{X}^E_n$ is bounded by $(\sum_{i=1}^{n}\frac{1}{\sqrt{n}^2})^{\frac{1}{2}}=1$.
 
-Secondly, we use the hemming metric and obtain the mm-space $\boldsymbol{X}^H_n$ with diameter 1. It has side length $\frac{1}{n}$ and therefore the length of $\boldsymbol{X}^H_n$ is bounded by $(\sum_{i=1}^{n}\frac{1}{n^2})^{\frac{1}{2}}=n^{-\frac{1}{2}}$. We see that here the length of $\boldsymbol{X}^H_n$ converges to 0 as $n$ tends to infinity. We will show that this means that the measure concentration function $\alpha_{\boldsymbol{X}^H_n}(\varepsilon)$ also goes to 0 for any fixed $\varepsilon>0$. 
+Secondly, we use the normalized hemming metric and obtain the mm-space $\boldsymbol{X}^H_n$ with diameter 1. It has side length $\frac{1}{n}$ and therefore the length of $\boldsymbol{X}^H_n$ is bounded by $(\sum_{i=1}^{n}\frac{1}{n^2})^{\frac{1}{2}}=n^{-\frac{1}{2}}$. We see that here the length of $\boldsymbol{X}^H_n$ converges to 0 as $n$ tends to infinity. We will show that this means that the measure concentration function $\alpha_{\boldsymbol{X}^H_n}(\varepsilon)$ also goes to 0 for any fixed $\varepsilon>0$. 
 \end{example}
 
-
+Now we come back to the connection between Azema's inequality and the measure concentration function.
 
 \begin{lemma}\label{lem:lipschitz}
 Let $\boldsymbol{X}=(X,d,\mu)$ be a finite mm-space of length $l$ and $f\colon X\to\R$ be a 1-Lipschitz function. Then
@@ -221,7 +223,7 @@ f_i(x)-f_i(y)&=\E(f\mid [x]_i)-\E(f\mid [y]_i)\\
 This concludes the proof.
 \end{proof}
 
-Let $\boldsymbol{X}=(X,d,\mu)$ be a finite mm-space and $A\subseteq X$ measurable. Observe that $d_A\colon X\to\R$, $d_A(x):=\inf_{y\in A}d(x,y)$ is a 1-Lipschitz function. Using this we can rewrite the definition of the measure concentration function 
+Let $\boldsymbol{X}=(X,d,\mu)$ be a finite mm-space and $A\subseteq X$ measurable. Observe that $d_A\colon X\to\R$, $d_A(x):=\inf_{y\in A}d(x,y)$ is a 1-Lipschitz function. Using $d_A$ we can rewrite the definition of the measure concentration function 
 \[\alpha_{\boldsymbol{X}}(\varepsilon)=\sup\{\mu(\{d_A\geq\varepsilon\})\mid \mu(A)\geq\frac{1}{2}\}.\]
 This gives us the desired connection.
 %\FlorianSagt{$n$ dimensional cubes with diameter 1 have length $\frac{1}{\sqrt{3}}$ and if $|X|$ is a prime, then the length of $X$ is equal to its diameter, the length of a circle is the same as its diameter}
@@ -246,8 +248,8 @@ If $\E(d_A)>\varepsilon$, then $A\subseteq \{|d_A-\E(d_A)|\geq\varepsilon\}$. Co
 \[\mu(\{d_A\geq\varepsilon\})\leq \mu(X\setminus A)\leq \frac{1}{2}\leq \mu(A)\leq \mu(\{|d_A-\E(d_A)|\geq\varepsilon\})\leq 2\exp\left(-\frac{\varepsilon^2}{4l^2}\right).\]
 This proves the theorem.
 \end{proof}
-Note that in the second case the upper bound is at least $\frac{1}{2}$, which means that if $l$ is large enough then we are in the first case and the expected distance to a set with at least half measure is less then $\varepsilon$. In Section \ref{sec:ramsey} we will se a slight modification of this lemma.
-But for now our goal is to apply Theorem \ref{thm:LevyImpliesExAm} to groups and as it turns out we can bound the length of a group using sequences of subgroups. Before we can write down the corollary we need to make a quick excursion to factor metrics. 
+Note that in the second case the upper bound is at least $\frac{1}{2}$, which means that if $l$ is large enough then we are in the first case and the expected distance to a set with at least half measure is less then $\varepsilon$. In Section \ref{sec:ramsey} we will see a slight modification of this lemma.
+But for now our goal is to apply Theorem \ref{thm:LevyImpliesExAm} to groups and as it turns out we can bound the length of a group using sequences of subgroups. Before we can write down the corresponding corollary we need to make a quick excursion into factor metrics. 
 
 \begin{definition}
 Let $(X,d)$ be a metric space and let $\sim$ be an equivalence relation on $X$. Then \[d_\sim([x],[y])=\inf\{d(p_1,q_1)+\dots+d(p_n,q_n)\mid q_i\sim p_{i+1}, x\sim p_1, q_n\sim y\}\] defines a pseudometric on $X/{\sim}$.
@@ -255,11 +257,11 @@ Let $(X,d)$ be a metric space and let $\sim$ be an equivalence relation on $X$. 
 
 In case that $X$ is a group with bi-invariant metric this definition simplifies.
 \begin{lemma}\label{lem:factorMetric}
-Let $G$ be a finite group with bi invariant metric $d$ and $H$ a (not necessarily normal) subgroup of $G$. Then the factor metric $d_H$ on $G/H=\{gH\mid g\in G\}$ is a proper metric and satisfies $d_H(gH,g'H)=\inf\{d(g,g'h)\mid h\in H\}$.
+Let $G$ be a finite group with bi-invariant metric $d$ and $H$ a (not necessarily normal) subgroup of $G$. Then the factor metric $d_H$ on $G/H=\{gH\mid g\in G\}$ is a proper metric and satisfies $d_H(gH,g'H)=\inf\{d(g,g'h)\mid h\in H\}$.
 \end{lemma}
 \begin{proof}
 Let $x,y\in G$. We show that for any path $p_1,q_1,\dots,p_n,q_n$ as in the definition there are $x\sim p$ and $q\sim y$ such that $d(p,q)\leq d(p_1,q_1)+\dots+d(p_n,q_n)$. It suffices to show this for $n=2$. 
-By definition $p_1,q_1,p_2,q_2$ are of the form $g,g',g'h,g''$ form some $g,g',g''\in G$ and $h\in H$. Since $d$ is bi-invariant 
+By definition $p_1,q_1,p_2,q_2$ are of the form $g,g',g'h,g''$ for some $g,g',g''\in G$ and $h\in H$. Since $d$ is bi-invariant 
 \[d(gh,g'')\leq d(gh,g'h)+d(g'h,g'')=d(g,g')+d(g'h,g'').\]
 Furthermore we are given that $G$ is finite. Hence the infimum becomes a minimum and $d_H([x],[y])=0$ only if $[x]=[y]$.
 %$d(g,g')=d(gh,g'h)$.
@@ -269,8 +271,8 @@ Equipped with this knowledge we can formulate the final statement for this secti
 \begin{corollary}\label{cor:meaContractionGroups}
 Let $G$ be a finite group with a bi-invariant metric $d$, and let
 \[\{e\}=G_0<G_1<\dots <G_n=G\]
-be a chain of subgroups. Denote the diameter of $G_i/G_{i-1}$ with respect to the factor metric by $a_i$. Then the measure concentration function of the mm-space $(G,d,\mu)$, where $\mu$ is the normalized counting measure, satisfies
-\[\alpha_{\boldsymbol{X}}(\varepsilon)\leq 2\exp\left(-\frac{\varepsilon^2}{16\cdot\sum_{i=1}^{n}a_i^2}\right).\]
+be a chain of subgroups. Denote the diameter of $G_i/G_{i-1}$ with respect to the factor metric by $a_i$. Then the length of $G$ is at most $\left(\sum_{i=1}^{n}a_i^2\right)^{\frac{1}{2}}$ and the measure concentration function of the mm-space $(G,d,\mu)$, where $\mu$ is the normalized counting measure, satisfies
+\[\alpha_{(G,d,\mu)}(\varepsilon)\leq 2\exp\left(-\frac{\varepsilon^2}{16\cdot\sum_{i=1}^{n}a_i^2}\right).\]
 \end{corollary}
 \begin{proof}
 We show that the length $l$ of $(G,d,\mu)$ is bounded by $\left(\sum_{i=1}^{n}a_i^2\right)^{\frac{1}{2}}$ and apply Theorem \ref{thm:measureConcetration}. Define the sequence of partitions $\Omega_i:=\{g G_i\mid g\in G\}$
@@ -286,17 +288,17 @@ gh&{}\mapsto g'h'h
 is, by bi-invariance of $d$, an isomorphism of metric spaces with $d(gh,g'h'h)=d(g,g'h')\leq a_i$ for all $gh\in gG_i$.
 Therefore $\left(\sum_{i=1}^{n}a_i^2\right)$ is an upper bound for $l^2$. 
 \end{proof}
-Carderi and Thom used this result to show that the limit of $\SL_{2^n}(q)$ is extremely amenable \cite{thom}. We will recreate this proof in the next section. 
+Carderi and Thom used this result to show that the closure of the limit of $\SL_{2^n}(q)$ is extremely amenable \cite{thom}. We will recreate this proof in the next section. 
 
 
-\section{The limit of $\SL_{2^n}(q)$ is extremely amenable}\label{sec:thom}
+\section{The limit of $\SL_{2^n}(q)$ is extremely amenable}\label{sec:thom}\FlorianSagt{rename}
 
 When studying matrices it is often useful to look at the corresponding linear maps of a suitable vector space. 
 In the case of $\SL_n(q)$ an $n$ dimensional $\F_q$ vector space $V$ suffices. Fixing a basis $e_1,\dots,e_n$ gives us an embedding from $\SL_n(q)$ into $\Aut(V)$. Next we will apply the methods from the previous section to show that $\clim \SL_{2^n}(q)$ is extremely amenable.
 %rank from 2 to 3 in proof
 \begin{theorem}\label{thm:SLConcentrates}
-The normalized counting measure on the groups $\SL_{n}(q)$ concentrates with respect to the normalized rank-metric, i.e. for all $\varepsilon>0$
-\[\lim_{n\to\infty} \alpha_{(\SL_{n}(q), d, \mu)}(\varepsilon)=0 .\]\FlorianSagt{Boldsymbol or tuple}
+The normalized counting measure $\mu_n$ on the groups $\SL_{n}(q)$ concentrates with respect to the normalized rank-metric $d_n$, i.e. for all $\varepsilon>0$
+\[\lim_{n\to\infty} \alpha_{(\SL_{n}(q), d_n, \mu_n)}(\varepsilon)=0 .\]
 \end{theorem}
 \begin{proof}\FlorianSagt{proof for $\SL$ and $\GL$ te same?}
 We will apply Corollary \ref{cor:meaContractionGroups} to a sequence of subgroups which also shows that the length of  $\SL_n(q)$ is bounded by $3n^{-\frac{1}{2}}$.
@@ -306,10 +308,10 @@ where $\SL_{i-1}(q)$ becomes a subgroup of $\SL_i(q)$ via the embedding $g\mapst
 \begin{pmatrix}
 g&0\\
 0&1
-\end{pmatrix}$. Next we want to bound the diameter of $\SL_{i}(q)/\SL_{i-1}(q)$ by $\frac{3}{n}$. By Lemma \ref{lem:factorMetric} it suffices to show that for any $g,g'\in\SL_i(q)$ there is an $h\in \SL_{i-1}(q)$ such that $d(g,g'h)\leq\frac{3}{n}$. Since $d$ is bi-invariant we can assume w.l.o.g. that $g'=1_V$. 
-Our goal is now to find a $g'\in\SL_i(q)$ that is the identity on $e_i$.
+\end{pmatrix}$. Next we want to bound the diameter of $\SL_{i}(q)/\SL_{i-1}(q)$ by $\frac{3}{n}$. By Lemma \ref{lem:factorMetric} it suffices to show that for any $g,g'\in\SL_i(q)$ there is an $h\in \SL_{i-1}(q)$ such that $d(g,g'h)\leq\frac{3}{n}$. Since $d$ is bi-invariant we can assume w.l.o.g. that $g'$ is equal to the identity matrix $I_i$. 
+Our goal is now to find a $g'\in\SL_i(q)$ that is the identity on $e_i$ and has a small distance to $g$.
 
-Take a closer look at $ge_i$. If $e_i$ is an eigenvector of $g$ with eigenvalue $\lambda$, then $\lambda\not=0$ and $g$ is of the form 
+Let us take a closer look at $ge_i$. If $e_i$ is an eigenvector of $g$ with eigenvalue $\lambda$, then $\lambda\not=0$ and $g$ is of the form 
 $\begin{pmatrix}
 A&0\\
 c^\bot&\lambda
@@ -363,7 +365,7 @@ I_{i-2}&0\\
 0&h'
 \end{pmatrix}\cdot g$.
 Now we can apply the argument from above to get an $h\in \SL_{i-1}(q)$ such that $d(g,h)\leq\frac{3}{n}$. Applying Corollary \ref{cor:meaContractionGroups} we obtain
-\[\alpha_{(\SL_n(q), d, \mu)}(\varepsilon)\leq 2\exp\left(-\frac{\varepsilon^2}{16\cdot\sum_{i=1}^{n}\frac{9}{n^2}}\right)=2\exp\left(-\frac{\varepsilon^2 n}{16\cdot9}\right),\]
+\[\alpha_{(\SL_n(q), d_n, \mu_n)}(\varepsilon)\leq 2\exp\left(-\frac{\varepsilon^2}{16\cdot\sum_{i=1}^{n}\frac{9}{n^2}}\right)=2\exp\left(-\frac{\varepsilon^2 n}{16\cdot9}\right),\]
 which tends to 0 as $n$ goes to infinity. 
 
 \end{proof}
@@ -395,7 +397,7 @@ From this the claim immediately follows.
 \end{proof}
 
 
-\begin{lemma}
+\begin{lemma}\label{lem:lengthLowerBound}
 Let $(X,d,\mu)$ be a finite mm-space with diameter $\Delta$ and $\delta=\min_{x\not=x} d(x,y)$. Then the length of $X$ is at least $(\Delta\cdot\delta)^{\frac{1}{2}}$.
 \end{lemma}
 \begin{proof}
