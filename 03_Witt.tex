@@ -1,12 +1,12 @@
-\section{Witts Lemma}\label{sec:witt}
-In this section we will prove Witt's Lemma and explore the structure of symplectic spaces. Witt's Lemma states that an isometry between subspaces of a finite dimensional vector space can always be extended to an isomtry on the whole space.  We will roughly follow the proof in \cite{Witt}. Since we are mainly interested in symplectic spaces we will only show Witt's Lemma for those but it also holds for unitary and orthogonal spaces.
+\section{Witt's Lemma}\label{sec:witt}\FlorianSagt{remove page break}
+In this section we will prove Witt's Lemma and explore the structure of symplectic spaces. Witt's Lemma states that an isometry between subspaces of a finite dimensional symplectic, unitary, or orthogonal space can always be extended to an isomtry on the whole space.  We will roughly follow the proof in \cite{Witt}. Since we are mainly interested in symplectic spaces we will only show Witt's Lemma for those but it also holds for unitary and orthogonal spaces.
 
 \begin{definition}
-A bilinear form $\omega$ on $V$ is called \define{symplectic} if $\omega$ is nondegenerate, i.e. $\omega(x,\ .\ )\not=0_V$ for all $x\in V\setminus\{0\}$, and $\omega(x,y)=-\omega(y,x)$ for all $x,y\in V$. Then we say $(V,\omega)$ is a \define{symplectic space}.
+Let $V$ be an $\F_q$ vector space. A bilinear form $\omega$ on $V$ is called \define{symplectic} if $\omega$ is nondegenerate, i.e. $\omega(x,\ .\ )\not=0_V$ for all $x\in V\setminus\{0\}$, and $\omega(x,y)=-\omega(y,x)$ for all $x,y\in V$. We call $(V,\omega)$ a \define{symplectic space}.
 
 A finite group $G$ is called \define{symplectic} if there is a symplectic space $(V,\omega)$ such that $G\cong\Aut(V,\omega)$. 
 
-A subspace $U\leq V$ is \define{nondegenerate} if $\omega$ restricted to $U$ is nondegenerate (iff $U\cap U^\bot=\{0\}$). 
+A subspace $U\leq V$ is \define{nondegenerate} if $\omega$ restricted to $U$ is nondegenerate (this is the case if and only if $U\cap U^\bot=\{0\}$). 
 
 %For $x,y\in V$ with $\omega(x,y)$ we will write $x\bot y$ and for a set $X\subseteq V$ define
 %\[X^\bot=\{y\in V\mid \omega(x,y)=0\}.\]
@@ -28,7 +28,7 @@ For a subspace $U\leq V$ we have
 \end{lemma}
 \begin{proof}
 Let $u_1,\dots,u_m$ be a basis of $U$ and consider the linear map
-\begin{align*}g\colon V\to \F_q&&\text{ with }&&g(v)=
+\begin{align*}g\colon V\to \F_q^m&&\text{ with }&&g(v)=
 \begin{pmatrix}
 \omega(v,u_1)\\
 \vdots\\
@@ -54,26 +54,26 @@ The other direction is clear from the definition
 For $ii)$ note that $U\subseteq U^{\bot\bot}$. By Lemma \ref{lem:dimUBot} they also have the same dimension and are therefore equal.
 \end{proof}
 
-Next we want to better understand the structure of symplectic spaces. 
-A symplectic space is a \define{hyperbolic plane} if it is 2-dimensional.
+Now we want to better understand the structure of symplectic spaces. 
+We start with 2-dimensional symplectic spaces, which we will call \define{hyperbolic planes}.
 
 
 \begin{lemma}\label{lem:oneHypPlane}
-There is only one hyperbolic plane up to isomorphism.
+There is only one hyperbolic plane up to isometry.
 \end{lemma}
 \begin{proof}
-Let $(V,\omega)$, $(V',\omega')$ be hyperbolic planes with basis $r,s$ and $r',s'$, respectively. 
-Then $r\mapsto r', s\mapsto \lambda s'$ with $\lambda=\omega'(r',s')^{-1}\cdot\omega(r,s)$ is an isomorphism. 
+Let $(V,\omega)$ and $(V',\omega')$ be hyperbolic planes with basis $r,s$ and $r',s'$, respectively. 
+Then $r\mapsto r', s\mapsto \lambda s'$ with $\lambda=\omega'(r',s')^{-1}\cdot\omega(r,s)$ is an isometry between the two hyperbolic planes. 
 \end{proof}
 Next we will strengthen this result and show that any symplectic space is the direct sum of hyperbolic planes.
 %Next we will strengthen this result and show that any symplectic space is uniquely determined by its dimension.
 
 \begin{theorem}\label{thm:hypDecomp}
-Let $r\in V\setminus\{0\}$. Then there is a hyperbolic plane $U\leq V$ containing $r$ such that $V=U\oplus U^\bot$. Furthermore if $W\leq V$ with $W\bot r$ and $r\notin W$, then there is a $U$ as before that also fulfills $W\bot U$.
+Let $r\in V\setminus\{0\}$. Then there is a hyperbolic plane $U\leq V$ containing $r$ such that $V=U\oplus U^\bot$. Furthermore, if $W\leq V$ with $W\bot r$ and $r\notin W$, then there is a $U$ as before that also fulfills $W\bot U$.
 \end{theorem}
 \begin{proof}
 Since $\omega(r,r)=0$ we know that $r\in r^\bot$. Let $H\leq r^\bot$ containing $W$ such that $\langle r\rangle\oplus H=r^\bot$. Then, by Lemma \ref{lem:dimUBot}, $\dim r^\bot=\dim V-1$, $\dim H^\bot=2$, and $r\in H^\bot$. In particular $\dim V>1$.
-Our goal is to show that \[V=H^\bot\oplus H,\] so $H^\bot$ would be a suitable choice for $U$.
+Our goal is to show that \[V=H^\bot\oplus H,\] then $H^\bot$ would be a suitable choice for $U$.
 It suffices to show that $H^\bot$ is nondegenerate, as then the claim follows from Lemma \ref{lem:Ubotbot}. Let $s\in H^\bot$ such that $H^\bot=\langle r,s\rangle$. Now $H^\bot$ is nondegenerate iff $\omega(r,s)\not=0$. 
 
 Assume $\omega(r,s)=0$. Then $r\in s^\bot$ and $H\subseteq s^\bot$. Since, by construction, $r\notin H$ we have $r^\bot=\langle r,H\rangle=s^\bot$. Hence $r$ and $s$ are linearly dependent contradicting that $r,s$ is a basis of $H^\bot$.
@@ -95,7 +95,7 @@ If $n=1$ then $V=\langle v\rangle$ for $v\in V\setminus\{0\}$. But $\omega(v,v)=
 
 If $n=2$ then the claim follows from Lemma \ref{lem:oneHypPlane}.
 
-If $n>2$ then by Theorem \ref{thm:hypDecomp} there is a hyperbolic plane $U_1\leq V$ such that $V=U_1\oplus U_1^\bot$. Then, by induction hypothesis, $n$ is even and $U^\bot =U_2\oplus\dots \oplus U_m$ for some hyperbolic planes $U_2,\dots,U_m\leq U^\bot$ with $m=\frac{n}{2}$ and $U_i\bot U_j$ for $i\not=j$.
+If $n>2$ then by Theorem \ref{thm:hypDecomp} there is a hyperbolic plane $U_1\leq V$ satisfying $V=U_1\oplus U_1^\bot$. Hence, by induction hypothesis, $n$ is even and $U^\bot =U_2\oplus\dots \oplus U_m$ for some hyperbolic planes $U_2,\dots,U_m\leq U^\bot$ with $m=\frac{n}{2}$ and $U_i\bot U_j$ for $i\not=j$.
 \end{proof}
 
 %\begin{corollary}
@@ -113,9 +113,9 @@ We show this claim using induction on $n=\dim (U\cap U^\bot)$.
 If $n=0$ then $U$ itself is nondegenerate and we are done.
 
 If $n>0$ then let $r\in (U\cap U^\bot)\setminus\{0\}$ and $\tilde U\leq V$ such that $\langle r\rangle\oplus \tilde U=U$. By Theorem \ref{thm:hypDecomp} there is a hyperbolic plane $H\leq V$ containing $r$ such that $\tilde U\bot H$. 
-Similarly, there is a hyperbolic plane $H'\leq V$ containing $r':=\alpha(r)$ such that $H'\bot\tilde{W}$ with $\tilde{W}=\alpha(\tilde{U})$. Let $r,s$ and $r',s'$ be a basis of $H$ and $H'$, respectively. Note that $\omega(r,s)\not=0$ and $r\bot U$ imply $s\notin U$. We can assume w.l.o.g. that $\omega(r,s)=\omega(r',s')$. Then we can extend $\alpha$ to $\tilde{\alpha}\colon \langle U,s\rangle\to \langle W,s'\rangle$ by $\tilde\alpha (s)= s'$. Note that $\langle U,s\rangle=\langle \tilde{U},H\rangle$. Since $\tilde{U}\bot H$ we have
+Similarly, there is a hyperbolic plane $H'\leq V$ containing $r':=\alpha(r)$ such that $H'\bot\tilde{W}$ with $\tilde{W}=\alpha(\tilde{U})$. Let $r,s$ and $r',s'$ be a basis of $H$ and $H'$, respectively. Note that $\omega(r,s)\not=0$ and $r\bot U$ imply $s\notin U$. Analogously, $s'\notin W$. We can assume w.l.o.g. that $\omega(r,s)=\omega(r',s')$. Now we can extend $\alpha$ to $\tilde{\alpha}\colon \langle U,s\rangle\to \langle W,s'\rangle$ by defining $\tilde\alpha (s):= s'$. Note that $\langle U,s\rangle=\langle \tilde{U},H\rangle$. Since $\tilde{U}\bot H$ we have
 \begin{align*}
-\dim(\langle \tilde{U},H\rangle \cap \langle \tilde{U},H\rangle^\bot)&=\dim(\tilde{U}\cap \tilde{U}^\bot)<\dim(U\cap U^\bot).\\
+\dim(\langle \tilde{U},H\rangle \cap \langle \tilde{U},H\rangle^\bot)&=\dim(\tilde{U}\cap \tilde{U}^\bot)<\dim(U\cap U^\bot).
 %\tilde{\alpha}\colon \langle \tilde{U},r,s\rangle\to \langle \tilde W,r',s'\rangle
 \end{align*}
 Hence we can apply the induction hypothesis to $\tilde{\alpha}$.
@@ -125,7 +125,7 @@ Hence we can apply the induction hypothesis to $\tilde{\alpha}$.
 If $U$ is nondegenerate. Then $\alpha$ can be extended to an isometry $\tilde{\alpha}\colon V\to V$.
 \end{lemma}
 \begin{proof}
-Since $U$ and $W$ are nondegenerate we can apply Lemma \ref{lem:Ubotbot} and obtain \[V=U\oplus U^\bot=W\oplus W^\bot.\]
+Since $U$ is nondegenerate we have that $W$ is also nondegenerate and we can apply Lemma \ref{lem:Ubotbot} and obtain \[V=U\oplus U^\bot=W\oplus W^\bot.\]
 By Lemma \ref{lem:dimUBot} we have $\dim U^\bot=\dim W^\bot$. Hence, by Corollary \ref{cor:structureSympl}, there is an isometry $\beta\colon U^\bot\to W^\bot$. Finally, $\alpha\oplus \beta\colon V\to V$ is an isometry extending $\alpha$.
 \end{proof}
 
@@ -137,22 +137,22 @@ The map $\alpha$ can be extended to an isometry $\tilde{\alpha}\colon V\to V$.
 Using Lemma \ref{lem:wittPrep1} extend $\alpha$ to $\tilde{\alpha}\colon U'\to W'$ for some $U'\geq U$, $W'\geq W$ nondegenerate. Now apply Lemma \ref{lem:wittPrep2} to extend $\tilde{\alpha}$ to $\tilde{\tilde{\alpha}}\colon V\to V$.
 \end{proof}
 
-Now that we understand symplectic spaces and can extend isometries we are well equipped for the next section, where will show that $\clim \Sp_{2^n}(q)$ is also extremely amenable.
+Now that we understand symplectic spaces and can extend isometries we are well equipped for the next section, where will show that the closure of the limit of symplectic groups is also extremely amenable.
 
 
-\section{Limits of other Matrix group families are Levy groups too}\label{sec:mySec}
+\section{Limits of other Matrix group families are Levy groups too}\label{sec:mySec}\FlorianSagt{rename}
 %When studying matrices it is often useful to look at the corresponding linear maps of a suitable vector space. In the case of orthogonal, symplectic, or unitary matrices these are linear maps from the vector space to itself preserving an orthogonal, symplectic, or unitary form respectively. Formally, the symplectic group $\Sp_n(q)$ is isomorphic to $\Aut(V,\omega)$ from Corollary \ref{cor:structureSympl} it follows that $\Sp_n(q)$ is well defined, where $V$ is an $n$-dimensional $F(q)$ vector space and $\omega$ is a symplectic form.
 
 %As we have to handle only finite dimensional vector spaces here a lot of nice theorems hold. \dots
 
-Our goal in this section is to show that $\clim \Sp_{2^n}(q)$ is extremely amenable. The structure of the proof is the same as in Section \ref{sec:thom} for special linear groups. We will bound the length of $\Sp_n(q)\cong\Aut(V,\omega)$ by applying Corollary \ref{cor:meaContractionGroups} to a chain of subgroups $(G_i)_i$. To bound the diameter of $G_i/G_{i-1}$ we will construct for any $g\in G_i$ an $h'\in G_i$ such that the distance between $g$ and $h'g$ is small and $h'g\in G_{i-1}$. The $h'$ will behave like the inverse of $g$ on a small subspace of $V$ and like the identity on most of the rest.    The proof can be generalized to unitary and orthogonal groups.
+Our goal in this section is to show that $\clim \Sp_{2^n}(q)$ is extremely amenable. The structure of the proof is the same as in Section \ref{sec:thom} for special linear groups. We will bound the length of $\Sp_n(q)\cong\Aut(V,\omega)$ by applying Corollary \ref{cor:meaContractionGroups} to a sequence of subgroups $(G_i)_{0\leq i\leq n}$. To bound the diameter of $G_i/G_{i-1}$ we will construct for any $g\in G_i$ an $h'\in G_i$ such that the distance between $g$ and $h'g$ is small and $h'g\in G_{i-1}$. The $h'$ will behave like the inverse of $g$ on a small subspace of $V$ and like the identity on most of the rest. The proof can be generalized to unitary and orthogonal groups and therefore we will briefly introduce those and afterwards show extreme amenability for the closure of the limits of symplectic, unitary, and orthogonal groups.
 
 \begin{definition}
 Let $V$ be a finite dimensional $\F_q$ vector space and $\omega$ a nondegenerate map from $V\times V$ to $\F_q$.
 
 Then $(V,\omega)$ is an \define{orthogonal space} if $\omega$ is bilinear, $\omega(x,y)=\omega(y,x)$ for all $x,y\in V$, and if $q=2$ then $\omega(x,x)=0$ for all $x\in V$.
 
-And $(V,\omega)$ is a \define{unitary space} if there is a $h\in\Aut(\F_q)$ with $h^2=1$ such that 
+And $(V,\omega)$ is a \define{unitary space} if there is an $h\in\Aut(\F_q)$ with $h^2=1$ such that 
 \begin{align*}
 \omega(ax+y,z)&=a\omega(x,z)+\omega(y,z)\\
 \omega(x,ay+z)&=h(a)\omega(x,y)+\omega(x,z)\\
@@ -164,7 +164,7 @@ for all $x,y,z\in V$ and $a\in\F_q$.
 \end{definition}
 
 In the following let $(V,\omega)$ be a symplectic, unitary, or orthogonal space.
-Note that $\omega$ is nondegenerate and 
+Note that in any case $\omega$ is nondegenerate and 
 \begin{align*}
 \omega(x,y)=0 \text{ iff }\omega(y,x)=0\text{ for all $x,y\in V$}.
 \end{align*}
@@ -193,21 +193,21 @@ The next lemma is necessary to construct the chain of subgroups, in the case of 
 
 
 \begin{lemma}\label{lem:decompositionComplement}
-Then there exists a $U\leq V$ with $\dim U\leq 2$ such that $V=U\oplus U^\bot$.
+There exists a $U\leq V$ with $\dim U\leq 2$ such that $V=U\oplus U^\bot$.
 \end{lemma}
 \begin{proof}
 Let $r\in V\setminus\{0\}$. By Lemma \ref{lem:dimUBot} $\dim r^\bot= n-1$. %Since $\omega$ is non degenerate $\omega(e,.)\not=0$ and therefore $e^\bot\not=V$. Hence $\dim e^\bot= n-1$.
 
 If $r\notin r^\bot$, then $V=\langle r\rangle\oplus r^\bot$ and $\langle r\rangle$ is the desired $U$.
 
-If $r\in r^\bot$, then let $H\leq r^\bot$ such that $\langle r\rangle\oplus H=r^\bot$. Now procces as in the proof of Theorem  \ref{thm:hypDecomp} to show that $H^\bot$ is a suitable $U$.
+If $r\in r^\bot$, then let $H\leq r^\bot$ such that $\langle r\rangle\oplus H=r^\bot$. Now proceed as in the proof of Theorem  \ref{thm:hypDecomp} to show that $H^\bot$ is a suitable $U$.
 
 
 %extend $e$ to a basis $e,b_2,\dots,b_{n-1}$ of $e^\bot$ and consider the 2-dimensional subspace $U:=\langle b_2,\dots,b_{n-1}\rangle^\bot$. Now we have to show that \[U\cap U^\bot=0.\]
 %Take $v$ from the intersection. By Lemma \ref{lem:Ubotbot} $U^\bot=\langle b_2,\dots,b_{n-1}\rangle$ and $v\bot b_i$ for all $i\in\{2,\dots,n-1\}$. Since $\langle b_2,\dots,b_{n-1}\rangle\leq e^\bot$ we also have $v\bot e$. Hence $v\in e^{\bot^\bot}=\langle e\rangle$ and $v=\lambda e$. Now $e\notin \langle b_2,\dots,b_{n-1}\rangle$ implies $v=0$. Henceforth $V=U\oplus U^\bot$.
 \end{proof}
 
-The following lemma shows that isometries interact nicely with the complement.
+The following lemma shows that isometries interact nicely with complements.
 
 \begin{lemma}\label{lem:isomStaysInCompl}
 Let $U\leq V$ and $\alpha\colon V\to V$ be an isometry such that $\alpha(U)=U$. Then $\alpha(U^\bot)= U^\bot$.
@@ -270,14 +270,14 @@ Now we can proof the analogue of Theorem \ref{thm:SLConcentrates} from Section \
 Let $G$ be a symplectic, unitary, or orthogonal group equipped with the rank metric $d$ and of diameter $n$. Then there is a symplectic, unitary, or orthogonal subgroup $H\leq G$ with diameter at most $n-1$ such that the diameter of $G/H$ is at most $8$.
 \end{theorem}
 \begin{proof}
-$G=\Aut(V,\omega)$ for some vector space $V$ with  bilinear form $\omega$. Use Lemma \ref{lem:decompositionComplement} to obtain $U\leq V$ such that $V=U\oplus U^\bot$ and $\dim U\leq2$. Define $H=\Aut(U^\bot,\omega)$. Our aim is to find for any $g\in G$ an $g'\in H$ such that $d(g,g')\leq8$.
+We have $G\cong\Aut(V,\omega)$ for some $n$-dimensional vector space $V$ and some $\omega$. Use Lemma \ref{lem:decompositionComplement} to obtain $U\leq V$ such that $V=U\oplus U^\bot$ and $\dim U\leq2$. Define $H=\Aut(U^\bot,\omega)$. Our aim is to find for any $g\in G$ an $g'\in H$ such that $d(g,g')\leq8$.
 The idea is to find a map $h'\in G$ that behaves like the inverse of $g$ on $gU$ and like the identity on most of the rest. Then $h'g$ is the desired $g'$.
 
 Let $g\in G$ and define $W=\langle U,gU\rangle$. By Lemma \ref{lem:largeOrthogonal} there is a $W'$ such that $\dim W'\geq n-8$, $W'\leq W^\bot$, and $W'\cap W=0$. Consider the map
 \begin{align*}
  g^{-1}|_{gU}\oplus 1_{W'}\colon gU\oplus W'\to U\oplus W'
 \end{align*}
-as $g^{-1}|_{gU}$ and $1_{W'}$ are isometries and $W\bot W'$ we have that the above map is also an isomtry. By Theorem \ref{thm:Witt} this isometry can be extended to an isometry $h'\colon V\to V$. Furthermore,
+since $g^{-1}|_{gU}$ and $1_{W'}$ are isometries and $W\bot W'$ we have that the above map is also an isomtry. By Theorem \ref{thm:Witt} this isometry can be extended to an isometry $h'\colon V\to V$. Furthermore,
 \begin{align*}
  d(g,h'g)&=\dim\im (g-h'g)\\
 &\leq 8+\dim \im(g-h'g)|_{W'}\tag{$\dim W'\geq n-8$}\\
@@ -306,13 +306,13 @@ Then \[\lim_{n\to\infty}\alpha_{(G_n,d_n,\mu_n)}(\varepsilon)=0\] for all $\vare
 Immediate from Corollary \ref{cor:suoConcentrates} and Theorem \ref{thm:LevyImpliesExAm}.
 \end{proof}
 
-\section{Application}\label{sec:ramsey}
+\section{Application}\label{sec:ramsey}\FlorianSagt{rename}
 In this section we will use the upper bound obtained for the length of symplectic, unitary, and orthogonal groups to deduce a Ramsey theoretic result. %The proof is the same as in \cite{thom} we just replaced $\SL_n(q)$ by a symplectic, unitary, or orthogonal group.
 As in Section \ref{sec:mySec} the results from this section are already shown in \cite{thom} for special linear groups. 
 
 The first lemma is very similar to Theorem \ref{thm:measureConcetration}.
 \begin{lemma}[Lemma 2.7 in \cite{thom}]\label{lem:measureOfNeigh}
-Let $(X,d,\mu)$ be a finite mm-space with length $l$. Then for $\varepsilon>0$ and $A\subseteq X$ with $\mu(A)>2\exp\left(-\frac{\varepsilon^2}{16l^2}\right)$ we have
+Let $(X,d,\mu)$ be a finite mm-space with length $l$. Then for every $\varepsilon>0$ and $A\subseteq X$ with $\mu(A)>2\exp\left(-\frac{\varepsilon^2}{16l^2}\right)$ we have
 \[\mu(N_\varepsilon(A))\geq 1-2\exp\left(-\frac{\varepsilon^2}{16l^2}\right).\]
 \end{lemma}
 
@@ -326,7 +326,7 @@ Intuitively the theorem says that whenever we color $G$ with $m$ colors, where a
 \begin{proof}
 \def\core{\operatorname{Core}}
 Look at $G$ as the usual mm-space with normalized rank metric and normalized counting measure.
-Let $l$ be the length of $G$, observe that, by Corollary \ref{cor:suoConcentrates}, $l\leq 8n^{-\frac{1}{2}}$.
+Let $l$ be the length of $G$. Observe that, by Corollary \ref{cor:suoConcentrates}, $l\leq 8n^{-\frac{1}{2}}$.
 For $U\in \mathcal{U}$ define $\core(U):=\{x\in U\mid N_\varepsilon(x)\subseteq U\}$. Since $\mathcal{U}$ is an $\varepsilon$-covering we have $\bigcup_{U\in\mathcal{U}}\core(U)=G$. Therefore there is a $U\in\mathcal{U}$ such that $\mu(\core(U))\geq\frac{1}{m}$. As $n>16\cdot64\varepsilon^{-2}\cdot\ln(2m)$ we have
 \[\frac{1}{m}>2\exp\left(-\frac{\varepsilon^2n}{16\cdot64}\right)\geq 2\exp\left(-\frac{\varepsilon^2}{ 16l^2}\right).\]
 Now we can apply Lemma \ref{lem:measureOfNeigh} to $\core(U)$ and obtain

@@ -379,7 +379,7 @@ The Polish group $\clim \SL_{2^n}(q)$ is extremely amenable.
 Theorem \ref{thm:SLConcentrates} implies that $\clim \SL_{2^n}(q)$ is a Levy group and is therefore extremely amenable, by Theorem \ref{thm:LevyImpliesExAm}.
 \end{proof}
 
-As a byproduct we found an upper bound for the length of $\SL_n(q)$. We now ask how good this upper bound is. Therefore we our next goal is to determining also a lower bound. This part is not essential to the rest of the thesis but still interesting.
+As a byproduct we found an upper bound for the length of $\SL_n(q)$. The natural question to ask is: How good is this upper bound? Therefore our next goal is to also determine a lower bound. This part is not essential to the rest of the thesis but still interesting.
 
 \begin{lemma}\label{lem:diamLen}
 Let $(X,d,\mu)$ be a finite mm-space with diameter $\Delta$ and %\FlorianSagt{could be that this only holds for finite $X$ as conditions in definition of length are just almost surely}
@@ -398,25 +398,25 @@ From this the claim immediately follows.
 
 
 \begin{lemma}\label{lem:lengthLowerBound}
-Let $(X,d,\mu)$ be a finite mm-space with diameter $\Delta$ and $\delta=\min_{x\not=x} d(x,y)$. Then the length of $X$ is at least $(\Delta\cdot\delta)^{\frac{1}{2}}$.
+Let $(X,d,\mu)$ be a finite mm-space with diameter $\Delta$ and $\delta=\min_{x\not=y} d(x,y)$. Then the length of $X$ is at least $(\Delta\cdot\delta)^{\frac{1}{2}}$.
 \end{lemma}
 \begin{proof}
 We show by induction on $n$ that for any nonnegative $a_1,\dots, a_n$ with $\delta=\min_{1\leq i\leq n} a_i$ we have
 \[\sum_{i=1}^{n}a_i\geq \Delta\implies \sum_{i=1}^{n}a_i^2\geq \Delta\cdot\delta.\]
 
 For $n=1$: Note that $\Delta\geq\delta$. Hence 
-\[\sum_{i=1}^{n}a_i^2=a_1^2=\delta^2\geq \Delta\cdot \delta.\]
+\[\sum_{i=1}^{n}a_i^2=a_1^2=\delta\cdot \delta\geq \Delta\cdot \delta.\]
 
 For $n>1$: Assume w.l.o.g. that $a_1\leq\dots\leq a_n$. Then 
 \begin{align*}
-&\sum_{i=1}^{n}a_i\geq \Delta\\
+\sum_{i=1}^{n}a_i\geq \Delta
 \implies &\sum_{i=2}^{n}a_i\geq \Delta-\delta\tag{$a_1=\delta$}\\
 \stackrel{\text{I.H.}}\implies &\sum_{i=2}^{n}a_i^2\geq (\Delta-\delta)\cdot \delta'\tag{with $\delta'=a_2$}\\
 \implies &\sum_{i=2}^{n}a_i^2\geq \Delta\cdot\delta-\delta^2\tag{$\delta\leq\delta'$}\\
 \implies &\sum_{i=1}^{n}a_i^2\geq \Delta\cdot\delta\tag{$a_1^2=\delta^2$}.
 \end{align*}
 
-From this claim together with Lemma \ref{lem:diamLen} the lemma immediately follows.
+From this claim together with Lemma \ref{lem:diamLen} we obtain the desired lower bound.
 
 \end{proof}
 
@@ -427,7 +427,7 @@ Consider $(\SL_{n}(q),d,\mu)$, where $d$ is the normalized rank-metric and $\mu$
 \[n^{-\frac{1}{2}}\leq l\leq 3n^{-\frac{1}{2}}.\]
 \end{corollary}
 \begin{proof}
-The diameter of $\SL_n(q)$ is equal to 1 and for any $g\not=g'\in\SL_n(q)$ we have $d(g,g')\geq \frac1n$.
+The diameter of $\SL_n(q)$ is equal to 1 and for any $g\not=g'\in\SL_n(q)$ we have that $d(g,g')\geq \frac1n$.
 \end{proof}
 
-The next goal is to show that the limit of symplectic groups is also extremely amenable. Theses groups can be seen as automorphism groups of a vector space together with a symplectic form. The proof will be similar to the one for the special linear groups but extending the partial inverse $h'$ becomes much harder. This is why in the next section we will prove Witt's Lemma which does exactly what we need, i.e. extending isometries.
+The next goal is to show that the closure of the limit of symplectic groups is also extremely amenable. Theses groups can be seen as automorphism groups of a vector space together with a symplectic form. The proof will be similar to the one for the special linear groups but extending the partial inverse $h'$ becomes much harder. This is why in the next section we will prove Witt's Lemma which does exactly what we need, i.e. extending isometries.
