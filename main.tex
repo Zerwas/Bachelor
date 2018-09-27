@@ -2,8 +2,11 @@
 %http://www.golatex.de/wiki/KOMA-Script
 
 \usepackage[nottoc,notlot,notlof]{tocbibind}
-%bilbliography in tableofcontents
+%bibliography in tableofcontents
 \include{defns}
+
+\usepackage[backend=biber]{biblatex}
+\addbibresource{bibliography.bib}
 
 
 \begin{document}
@@ -14,6 +17,7 @@
 \include{02_Azema}
 \include{03_Witt}
 %\include{07_fun}
+\printbibliography{}
 \include{09_Erklaerung}
 
 \end{document}
