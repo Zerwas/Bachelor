@@ -84,15 +84,32 @@ Clearly, $\varphi_n$ is also a homomorphism.
 \end{proof}
 
 Let $\varphi\colon\bigsqcup_{n\in\N} G_n\to\bigsqcup_{n\in\N} G_n$ with $\varphi|_{G_n}=\varphi_n$.
-%Using these embeddings we can define the limit of $(G_n)_{n\in\N}$.
+%Using $\varphi$ we can define the limit of $(G_n)_{n\in\N}$.
 \begin{definition}
 Let $\sim$ be the equivalence relation on $\bigsqcup_{n\in\N} G_n$, defined by $g\sim h$ iff there are $m,n\in\N$ such that $\varphi^n(g)=\varphi^m(h)$.
 Then the \define{limit} of $(G_n)_{n\in\N}$ is defined as
-\[\lim (G_n)_{n\in\N}:=\left(\bigsqcup_{n\in\N} G_n\right)\big/\sim.\]
+\[\lim_{n\in\N} G_n:=\left(\bigsqcup_{n\in\N} G_n\right)\big/\sim.\]
 \end{definition}
 \begin{lemma}
-The sequence $(G_n,d_n)_{n\in\N}$ induces a groupstructure and a metric $d$ on $G=\lim G_n$.
+The sequence of metric groups $(G_n,d_n)_{n\in\N}$ induces a group structure and a metric $d$ on $G=\lim G_n$. 
 \end{lemma}
+\begin{proof}
+Note that $\psi_n\colon G_n\to G$, $\psi(g)=[g]$, is injective and \[G=\bigcup_{n\in\N}\psi_n(G_n).\]
+For $[g], [h]\in G$ we can assume w.l.o.g. that $g,h\in G_n$ for some $n\in\N$. Hence we define $[g]\cdot[h]:=[gh]$ and $d([g],[h]):=d_n(g,h)$. This is well defined since the following diagram commutes for all $n\leq m$.
+\begin{center}
+\begin{tikzpicture}[node distance=1.8cm]
+\node (G) {$G$};
+\node[left of=G] (Gm) {$G_m$};
+\node[below of=Gm] (Gn) {$G_n$};
+\path[right hook-latex'] (Gn) edge node[below right] {$\psi_n$} (G)
+          (Gn) edge node[left] {$\varphi_{n,m}$} (Gm)
+          (Gm) edge node[above] {$\psi_n$} (G);
+\end{tikzpicture}
+\end{center}
+Where $\varphi_{n,m}:=\varphi^{m-n}|_{G_n}$. Note that now the $\psi_n$ are isometric embeddings.
+\end{proof}
+
+%TODO Up Next metric completion
 
 Note that Hence we can define the inductive limit of $(G_n)_{n\in\N}$. We denote the metric completion of this limit by $\clim G_n$.%TODO definition environment
 \subsection*{Topo group}
