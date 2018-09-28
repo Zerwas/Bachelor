@@ -32,21 +32,71 @@ This thesis is structured as follows. In Section \ref{sec:generalDefns}, we will
 %\section{Limits of Matrix Groups and Extreme Amenability}\label{sec:generalDefns}
 \section{Preliminaries}\label{sec:generalDefns}
 \subsection*{LAAG}
-\subsection*{Topo group}
-\subsection*{Levy}
-Let $q$ be a prime power and $\GL_n(q)$ be the general linear group over the $q$ element field $\F_q$ and let $G$ be a subgroup of $\GL_n(q)$. We can equip $G$ with the (normalized) \define{rank-metric} $d(g,h):=\frac{1}{n}\rank(g-h)$.
+Let $q$ be a prime power and $\F_q$ be the unique $q$ element field. Denote the the general linear group over $\F_q$ by $\GL_n(q)$. We can equip $\GL_n(q)$ with the (normalized) \define{rank-metric} $d(g,h):=\frac{1}{n}\rank(g-h)$, where $r(g)$ is the rank of $g$ or equivalently the dimension of the image of $g$. 
 %The group $G$, equipped with the topology induced by $d$, is a topological group.
-Since all matrices in $G$ have full rank, this metric is \define{bi-invariant}, i.e. for all $g,h,k\in G$ we have \[d(kg,kh)=d(g,h)=d(gk,hk).\] 
+
+\begin{lemma}
+The metric $d$ is \define{bi-invariant}, i.e. for all $g,h,k\in \GL_n(q)$ we have 
+\[d(kg,kh)=d(g,h)=d(gk,hk).\] 
+\end{lemma}
+\begin{proof}
+Let $g,h,k\in \GL_n(q)$. Note that $k$ has full rank. Therefore
+\[n\cdot d(kg,kh)=\rank(kg-kh)=\rank(k(g-h))=\rank(g-h)=n\cdot d(g,h).\]
+The other equality follows similarly.
+\end{proof}
+%Since all matrices in $G$ have full rank, this metric is \define{bi-invariant}, i.e. for all $g,h,k\in G$ we have \[d(kg,kh)=d(g,h)=d(gk,hk).\] 
+
+
 Let $G_n\leq \GL_{2^n}(q)$ be a family of subgroups, such that 
 $\begin{pmatrix}
 g &0\\
 0&g
-\end{pmatrix}\in G_{n+1}$ for all $g\in G_n$. Note that the map
+\end{pmatrix}\in G_{n+1}$ for all $g\in G_n$. Denote the normalized rank-metric of $G_n$ by $d_n$.
+\begin{lemma}
+For all $n\in \N$ the map
 \[\varphi_n\colon G_n\mapsto G_{n+1}\text{, where }\varphi_n(g)=\begin{pmatrix}
 g &0\\
 0&g
 \end{pmatrix}\]
-is an isometric homomorphism for all $n\in\N$. Hence we can define the inductive limit of $(G_n)_{n\in\N}$. We denote the metric completion of this limit by $\clim G_n$.%TODO definition environment
+is an isometric embedding. 
+\end{lemma}
+\begin{proof}
+Let $n\in\N$ and $g,h\in G_n$. Then
+\begin{align*}
+d(g,h)&=\frac{1}{n}\rank(g-h)\\
+&=\frac{1}{2n}(\rank(g-h)+\rank(g-h))\\
+&=\frac{1}{2n}\rank
+\begin{pmatrix}
+g-h &0\\
+0&g-h
+\end{pmatrix}\\
+&=d(
+\begin{pmatrix}
+g &0\\
+0&g
+\end{pmatrix},
+\begin{pmatrix}
+h &0\\
+0&h
+\end{pmatrix}).
+\end{align*}
+Clearly, $\varphi_n$ is also a homomorphism.
+\end{proof}
+
+Let $\varphi\colon\bigsqcup_{n\in\N} G_n\to\bigsqcup_{n\in\N} G_n$ with $\varphi|_{G_n}=\varphi_n$.
+%Using these embeddings we can define the limit of $(G_n)_{n\in\N}$.
+\begin{definition}
+Let $\sim$ be the equivalence relation on $\bigsqcup_{n\in\N} G_n$, defined by $g\sim h$ iff there are $m,n\in\N$ such that $\varphi^n(g)=\varphi^m(h)$.
+Then the \define{limit} of $(G_n)_{n\in\N}$ is defined as
+\[\lim (G_n)_{n\in\N}:=\left(\bigsqcup_{n\in\N} G_n\right)\big/\sim.\]
+\end{definition}
+\begin{lemma}
+The sequence $(G_n,d_n)_{n\in\N}$ induces a groupstructure and a metric $d$ on $G=\lim G_n$.
+\end{lemma}
+
+Note that Hence we can define the inductive limit of $(G_n)_{n\in\N}$. We denote the metric completion of this limit by $\clim G_n$.%TODO definition environment
+\subsection*{Topo group}
+\subsection*{Levy}
 
 
 %\begin{example}
