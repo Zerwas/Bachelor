@@ -140,7 +140,8 @@ Using Lemma \ref{lem:wittPrep1} extend $\alpha$ to $\tilde{\alpha}\colon U'\to W
 Now that we understand symplectic spaces and can extend isometries we are well equipped for the next section, where will show that the closure of the limit of symplectic groups is also extremely amenable.
 
 
-\section{Limits of other Matrix group families are Levy groups too}\label{sec:mySec}\FlorianSagt{rename}
+%\section{Limits of other Matrix group families are Levy groups too}\label{sec:mySec}\FlorianSagt{rename}
+\section{Symplectic Groups and Extreme Amenability}\label{sec:mySec}
 %When studying matrices it is often useful to look at the corresponding linear maps of a suitable vector space. In the case of orthogonal, symplectic, or unitary matrices these are linear maps from the vector space to itself preserving an orthogonal, symplectic, or unitary form respectively. Formally, the symplectic group $\Sp_n(q)$ is isomorphic to $\Aut(V,\omega)$ from Corollary \ref{cor:structureSympl} it follows that $\Sp_n(q)$ is well defined, where $V$ is an $n$-dimensional $F(q)$ vector space and $\omega$ is a symplectic form.
 
 %As we have to handle only finite dimensional vector spaces here a lot of nice theorems hold. \dots
@@ -295,8 +296,7 @@ Let $G=\Aut(V,\omega)$ be a symplectic, unitary, or orthogonal group equipped wi
 \begin{proof}
 Applying Theorem \ref{thm:suoBoundDiam} multiple times gives us a sequence of subgroups $\{e\}=G_0\leq \dots\leq G_m=G$ such that $m\leq n$ and the diameter of $G_i/G_{i-1}$ is at most $\frac{8}{n}$. Now we can use Corollary \ref{cor:meaContractionGroups} to obtain the desired upper bound.
 \end{proof}
-
-
+Observe that as in Section \ref{sec:thom} we can apply Lemma \ref{lem:lengthLowerBound} and obtain $n^{-\frac{1}{2}}$ as a lower bound for the length of $G$.
 Now we can prove the main result of this thesis.
 \begin{corollary}
 Let $(V_0,\omega_0)\subset (V_1,\omega_1)\subset \dots$ be a sequence of $\F_q$ vector spaces such that $(V_n,\omega_n)$ is a symplectic, unitary, or orthogonal space of dimension $2^n$ and $\omega_{n+1}|_{V_n}=\omega_n$ for all $n\in\N$. Let $G_{n}=\Aut(V_n,\omega_n)$ equipped with the normalized rank metric $d_n$ and the normalized counting measure $\mu_n$. 
@@ -306,7 +306,8 @@ Then \[\lim_{n\to\infty}\alpha_{(G_n,d_n,\mu_n)}(\varepsilon)=0\] for all $\vare
 Immediate from Corollary \ref{cor:suoConcentrates} and Theorem \ref{thm:LevyImpliesExAm}.
 \end{proof}
 
-\section{Application}\label{sec:ramsey}\FlorianSagt{rename}
+%\section{Application}\label{sec:ramsey}\FlorianSagt{rename}
+\section{Symplectic Groups and Ramsey Theory}\label{sec:ramsey}
 In this section we will use the upper bound obtained for the length of symplectic, unitary, and orthogonal groups to deduce a Ramsey theoretic result. %The proof is the same as in \cite{thom} we just replaced $\SL_n(q)$ by a symplectic, unitary, or orthogonal group.
 As in Section \ref{sec:mySec} the results from this section are already shown in \cite{thom} for special linear groups. 
 
