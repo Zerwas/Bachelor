@@ -91,7 +91,7 @@ Then the \define{limit} of $(G_n)_{n\in\N}$ is defined as
 \[\lim_{n\in\N} G_n:=\left(\bigsqcup_{n\in\N} G_n\right)\big/\sim.\]
 \end{definition}
 \begin{lemma}
-The sequence of metric groups $(G_n,d_n)_{n\in\N}$ induces a group structure and a metric $d$ on $G=\lim G_n$. 
+The sequence of metric groups $(G_n,d_n)_{n\in\N}$ induces a group structure and a bi-invariant metric $d$ on $G=\lim G_n$. 
 \end{lemma}
 \begin{proof}
 Note that $\psi_n\colon G_n\to G$, $\psi(g)=[g]$, is injective and \[G=\bigcup_{n\in\N}\psi_n(G_n).\]
@@ -106,9 +106,41 @@ For $[g], [h]\in G$ we can assume w.l.o.g. that $g,h\in G_n$ for some $n\in\N$. 
           (Gm) edge node[above] {$\psi_n$} (G);
 \end{tikzpicture}
 \end{center}
-Where $\varphi_{n,m}:=\varphi^{m-n}|_{G_n}$. Note that now the $\psi_n$ are isometric embeddings.
+Here $\varphi_{n,m}:=\varphi^{m-n}|_{G_n}$. Note that now the $\psi_n$ are isometric embeddings. Hence $d$ inherits all desired properties from the $d_n$'s. 
 \end{proof}
 
+Furthermore the metric and the group structure of $G$ interact nicely.
+\begin{definition}
+A group $G$ equipped with a topology is a \define{topological group} if 
+%\begin{itemize}
+the maps $G\times G\to G$, $(g,h)\mapsto gh$ and
+ $G\to G$, $g\mapsto g^{-1}$ are continuous. Here we use the product topology on $G\times G$.
+%\end{itemize}
+\end{definition}
+
+\begin{lemma}
+Let $(G_n)_{n\in\N}$, $G=\lim G_n$, and $d$ be as before. Then $G$ with the topology induced by $d$ is a topological group.
+\end{lemma}
+\begin{proof}
+Denote the neutral element of $G$ by $e$. First we show that the inverse is continuous. Let $\varepsilon>0$ and $g,h\in G$ with $d(g,h)<\varepsilon$. Then, by bi-invariance of $d$,
+\[d(g^{-1},h^{-1})=d(e,gh^{-1})=d(h,g)<\varepsilon.\]
+
+We use $d_\Sigma((g,h),(g',h')):=d(g,g')+d(h,h')$ as metric on $G\times G$. Let $\varepsilon>0$ and $g,g',h,h'\in G$ with $d_\Sigma((g,h),(g',h'))<\varepsilon$. Then
+\[d(gh,g'h')=d(gg'^{-1},h^{-1}h')\leq d(g,g'^{-1},e)+d(e,h^{-1}h')=d(g,g')+d(h,h')<\varepsilon.\]
+This yields the desired result.
+\end{proof}
+
+
+The group we are interested in is the metric completion of $\lim G_n$. 
+\begin{lemma}
+Let $G$ be a topological group with bi-invariant metric $d$. Then there a unique metric space $(\bar G,\bar d)$ containing $G$ such that $\bar G$ is complete and $G$ is dense in $\bar G$. Furthermore $\bar G$, with the group structure induced by $G$, is a topological group and $\bar d$ is still bi-invariant.
+\end{lemma}
+\begin{proof}
+Consider the set $G_C$ of Cauchy sequences in $G$. Define $\bar G:=G_C/\sim$, where two sequences $(g_n)_{n\in\N}$ and $(h_n)_{n\in\N}$ are equivalent if $\lim d(g_n,h_n)=0$. Furthermore $\bar d([(g_n)_{n\in\N}],[(h_n)_{n\in\N}]):=\lim d(g_n,h_n)$. It is well known that $(\bar G,\bar d)$ is the unique metric completion of $(G,d)$.
+%cite https://www.springer.com/de/book/9780387903125 chapter metric spaces
+
+\[[(g_n)_{n\in\N}]\cdot[(h_n)_{n\in\N}]:=[(g_nh_n)_{n\in\N}]\]
+\end{proof}
 %TODO Up Next metric completion
 
 Note that Hence we can define the inductive limit of $(G_n)_{n\in\N}$. We denote the metric completion of this limit by $\clim G_n$.%TODO definition environment
@@ -136,6 +168,13 @@ The sequence $(G_n)_{n\in\N}$ with the normalized rank metric induces a topology
 
 Now that we have $G:=\clim G_n$ as a topological group we can ask whether it is \define{extremely amenable}, i.e. every continuous action of $G$ on a compact topological space admits a fixed point. It is hard to show this directly, but we know from \cite{Levy} that every L\'evy group is extremely amenable. Hence we will show that for suitable $(G_n)_{n\in\N}$ the limit $G$ will be a L\'evy group.
 
+%\begin{theorem}\FlorianSagt{Not true :(}
+%If $\clim G_n$ is extremely amenable then $\lim G_n$ is also extremely amenable.
+%\end{theorem}
+%\begin{proof}
+%Every continuous action of $\lim G_n$ has a unique extension to an continuous action of $\clim G_n$. ... 
+%\end{proof}
+
 %This definition is quite hard to handle. Hence we will approach extreme amenability using L\'evy groups, as every  use the following useful theorem from \cite{levy}.
 Before we can define L\'evy groups we need the following definition.
 \begin{definition}
@@ -147,7 +186,7 @@ A family of mm-spaces $\boldsymbol{X}_n$ with diameter 1 is called a \define{L\'
 \[\alpha_{\boldsymbol{X}_n}(\varepsilon)\to 0\]
 for all $\varepsilon>0$.
 
-A topological space $\boldsymbol{X}$ is a \define{Polish space} if it is homeomorphic to a complete metric space that has a countable dense subset.
+A topological space $\boldsymbol{X}$ is a \define{Polish space} if the topology is induced by a metric such that $\boldsymbol{X}$ as a metric space is complete and has a countable dense subset.
 \end{definition}
 
 Now we can come back to groups.
