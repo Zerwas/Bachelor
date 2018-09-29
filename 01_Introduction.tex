@@ -159,7 +159,7 @@ Let $(G_n)_{n\in\N}$, $G=\lim G_n$, and $d$ be as before. Define the \define{clo
 By the previous lemma $\clim G_n$ is a topological group and a complete metric space with bi-invariant metric. 
 And $\clim G_n$ has another nice property. For this we need to introduce the well established notion of Polish spaces. A topological space $(X,\tau)$ is a \define{Polish space} if there is a metric $d$ on $X$ that induces the topology $\tau$ such that $(X,d)$ is complete and has a countable dense subset. A topological group is a \define{Polish group} if the underlying topological space is a Polish space.
 
-\begin{lemma}
+\begin{lemma}\label{lem:climIsPolish}
 We have that $\clim G_n$, seen as a topological group, is a Polish group.
 \end{lemma}
 \begin{proof}
@@ -195,43 +195,30 @@ The goal of this thesis is to show that for certain sequences $(G_n)_{n\in\N}$ w
 
 Before we can talk about L\'evy groups we need some more definitions. For an $\varepsilon>0$ and a metric space $(X,d)$ with an $A\subseteq X$, we define the \define{$\varepsilon$-neighborhood} of $A$ to be 
 \[N_\varepsilon(A):=\{x\in X\mid\exists y\in A.\  d(x,y)<\varepsilon\}.\]
+Note that $N_\varepsilon(A)$ is always an open set.
 \begin{definition}
-A \define{metric measure space} (mm-space) $\boldsymbol{X}$ is a triple $(X,d,\mu)$, where $d$ is a metric on the set $X$ and $\mu$ is a measure on the Borel $\sigma$-algebra induced by $d$. We will always assume that $\mu(X)=1$. 
-For any set $A\subseteq X$ denote the \define{$\varepsilon$-neighborhood} of $A$, i.e. $\{x\in X\mid\exists y\in A.\  d(x,y)<\varepsilon\}$, by $N_\varepsilon(A)$.%\FlorianSagt{definition ugly, use $d_A$?}
+A \define{metric measure space} (mm-space) $\boldsymbol{X}$ is a triple $(X,d,\mu)$, where $d$ is a metric on the set $X$ and $\mu$ is a measure on the Borel-$\sigma$-algebra induced by $d$. We will always assume that $\mu(X)=1$, i.e. that $\mu$ is a probability measure. 
 The \define{measure concentration function} of $\boldsymbol{X}$ is defined as 
-\[\alpha_{\boldsymbol{X}}(\varepsilon)=\sup\{1-\mu(N_\varepsilon(A))\mid A\subseteq X, \mu(A)\geq\frac{1}{2}\}.\]
-A family of mm-spaces $\boldsymbol{X}_n$ with diameter 1 is called a \define{L\'evy family} if 
-\[\alpha_{\boldsymbol{X}_n}(\varepsilon)\to 0\]
+\begin{align*}
+\alpha_{\boldsymbol{X}}\colon(0,\infty)\to[0,\frac{1}{2}]&&\text{with}&&\alpha_{\boldsymbol{X}}(\varepsilon)=\sup\{1-\mu(N_\varepsilon(A))\mid A\subseteq X, \mu(A)\geq\frac{1}{2}\}.
+\end{align*}
+A family of mm-spaces $(\boldsymbol{X}_n)_{n\in\N}$ with diameter 1 is called a \define{L\'evy family} if 
+\[\alpha_{\boldsymbol{X}_n}(\varepsilon)\to 0\ \text{ as $n\to\infty$}\]
 for all $\varepsilon>0$.
-
-A topological space $\boldsymbol{X}$ is a \define{Polish space} if the topology is induced by a metric such that $\boldsymbol{X}$ as a metric space is complete and has a countable dense subset.
 \end{definition}
 
 Now we can come back to groups.
 \begin{definition}\label{def:Levy}
-A \define{Polish group} $G$ is a topological group where the underlying topological space is a Polish space. A \define{L\'evy group} is a group $G$ equipped with a metric $d$, where
+A \define{L\'evy group} is a group $G$ equipped with a metric $d$, where
 \begin{itemize}
 \item $G$ with the topology induced by $d$ is a Polish group and
-\item there is a sequence $(G_n)_{n\in\N}$ of compact subgroups, such that $(G_n,d|_{G_n},\mu_n)_{n\in\N}$ is a L\'evy family. Here $\mu_n$ is the normalized Haar measure of $G_n$.\FlorianSagt{$\lim G_n$ dense in $G$?}
+\item there is an increasing sequence $(G_n)_{n\in\N}$ of compact subgroups, such that $\bigcup_{n\in\N} G_n$ is dense in $G$ and $(G_n,d|_{G_n},\mu_n)_{n\in\N}$ is a L\'evy family. Here $\mu_n$ is the normalized Haar measure of $G_n$.
 \end{itemize}  
 \end{definition}
-Note that, since $G_n$ is finite, the normalized Haar measure of $G_n$ is just the normalized counting measure.
-The following theorem from \cite[Theorem \textbf{4.1.3}]{Levy} %Theorem 4.1.3
-gives the desired connection to extreme amenability.
-\begin{theorem}\label{thm:LevyImpliesExAm}
-Every L\'evy group is extremely amenable.
-\end{theorem}
+%Note that, since $G_n$ is finite, the normalized Haar measure of $G_n$ is just the normalized counting measure.
 
-To apply this theorem to our setting we need the following lemma.
-\begin{lemma}
-Let $G_n\leq\GL_{2^n}(q)$ with the normalized rank metric $d_n$ and $G=\clim\limits_{n\to\infty} G_n$. Then $G$ equipped with the metric induced by $d_n$ is a Polish group. 
-\end{lemma}
-\begin{proof}
-By Lemma \ref{lem:GroupTopo} $G$ is already a topological group and by definition it is also a complete metric space. Furthermore, every $G_n$ is finite. Hence the inductive limit of the $G_n$ is a countable dense subset of $G$.
-\end{proof}
-
-Whether $G$ is also a L\'evy group depends on the particular choice of $(G_n)_{n\in\N}$. 
-To show that for certain sequences $G$ will be a L\'evy group, we will bound $\alpha_{G_n}(\varepsilon)$ in terms of $n$ and $\varepsilon$ and show that this bound converges to 0 as $n$ tends to infinity. 
+Whether $G=\clim G_n$ is a L\'evy group depends on the particular choice of $(G_n)_{n\in\N}$. We have already seen in Lemma \ref{lem:climIsPolish} that $G$ is always a Polish group but the second condition is not so easy to prove.
+To show that for certain sequences, $G$ is a L\'evy group, we will use $(G_n)_{n\in\N}$ as increasing sequence (or $(\psi_n(G_n))_{n\in\N}$ to be precise). Note that $G_n$ is finite and therefore compact. Furthermore the normalized Haar measure $\mu_n$ on $G_n$ is just the normalized counting measure. We will bound $\alpha_{(G_n,d_n,\mu_n)}(\varepsilon)$ in terms of $n$ and $\varepsilon$ and show that this bound converges to 0 as $n$ tends to infinity. 
 The next section develops the methods necessary to obtain this upper bound.
 %To do this we need methods which are developed in the next section.
 
