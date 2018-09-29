@@ -31,7 +31,7 @@ This thesis is structured as follows. In Section \ref{sec:generalDefns}, we will
 
 %\section{Limits of Matrix Groups and Extreme Amenability}\label{sec:generalDefns}
 \section{Preliminaries}\label{sec:generalDefns}
-\subsection*{LAAG}
+%\subsection*{LAAG}
 Let $q$ be a prime power and $\F_q$ be the unique $q$ element field. Denote the the general linear group over $\F_q$ by $\GL_n(q)$. We can equip $\GL_n(q)$ with the (normalized) \define{rank-metric} $d(g,h):=\frac{1}{n}\rank(g-h)$, where $r(g)$ is the rank of $g$ or equivalently the dimension of the image of $g$. 
 %The group $G$, equipped with the topology induced by $d$, is a topological group.
 
@@ -109,6 +109,7 @@ For $[g], [h]\in G$ we can assume w.l.o.g. that $g,h\in G_n$ for some $n\in\N$. 
 Here $\varphi_{n,m}:=\varphi^{m-n}|_{G_n}$. Note that now the $\psi_n$ are isometric embeddings. Hence $d$ inherits all desired properties from the $d_n$'s. 
 \end{proof}
 
+%\subsection*{Topo group}
 Furthermore the metric and the group structure of $G$ interact nicely.
 \begin{definition}
 A group $G$ equipped with a topology is a \define{topological group} if 
@@ -118,7 +119,7 @@ the maps $G\times G\to G$, $(g,h)\mapsto gh$ and
 %\end{itemize}
 \end{definition}
 
-\begin{lemma}
+\begin{lemma}\label{lem:limIsTopo}
 Let $(G_n)_{n\in\N}$, $G=\lim G_n$, and $d$ be as before. Then $G$ with the topology induced by $d$ is a topological group.
 \end{lemma}
 \begin{proof}
@@ -132,21 +133,47 @@ This yields the desired result.
 
 
 The group we are interested in is the metric completion of $\lim G_n$. 
-\begin{lemma}
+\begin{lemma}\label{lem:climIsTopo}
 Let $G$ be a topological group with bi-invariant metric $d$. Then there a unique metric space $(\bar G,\bar d)$ containing $G$ such that $\bar G$ is complete and $G$ is dense in $\bar G$. Furthermore $\bar G$, with the group structure induced by $G$, is a topological group and $\bar d$ is still bi-invariant.
 \end{lemma}
 \begin{proof}
 Consider the set $G_C$ of Cauchy sequences in $G$. Define $\bar G:=G_C/\sim$, where two sequences $(g_n)_{n\in\N}$ and $(h_n)_{n\in\N}$ are equivalent if $\lim d(g_n,h_n)=0$. Furthermore $\bar d([(g_n)_{n\in\N}],[(h_n)_{n\in\N}]):=\lim d(g_n,h_n)$. It is well known that $(\bar G,\bar d)$ is the unique metric completion of $(G,d)$.
 %cite https://www.springer.com/de/book/9780387903125 chapter metric spaces
 
-\[[(g_n)_{n\in\N}]\cdot[(h_n)_{n\in\N}]:=[(g_nh_n)_{n\in\N}]\]
+The group operation can be extended to $\bar G$ as follows:
+\[[(g_n)_{n\in\N}]\cdot[(h_n)_{n\in\N}]:=[(g_nh_n)_{n\in\N}].\]
+It is clear from the definition that $\bar d$ is also bi-invariant. Next we show that $\bar G$ is still a topological group. 
+%Observe that for any $\varepsilon>0$ and $[(g_n)_{n\in\N}]\in\bar G$ we can assume w.l.o.g. that $\sup\{d(g_n,g_m)\mid n,m\in\N\}<\varepsilon$. Using this the proof is nearly the same as in Lemma \ref{lem:limIsTopo}. 
+The proof is very similar to the one of Lemma \ref{lem:limIsTopo}.
+Let $\varepsilon>0$ and $[(g_n)_{n\in\N}],[(h_n)_{n\in\N}]\in\bar G$ with $\bar d([(g_n)_{n\in\N}],[(h_n)_{n\in\N}])<\varepsilon$. Then
+\[\bar d([(g_n)_{n\in\N}]^{-1},[(h_n)_{n\in\N}]^{-1})=\lim_{n\to\infty} d(g_n^{-1},h_n^{-1})=\lim_{n\to\infty} d(g_n,h_n)<\varepsilon. \]
+
+Analogously, we obtain that the group operation is continuous.
+%For the group operation, let $[(g_n)_{n\in\N}], [(g'_n)_{n\in\N}], [(h_n)_{n\in\N}], [(h'_n)_{n\in\N}]\in\bar G$ with
 \end{proof}
 %TODO Up Next metric completion
 
-Note that Hence we can define the inductive limit of $(G_n)_{n\in\N}$. We denote the metric completion of this limit by $\clim G_n$.%TODO definition environment
-\subsection*{Topo group}
-\subsection*{Levy}
+\begin{definition}
+Let $(G_n)_{n\in\N}$, $G=\lim G_n$, and $d$ be as before. Define the \define{closure of the limit of $(G_n)_{n\in\N}$}, denoted by $\clim G_n$, as the metric completion of $(G,d)$.
+\end{definition}
+By the previous lemma $\clim G_n$ is a topological group and a complete metric space with bi-invariant metric. 
+And $\clim G_n$ has another nice property. For this we need to introduce the well established notion of Polish spaces. A topological space $(X,\tau)$ is a \define{Polish space} if there is a metric $d$ on $X$ that induces the topology $\tau$ such that $(X,d)$ is complete and has a countable dense subset. A topological group is a \define{Polish group} if the underlying topological space is a Polish space.
 
+\begin{lemma}
+We have that $\clim G_n$, seen as a topological group, is a Polish group.
+\end{lemma}
+\begin{proof}
+Obviously, $\lim G_n$ is countable and dense in $\clim G_n$. By definition $\clim G_n$ is also a complete metric space.
+\end{proof}
+
+\begin{definition}
+A topological group $G$ is \define{extremely amenable} if every continuous action of $G$ on a compact topological space admits a fixed point.
+\end{definition}
+
+The goal of this thesis is to show that for certain sequences $(G_n)_{n\in\N}$ we have that $\clim G_n$ is extremely amenable. It is hard to show this directly, but we know from \cite{Levy} that every L\'evy group (see Definition \ref{def:Levy}) is extremely amenable. Hence we will show that $\clim G_n$ is a L\'evy group instead.
+
+
+%\subsection*{Levy}
 
 %\begin{example}
 %Let us consider $G:=\clim_{n\to\infty}\GL_{2^n}(q)$. The elements in $G$ are limits of elements of the form
@@ -157,16 +184,7 @@ Note that Hence we can define the inductive limit of $(G_n)_{n\in\N}$. We denote
 %\end{pmatrix}$
 %\end{example}
 
-
-\begin{lemma}\label{lem:GroupTopo}
-The sequence $(G_n)_{n\in\N}$ with the normalized rank metric induces a topology on $\clim G_n$.
-\end{lemma}
-%\begin{proof}
-%The bi-invariance of $d$ is preserved by the limit and the completion. ... 
-%\end{proof}
 %TODO clim does not depend on the series
-
-Now that we have $G:=\clim G_n$ as a topological group we can ask whether it is \define{extremely amenable}, i.e. every continuous action of $G$ on a compact topological space admits a fixed point. It is hard to show this directly, but we know from \cite{Levy} that every L\'evy group is extremely amenable. Hence we will show that for suitable $(G_n)_{n\in\N}$ the limit $G$ will be a L\'evy group.
 
 %\begin{theorem}\FlorianSagt{Not true :(}
 %If $\clim G_n$ is extremely amenable then $\lim G_n$ is also extremely amenable.
@@ -175,8 +193,8 @@ Now that we have $G:=\clim G_n$ as a topological group we can ask whether it is 
 %Every continuous action of $\lim G_n$ has a unique extension to an continuous action of $\clim G_n$. ... 
 %\end{proof}
 
-%This definition is quite hard to handle. Hence we will approach extreme amenability using L\'evy groups, as every  use the following useful theorem from \cite{levy}.
-Before we can define L\'evy groups we need the following definition.
+Before we can talk about L\'evy groups we need some more definitions. For an $\varepsilon>0$ and a metric space $(X,d)$ with an $A\subseteq X$, we define the \define{$\varepsilon$-neighborhood} of $A$ to be 
+\[N_\varepsilon(A):=\{x\in X\mid\exists y\in A.\  d(x,y)<\varepsilon\}.\]
 \begin{definition}
 A \define{metric measure space} (mm-space) $\boldsymbol{X}$ is a triple $(X,d,\mu)$, where $d$ is a metric on the set $X$ and $\mu$ is a measure on the Borel $\sigma$-algebra induced by $d$. We will always assume that $\mu(X)=1$. 
 For any set $A\subseteq X$ denote the \define{$\varepsilon$-neighborhood} of $A$, i.e. $\{x\in X\mid\exists y\in A.\  d(x,y)<\varepsilon\}$, by $N_\varepsilon(A)$.%\FlorianSagt{definition ugly, use $d_A$?}
@@ -190,7 +208,7 @@ A topological space $\boldsymbol{X}$ is a \define{Polish space} if the topology 
 \end{definition}
 
 Now we can come back to groups.
-\begin{definition}
+\begin{definition}\label{def:Levy}
 A \define{Polish group} $G$ is a topological group where the underlying topological space is a Polish space. A \define{L\'evy group} is a group $G$ equipped with a metric $d$, where
 \begin{itemize}
 \item $G$ with the topology induced by $d$ is a Polish group and
