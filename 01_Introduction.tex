@@ -4,12 +4,12 @@
 The objects studied in this thesis are groups of matrices over some finite field.
 Given such group, we can equip it with the normalized rank metric and the normalized Haar measure to obtain a \emph{metric measure space}. Observe that, since matrix groups over finite fields are again finite, the normalized Haar measure is just the normalized counting measure.
 For some sequences of matrix groups of increasing size there is a well defined limit. For example, this is the case for the special linear group of $(n\times n)$-matrices $\SL_n$.
-Carderi and Thom  showed in \cite{thom} that a suitable limit of $\SL_n$ is, as a topological group, \emph{extremely amenable}. The goal of this thesis is to generalize this result to limits of other families of matrix groups, namely groups of \define{symplectic}, \define{unitary}, and \define{orthogonal matrices}.  
+Carderi and Thom  showed in \cite{thom} that a suitable limit of $\SL_n$ is, as a topological group, \emph{extremely amenable}. The goal of this thesis is to generalize this result to limits of other families of matrix groups, namely groups of \define{symplectic}, \define{unitary}, and \define{orthogonal} matrices.  
 These matrices can be seen as \define{Isometries}, i.e. bijective linear maps from a vector space into itself preserving a symplectic, unitary, or orthogonal form.
 The general strategy to prove extreme amenability for limits of families of these groups will be as follows: given such a family $(G_n)_{n\in\N}$ of finite matrix groups considered as metric measure spaces. We apply a consequence of Azema's inequality \cite{Azema} to obtain an upper bound for the \emph{measure concentration function} of $G_n$ in terms of the \define{length} of $G_n$.
 As the upper bounds converge to zero we conclude that $(G_n)_{n\in\N}$ is a \emph{L\'{e}vy family}, making their limit a \emph{L\'{e}vy group}. Finally, we know from \cite{Levy} that every L\'{e}vy group is extremely amenable.
 
-This thesis is structured as follows. In Section \ref{sec:generalDefns}, we will give a short introduction on how to view matrix groups as metric measure spaces and how to define a limit of a sequence of matrix groups. Furthermore we will introduce the notion of extreme amenability and its connection to L\'evy groups. In Section \ref{sec:azema}, we will briefly introduce the notion of \define{conditional expectation} to show Azema's inequality. Next we will introduce an important invariant of metric measure spaces, namely their \define{length}. Azema's inequality will allow us to connect the length of a metric measure space with their measure concentration function. This connection is used in Section \ref{sec:thom} to show that the limit of $\SL_n$ is extremely amenable. To generalize this result we give a proof of Witt's lemma, which says that isometries between subspaces can be extended to the whole space, in Section \ref{sec:witt}. In Section \ref{sec:mySec}, we generalize the result from Section \ref{sec:thom} to symplectic, unitary, and orthogonal groups. Finally, in Section \ref{sec:ramsey}, a Ramsey theoretic result from \cite{thom} about $\SL_n$ is generalized to symplectic, unitary, and orthogonal groups.
+This thesis is structured as follows. In Section \ref{sec:generalDefns}, we will give a short introduction on how to view matrix groups as metric measure spaces and how to define a limit of a sequence of matrix groups. Furthermore we will introduce the notion of extreme amenability and its connection to L\'evy groups. In Section \ref{sec:azema}, we will briefly introduce the notion of \define{conditional expectation} to show Azema's inequality. Next we will introduce an important invariant of metric measure spaces, namely their \define{length}. Azema's inequality will allow us to connect the length of a metric measure space with its measure concentration function. This connection is used in Section \ref{sec:thom} to show that the limit of $\SL_n$ is extremely amenable. To generalize this result we give a proof of Witt's lemma, which says that isometries between subspaces can be extended to the whole space, in Section \ref{sec:witt}. In Section \ref{sec:mySec}, we generalize the result from Section \ref{sec:thom} to symplectic, unitary, and orthogonal groups. Finally, in Section \ref{sec:ramsey}, a Ramsey theoretic result from \cite{thom} about $\SL_n$ is generalized to symplectic, unitary, and orthogonal groups.
 
 %Define limit of $G_n$
 
@@ -32,7 +32,7 @@ This thesis is structured as follows. In Section \ref{sec:generalDefns}, we will
 %\section{Limits of Matrix Groups and Extreme Amenability}\label{sec:generalDefns}
 \section{Preliminaries}\label{sec:generalDefns}
 %\subsection*{LAAG}
-Let $q$ be a prime power and $\F_q$ be the unique $q$ element field. Denote the the general linear group over $\F_q$ by $\GL_n(q)$. We can equip $\GL_n(q)$ with the (normalized) \define{rank-metric} $d(g,h):=\frac{1}{n}\rank(g-h)$, where $r(g)$ is the rank of $g$ or equivalently the dimension of the image of $g$. 
+Let $q$ be a prime power and $\F_q$ be the unique $q$ element field. Denote the general linear group over $\F_q$ by $\GL_n(q)$. We can equip $\GL_n(q)$ with the (normalized) \define{rank-metric} $d(g,h):=\frac{1}{n}\rank(g-h)$, where $\rank(g)$ is the rank of $g$ or equivalently if we view $g$ as a linear map from a vector space into itself then $\rank(g)$ is the dimension of the image of $g$. 
 %The group $G$, equipped with the topology induced by $d$, is a topological group.
 
 \begin{lemma}
@@ -80,10 +80,10 @@ h &0\\
 0&h
 \end{pmatrix}).
 \end{align*}
-Clearly, $\varphi_n$ is also a homomorphism.
+Clearly, $\varphi_n$ is also an injective homomorphism.
 \end{proof}
 
-Let $\varphi\colon\bigsqcup_{n\in\N} G_n\to\bigsqcup_{n\in\N} G_n$ with $\varphi|_{G_n}=\varphi_n$.
+Define the function $\varphi\colon\bigsqcup_{n\in\N} G_n\to\bigsqcup_{n\in\N} G_n$ with $\varphi|_{G_n}:=\varphi_n$.
 %Using $\varphi$ we can define the limit of $(G_n)_{n\in\N}$.
 \begin{definition}
 Let $\sim$ be the equivalence relation on $\bigsqcup_{n\in\N} G_n$, defined by $g\sim h$ iff there are $m,n\in\N$ such that $\varphi^n(g)=\varphi^m(h)$.
@@ -94,19 +94,20 @@ Then the \define{limit} of $(G_n)_{n\in\N}$ is defined as
 The sequence of metric groups $(G_n,d_n)_{n\in\N}$ induces a group structure and a bi-invariant metric $d$ on $G=\lim G_n$. 
 \end{lemma}
 \begin{proof}
-Note that $\psi_n\colon G_n\to G$, $\psi(g)=[g]$, is injective and \[G=\bigcup_{n\in\N}\psi_n(G_n).\]
-For $[g], [h]\in G$ we can assume w.l.o.g. that $g,h\in G_n$ for some $n\in\N$. Hence we define $[g]\cdot[h]:=[gh]$ and $d([g],[h]):=d_n(g,h)$. This is well defined since the following diagram commutes for all $n\leq m$.
+Note that $\psi_n\colon G_n\to G$, $\psi_n(g)=[g]$, is injective and \[G=\bigcup_{n\in\N}\psi_n(G_n).\]
+For $[g], [h]\in G$ we can assume w.l.o.g. that $g,h\in G_n$ for some $n\in\N$. Hence we define $[g]\cdot[h]:=[gh]$ and $d([g],[h]):=d_n(g,h)$. Both functions are well defined since the following diagram commutes for all $n\leq m$.
 \begin{center}
 \begin{tikzpicture}[node distance=1.8cm]
 \node (G) {$G$};
 \node[left of=G] (Gm) {$G_m$};
 \node[below of=Gm] (Gn) {$G_n$};
 \path[right hook-latex'] (Gn) edge node[below right] {$\psi_n$} (G)
-          (Gn) edge node[left] {$\varphi_{n,m}$} (Gm)
+          (Gn) edge node[left] {$\varphi^{m-n}|_{G_n}$} (Gm)
           (Gm) edge node[above] {$\psi_n$} (G);
 \end{tikzpicture}
 \end{center}
-Here $\varphi_{n,m}:=\varphi^{m-n}|_{G_n}$. Note that now the $\psi_n$ are isometric embeddings. Hence $d$ inherits all desired properties from the $d_n$'s. 
+%Here $\varphi_{n,m}:=\varphi^{m-n}|_{G_n}$. 
+Note that now the $\psi_n$'s are isometric embeddings. Hence $d$ inherits all desired properties from the $d_n$'s. 
 \end{proof}
 
 %\subsection*{Topo group}
@@ -127,7 +128,7 @@ Denote the neutral element of $G$ by $e$. First we show that the inverse is cont
 \[d(g^{-1},h^{-1})=d(e,gh^{-1})=d(h,g)<\varepsilon.\]
 
 We use $d_\Sigma((g,h),(g',h')):=d(g,g')+d(h,h')$ as metric on $G\times G$. Let $\varepsilon>0$ and $g,g',h,h'\in G$ with $d_\Sigma((g,h),(g',h'))<\varepsilon$. Then
-\[d(gh,g'h')=d(gg'^{-1},h^{-1}h')\leq d(g,g'^{-1},e)+d(e,h^{-1}h')=d(g,g')+d(h,h')<\varepsilon.\]
+\[d(gh,g'h')=d(g'^{-1}g,h'h^{-1})\leq d(g'^{-1}g,e)+d(e,h'h^{-1})=d(g,g')+d(h,h')<\varepsilon.\]
 This yields the desired result.
 \end{proof}
 
@@ -137,7 +138,7 @@ The group we are interested in is the metric completion of $\lim G_n$.
 Let $G$ be a topological group with bi-invariant metric $d$. Then there a unique metric space $(\bar G,\bar d)$ containing $G$ such that $\bar G$ is complete and $G$ is dense in $\bar G$. Furthermore $\bar G$, with the group structure induced by $G$, is a topological group and $\bar d$ is still bi-invariant.
 \end{lemma}
 \begin{proof}
-Consider the set $G_C$ of Cauchy sequences in $G$. Define $\bar G:=G_C/\sim$, where two sequences $(g_n)_{n\in\N}$ and $(h_n)_{n\in\N}$ are equivalent if $\lim d(g_n,h_n)=0$. Furthermore $\bar d([(g_n)_{n\in\N}],[(h_n)_{n\in\N}]):=\lim d(g_n,h_n)$. It is well known that $(\bar G,\bar d)$ is the unique metric completion of $(G,d)$.
+Consider the set $G_C$ of Cauchy sequences in $G$. Define $\bar G:=G_C/\sim$, where two Cauchy sequences $(g_n)_{n\in\N}$ and $(h_n)_{n\in\N}$ are equivalent if $\lim d(g_n,h_n)=0$. Furthermore define $\bar d([(g_n)_{n\in\N}],[(h_n)_{n\in\N}]):=\lim d(g_n,h_n)$. It is well known that $(\bar G,\bar d)$ is the unique metric completion of $(G,d)$.
 %cite https://www.springer.com/de/book/9780387903125 chapter metric spaces
 
 The group operation can be extended to $\bar G$ as follows:
@@ -157,7 +158,10 @@ Analogously, we obtain that the group operation is continuous.
 Let $(G_n)_{n\in\N}$, $G=\lim G_n$, and $d$ be as before. Define the \define{closure of the limit of $(G_n)_{n\in\N}$}, denoted by $\clim G_n$, as the metric completion of $(G,d)$.
 \end{definition}
 By the previous lemma $\clim G_n$ is a topological group and a complete metric space with bi-invariant metric. 
-And $\clim G_n$ has another nice property. For this we need to introduce the well established notion of Polish spaces. A topological space $(X,\tau)$ is a \define{Polish space} if there is a metric $d$ on $X$ that induces the topology $\tau$ such that $(X,d)$ is complete and has a countable dense subset. A topological group is a \define{Polish group} if the underlying topological space is a Polish space.
+Additionally $\clim G_n$ has another nice property. For this we need to introduce the well established notion of Polish spaces. 
+\begin{definition}
+A topological space $(X,\tau)$ is a \define{Polish space} if there is a metric $d$ on $X$ that induces the topology $\tau$ such that $(X,d)$ is complete and has a countable dense subset. A topological group is a \define{Polish group} if the underlying topological space is a Polish space.
+\end{definition}
 
 \begin{lemma}\label{lem:climIsPolish}
 We have that $\clim G_n$, seen as a topological group, is a Polish group.
@@ -193,14 +197,14 @@ The goal of this thesis is to show that for certain sequences $(G_n)_{n\in\N}$ w
 %Every continuous action of $\lim G_n$ has a unique extension to an continuous action of $\clim G_n$. ... 
 %\end{proof}
 
-Before we can talk about L\'evy groups we need some more definitions. For an $\varepsilon>0$ and a metric space $(X,d)$ with an $A\subseteq X$, we define the \define{$\varepsilon$-neighborhood} of $A$ to be 
+But before we can talk about L\'evy groups we need some more definitions. For an $\varepsilon>0$, a metric space $(X,d)$, and an $A\subseteq X$, we define the \define{$\varepsilon$-neighborhood} of $A$ to be 
 \[N_\varepsilon(A):=\{x\in X\mid\exists y\in A.\  d(x,y)<\varepsilon\}.\]
 Note that $N_\varepsilon(A)$ is always an open set.
 \begin{definition}
-A \define{metric measure space} (mm-space) $\boldsymbol{X}$ is a triple $(X,d,\mu)$, where $d$ is a metric on the set $X$ and $\mu$ is a measure on the Borel-$\sigma$-algebra induced by $d$. We will always assume that $\mu(X)=1$, i.e. that $\mu$ is a probability measure. 
-The \define{measure concentration function} of $\boldsymbol{X}$ is defined as 
+A \define{metric measure space} (mm-space) $\boldsymbol{X}$ is a triple $(X,d,\mu)$, where $d$ is a metric on the set $X$ and $\mu$ is a measure on the Borel-$\sigma$-algebra induced by $d$. We will always assume that $\mu(X)=1$, i.e. that $\mu$ is a probability measure.  
+The \define{measure concentration function} $\alpha_{\boldsymbol{X}}\colon(0,\infty)\to[0,\frac{1}{2}]$ of $\boldsymbol{X}$ is defined as 
 \begin{align*}
-\alpha_{\boldsymbol{X}}\colon(0,\infty)\to[0,\frac{1}{2}]&&\text{with}&&\alpha_{\boldsymbol{X}}(\varepsilon)=\sup\{1-\mu(N_\varepsilon(A))\mid A\subseteq X, \mu(A)\geq\frac{1}{2}\}.
+\alpha_{\boldsymbol{X}}(\varepsilon)=\sup\{1-\mu(N_\varepsilon(A))\mid A\subseteq X\ \text{measurable}, \mu(A)\geq\frac{1}{2}\}.
 \end{align*}
 A family of mm-spaces $(\boldsymbol{X}_n)_{n\in\N}$ with diameter 1 is called a \define{L\'evy family} if 
 \[\alpha_{\boldsymbol{X}_n}(\varepsilon)\to 0\ \text{ as $n\to\infty$}\]
@@ -211,13 +215,13 @@ Now we can come back to groups.
 \begin{definition}\label{def:Levy}
 A \define{L\'evy group} is a group $G$ equipped with a metric $d$, where
 \begin{itemize}
-\item $G$ with the topology induced by $d$ is a Polish group and
+\item the group $G$ with the topology induced by $d$ is a Polish group and
 \item there is an increasing sequence $(G_n)_{n\in\N}$ of compact subgroups, such that $\bigcup_{n\in\N} G_n$ is dense in $G$ and $(G_n,d|_{G_n},\mu_n)_{n\in\N}$ is a L\'evy family. Here $\mu_n$ is the normalized Haar measure of $G_n$.
 \end{itemize}  
 \end{definition}
 %Note that, since $G_n$ is finite, the normalized Haar measure of $G_n$ is just the normalized counting measure.
 
-Whether $G=\clim G_n$ is a L\'evy group depends on the particular choice of $(G_n)_{n\in\N}$. We have already seen in Lemma \ref{lem:climIsPolish} that $G$ is always a Polish group but the second condition is not so easy to prove.
+Whether $G=\clim G_n$ is a L\'evy group depends on the particular choice of the sequence $(G_n)_{n\in\N}$. We have already seen in Lemma \ref{lem:climIsPolish} that $G$ is always a Polish group. But the second condition is not so easy to prove.
 To show that for certain sequences, $G$ is a L\'evy group, we will use $(G_n)_{n\in\N}$ as increasing sequence (or $(\psi_n(G_n))_{n\in\N}$ to be precise). Note that $G_n$ is finite and therefore compact. Furthermore the normalized Haar measure $\mu_n$ on $G_n$ is just the normalized counting measure. We will bound $\alpha_{(G_n,d_n,\mu_n)}(\varepsilon)$ in terms of $n$ and $\varepsilon$ and show that this bound converges to 0 as $n$ tends to infinity. 
 The next section develops the methods necessary to obtain this upper bound.
 %To do this we need methods which are developed in the next section.
