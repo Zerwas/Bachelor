@@ -1,5 +1,5 @@
 \section{Azema's Inequality and Measure Concentration}\label{sec:azema}\FlorianSagt{remove page break}
-In this section we will prove Azema's inequality and as a consequence, we will obtain an upper bound for the measure concentration function. As the next results rely heavily on stochastic methods we will briefly introduce the necessary notions. Since the $G_n$ are all finite and equipped with the normalized counting measure we will only consider \define{probability spaces} $(X,\Sigma,\mu)$, where $X$ is finite, $\Sigma$ is a $\sigma$-algebra over $X$, and $\mu(A)=|A|/|X|$ for $A\subseteq X$. In this section we will roughly follow Section 3.2 from \cite{Azema}. Most of the statements presented in this section hold in a more general setting. Note that $\Sigma$ has a very nice representation.%Note that $\Sigma$ is the smallest $\sigma$-algebra containing $A_1,\dots,A_n$, where $$ 
+In this section we will prove Azema's inequality and as a consequence, we will obtain an upper bound for the measure concentration function in terms of an invariant of mm-spaces called the length. As the next results rely heavily on stochastic methods we will briefly introduce the necessary notions. Since the $G_n$ are all finite and equipped with the normalized counting measure we will only consider \define{probability spaces} $(X,\Sigma,\mu)$, where $X$ is finite, $\Sigma$ is a $\sigma$-algebra over $X$, and $\mu(A)=|A|/|X|$ for $A\subseteq X$. In this section we will roughly follow Section 3.2 from \cite{Azema}. Most of the statements presented in this section hold in a more general setting. Note that $\Sigma$ has a very nice representation.%Note that $\Sigma$ is the smallest $\sigma$-algebra containing $A_1,\dots,A_n$, where $$ 
 
 \begin{lemma}
 Let $\Sigma$ be a $\sigma$-algebra over a finite set $X$ and $A_1,\dots,A_n$ be the minimal nonempty sets in $\Sigma$. Then $A_1,\dots,A_n$ is a partition of $X$ and $\Sigma$ is the smallest $\sigma$-algebra containing $A_1,\dots,A_n$.
@@ -9,14 +9,22 @@ First we show that $A_1,\dots,A_n$ is a  partition of $X$. Since $A_i\cap A_j\in
 
 For $A\in\Sigma$ we have, again by minimality, that $A\cap A_i$ is either $A_i$ or $\emptyset$. Therefore $A$ can be written as a union of $A_i$'s.
 \end{proof}
-Note that it follows from the proof that any $A\in\Sigma$ can be written as $\bigcup_{i\in I}A_i$ for a suitable $I\subseteq\{1,\dots,n\}$. This lemma allows us to use partitions and $\sigma$-algebras interchangeably. We will denote the partition corresponding to $\Sigma$ by $A_1,\dots,A_n$, for $\Sigma'$ we will use $A'_1,\dots,A'_{n'}$, etc. The next definition is simplified a lot by only considering finite $X$.
+Note that it follows from the proof that any $A\in\Sigma$ can be written as $\bigcup_{i\in I}A_i$ for a suitable set $I\subseteq\{1,\dots,n\}$. This lemma allows us to use partitions and $\sigma$-algebras interchangeably. We will denote the partition corresponding to $\Sigma$ by $A_1,\dots,A_n$, for $\Sigma'$ we will use $B_1,\dots,B_{m}$.
+\begin{lemma}\label{lem:measurabilityForm}
+Let $f\colon X\to\R$ be a $\Sigma$-measurable (measurable for short) function. Then there are $f_1,\dots,f_n\in\R$ such that $f=\sum_{i=1}^{n}f_i\cdot\mathbb{1}_{A_i}$.
+\end{lemma}
+\begin{proof}
+For all $c\in\R$ the set $\{x\in X\mid f(x)=c\}$ is in $\Sigma$ and therefore a union of $A_i$'s. This already yields the lemma.
+%It suffices to show that for any $A_i$ we have that $f|_{A_i}$ is constant. Assume it is not and let $a,b\in f(A_i)$ with $a\not=b$. Let $\varepsilon>0$ such that $b\notin N_\varepsilon(a)$. Then 
+\end{proof}
+
+The next definition is simplified a lot by only considering finite $X$.
 
 \begin{definition}
 Let $(X,\Sigma,\mu)$ be a finite probability space, $f\colon X\to \R$ be a measurable function, and $\Sigma'$ be a sub-$\sigma$-algebra of $\Sigma$. Then the \define{conditional expectation} of $f$ with respect to $\Sigma'$ is defined as
-\[\E(f\mid \Sigma'):=\sum_{i=1}^{n'}\E(f\mid A'_i)\cdot \mathbb{1}_{A'_i}.\]
+\[\E(f\mid \Sigma'):=\sum_{i=1}^{m}\E(f\mid B_i)\cdot \mathbb{1}_{B_i}.\]
 \end{definition}
 
-%TODO define measurability $f=sum f_i*1_A_i$
 
 One often thinks of $\Sigma'$ as the available information, a finer partition means more information. The conditional expectation $\E(f\mid \Sigma')$ is the best approximation of $f$ given only the information from $\Sigma'$. 
 With this intuition the statements from the following lemma are not surprising. 
@@ -30,28 +38,26 @@ Let $(X,\Sigma,\mu)$ be a finite probability space, $f,g\colon X\to \R$ be measu
 \end{lemma}
 \begin{proof}
 To i): If $f\leq g$, then
-\[\E(f\mid \Sigma')=\sum_{i=1}^n\E(f\mid A'_i)\cdot \mathbb{1}_{A'_i}\leq \sum_{i=1}^n\E(g\mid A'_i)\cdot \mathbb{1}_{A'_i}=\E(g\mid \Sigma').\]
+\[\E(f\mid \Sigma')=\sum_{i=1}^m\E(f\mid B_i)\cdot \mathbb{1}_{B_i}\leq \sum_{i=1}^m\E(g\mid B_i)\cdot \mathbb{1}_{B_i}=\E(g\mid \Sigma').\]
 
 
-To ii): Let $h\colon X\to\R$ be $\Sigma'$-measurable function, then $h=\sum_{i=1}^{n'}h_i\mathbb{1}_{A'_i}$. Now 
+To ii): Let $h\colon X\to\R$ be $\Sigma'$-measurable function, then, by Lemma \ref{lem:measurabilityForm}, $h$ is of the form $\sum_{i=1}^{m}h_i\cdot \mathbb{1}_{B_i}$. Now 
 \begin{align*}
-\E(h f\mid\Sigma')&=\sum_{i=1}^{n'}\E(hf\mid A'_i)\mathbb{1}_{A'_i}\\
-&=\sum_{i=1}^{n'}h_i\E(f\mid A'_i)\mathbb{1}_{A'_i}\\
+\E(h f\mid\Sigma')&=\sum_{i=1}^{m}\E(hf\mid B_i)\cdot\mathbb{1}_{B_i}\\
+&=\sum_{i=1}^{m}h_i\cdot\E(f\mid B_i)\cdot\mathbb{1}_{B_i}\\
 &=h\cdot\E(f\mid\Sigma').
 \end{align*}
 
-To iii): Note that $\E(\E(f\mid \Sigma')\mid A')=\E(f\mid A')$ for all $A'\in\Sigma'$. Hence
+To iii): Let $C_1,\dots,C_k$ be the partition corresponding to $\Sigma''$. Furthermore note that $\E(\E(f\mid \Sigma')\mid B)=\E(f\mid B)$ for all $B\in\Sigma'$. Hence
 \begin{align*}
-\E(\E(f\mid \Sigma')\mid\Sigma'')&=\sum_{i=1}^{n''}\E(\E(f\mid \Sigma')\mid A''_i)\cdot\mathbb{1}_{A''_i}\\
-&=\sum_{i=1}^{n''}\E(f\mid A''_i)\cdot\mathbb{1}_{A''_i}\tag{$A''_i\in\Sigma'$}\\
+\E(\E(f\mid \Sigma')\mid\Sigma'')&=\sum_{i=1}^{k}\E(\E(f\mid \Sigma')\mid C_i)\cdot\mathbb{1}_{C_i}\\
+&=\sum_{i=1}^{k}\E(f\mid C_i)\cdot\mathbb{1}_{C_i}\tag{$C_i\in\Sigma'$}\\
 &=\E(f\mid\Sigma'')\\
-&=\sum_{j=1}^{n''}\E(f\mid A''_j)\cdot\mathbb{1}_{A''_j}\cdot\sum_{i=1}^{n'}\mathbb{1}_{A'_i}\\
-&=\sum_{i=1}^{n'}\sum_{j=1}^{n''}\E(\E(f\mid A''_j)\mid A'_i)\cdot\mathbb{1}_{A''_j}\cdot\mathbb{1}_{A'_i}\\
-&=\sum_{i=1}^{n'}\sum_{j=1}^{n''}\E(\E(f\mid A''_j)\cdot\mathbb{1}_{A''_j}\mid A'_i)\cdot\mathbb{1}_{A'_i}\tag{by ii}\\
+&=\sum_{j=1}^{k}\E(f\mid C_j)\cdot\mathbb{1}_{C_j}\cdot\sum_{i=1}^{m}\mathbb{1}_{B_i}\\
+&=\sum_{i=1}^{m}\sum_{j=1}^{k}\E(\E(f\mid C_j)\mid B_i)\cdot\mathbb{1}_{C_j}\cdot\mathbb{1}_{B_i}\\
+&=\sum_{i=1}^{m}\sum_{j=1}^{k}\E(\E(f\mid C_j)\cdot\mathbb{1}_{C_j}\mid B_i)\cdot\mathbb{1}_{B_i}\tag{by ii}\\
 &=\E(\E(f\mid \Sigma'')\mid\Sigma').
 \end{align*}
-
-
 This concludes the proof.
 \end{proof}
 
@@ -65,7 +71,7 @@ This concludes the proof.
 %\end{itemize}
 %\end{definition}
 
-The following lemma might not seem very interesting, but changing the exponent from $x$ to $x^2$ is the very foundation for Azema's inequality.
+The following lemma might not seem very interesting, but changing the exponent from $x$ to $x^2$ is the crucial ingredient for the proof of Azema's inequality.
 \begin{lemma}\label{lem:exToex2} For all $x\in\R$
 \[e^{x}\leq x+e^{x^2}.\]
 \end{lemma} 
@@ -76,28 +82,29 @@ e^x\geq 1+2xe^{x^2}\text{ for all $x\leq 0$} &&\text{and}&& e^x\leq 1+2xe^{x^2}\
 \end{align*}
 As for $x=0$ both sides are again equal to 1 we can reduce the problem, by similar reasoning, to the question whether
 \[e^x\leq 2e^{x^2}+4x^2e^{x^2}\text{ for all $x\in\R$}.\]
-
+Showing this inequality comes down to a case study.
 \begin{itemize}
-\item For $x=0$ the terms reduce to $1\leq2$.
-\item For $x<0$ the left hand side is bounded by 1, while the right hand side is still larger that 2.
-\item For $1\leq x$ we have $x\leq x^2$ and the inequality holds trivially.
-\item For $0< x< 1$ note that the both sides are increasing. Hence the inequality holds for all $x$ with $e^x\leq 2$. Finally, $\ln2\geq\frac{1}{2}$ and therefore the right hand side with $x=\ln2$ evaluates to a number larger then $e$.  
+\item For $x\leq0$ the left side is bounded by 1, while the right side is larger than 2.
+\item For $0<x\leq\ln 2$ note that both sides are increasing. Furthermore the right side is at least 2.
+\item For $\ln2<x\leq1$ both sides are still increasing. Also, $\ln2\geq\frac{1}{2}$ and therefore the right side with $x=\ln2$ evaluates to a number larger then $e$.  
+\item For $1< x$ we have $x< x^2$ and the inequality holds trivially.
+%\item For $0< x< 1$ note that the both sides are increasing. Hence the inequality holds for all $x$ with $e^x\leq 2$. Finally, $\ln2\geq\frac{1}{2}$ and therefore the right hand side with $x=\ln2$ evaluates to a number larger then $e$.  
 \end{itemize}
 \end{proof}
 
-Before we will prove Azema's inequality let us introduce some useful notation. Whenever there is no danger of confusion we will abbreviate sets of the form
+Before we will prove Azema's inequality, let us introduce some useful notation. Whenever there is no danger of confusion we will abbreviate sets of the form
 \begin{align*}
 \{x\in X\mid \operatorname{Condition}(x)\text{ holds}\}&&\text{by}&&\{\operatorname{Condition}\}.
 \end{align*}
 For example $\{x\in X\mid f(x)= c\}$ becomes $\{f= c\}$.
 
 \begin{lemma}\label{lem:azema}[Azema's inequality]
-Let $(X,\Sigma,\mu)$ be a finite probability space, $f\colon X\to\R$ a measurable function, and $\{X\}=\Sigma_0\subseteq\dots\subseteq\Sigma_n=\Sigma$ a chain of sub-$\sigma$-algebras. Define $f_i:=\E(f\mid\Sigma_i)$ and $d_i:=f_i-f_{i-1}$. Then for every $\varepsilon\geq0$
+Let $(X,\Sigma,\mu)$ be a finite probability space, $f\colon X\to\R$ a measurable function, and $\{X,\emptyset\}=\Sigma_0\subseteq\dots\subseteq\Sigma_n=\Sigma$ a chain of sub-$\sigma$-algebras. Define $f_i:=\E(f\mid\Sigma_i)$ and $d_i:=f_i-f_{i-1}$. Then for every $\varepsilon\geq0$
 %\[\mu(\{x\in X\mid |f(x)-\mathbb{E}(f)|\geq c\})\leq 2\exp\left(-\frac{c^2}{4\sum_{i=1}^{n}\|d_i\|^2_\infty}\right)\]
 \[\mu(\{|f-\E(f)|\geq \varepsilon\})\leq 2\cdot\exp\left(-\frac{\varepsilon^2}{4\cdot\sum_{i=1}^{n}\|d_i\|^2_\infty}\right).\]
 \end{lemma}
 Note that $(f_i,\Sigma_i)_{0\leq i\leq n}$ is a discrete martingale. 
-\begin{proof} First, observe that $f_0=\E(f\mid \{X\})=\E(f)$ and $f_n=\E(f\mid\Sigma)=f$. Using a simple telescoping sum we obtain $f-\E(f)=d_1+\dots+d_n$. Therefore
+\begin{proof} First, observe that $f_0=\E(f\mid \{X,\emptyset\})=\E(f)$ and $f_n=\E(f\mid\Sigma)=f$. Using a simple telescoping sum we obtain $f-\E(f)=d_1+\dots+d_n$. Therefore
 \begin{align*}
 \mu(\{f-\E(f)\geq \varepsilon\})&=\mu(\{\sum_{i=1}^{n}d_i\geq  \varepsilon\})\\
 &=\mu(\{\lambda\cdot\sum_{i=1}^{n}d_i\geq \lambda \varepsilon\})\tag{for $\lambda>0$}\\
