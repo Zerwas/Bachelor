@@ -98,23 +98,26 @@ Before we will prove Azema's inequality, let us introduce some useful notation. 
 \end{align*}
 For example $\{x\in X\mid f(x)= c\}$ becomes $\{f= c\}$.
 
-\begin{lemma}\label{lem:azema}[Azema's inequality]
+%TODO introduce sup norm
+
+\begin{lemma}[Azema's inequality]\label{lem:azema}
 Let $(X,\Sigma,\mu)$ be a finite probability space, $f\colon X\to\R$ a measurable function, and $\{X,\emptyset\}=\Sigma_0\subseteq\dots\subseteq\Sigma_n=\Sigma$ a chain of sub-$\sigma$-algebras. Define $f_i:=\E(f\mid\Sigma_i)$ and $d_i:=f_i-f_{i-1}$. Then for every $\varepsilon\geq0$
 %\[\mu(\{x\in X\mid |f(x)-\mathbb{E}(f)|\geq c\})\leq 2\exp\left(-\frac{c^2}{4\sum_{i=1}^{n}\|d_i\|^2_\infty}\right)\]
 \[\mu(\{|f-\E(f)|\geq \varepsilon\})\leq 2\cdot\exp\left(-\frac{\varepsilon^2}{4\cdot\sum_{i=1}^{n}\|d_i\|^2_\infty}\right).\]
 \end{lemma}
-Note that $(f_i,\Sigma_i)_{0\leq i\leq n}$ is a discrete martingale. 
+Note that $(f_i,\Sigma_i)_{0\leq i\leq n}$ is a discrete martingale. But we will not formally introduce this notion as it is not necessary for the upcoming results.
+
 \begin{proof} First, observe that $f_0=\E(f\mid \{X,\emptyset\})=\E(f)$ and $f_n=\E(f\mid\Sigma)=f$. Using a simple telescoping sum we obtain $f-\E(f)=d_1+\dots+d_n$. Therefore
 \begin{align*}
 \mu(\{f-\E(f)\geq \varepsilon\})&=\mu(\{\sum_{i=1}^{n}d_i\geq  \varepsilon\})\\
-&=\mu(\{\lambda\cdot\sum_{i=1}^{n}d_i\geq \lambda \varepsilon\})\tag{for $\lambda>0$}\\
-&=\mu(\{e^{\lambda\cdot\sum_{i=1}^{n}d_i-\lambda \varepsilon}\geq 1\})\\
-&\leq\E(e^{\lambda\cdot\sum_{i=1}^{n}d_i})\cdot e^{-\lambda \varepsilon}\tag{$\ast$}\\
+&=\mu(\{\lambda\cdot\sum_{i=1}^{n}d_i\geq \lambda \varepsilon\})\tag{for any $\lambda>0$}\\
+&=\mu(\{\exp({\lambda\cdot\sum_{i=1}^{n}d_i-\lambda \varepsilon})\geq 1\})\\
+&\leq\E(\exp({\lambda\cdot\sum_{i=1}^{n}d_i}))\cdot e^{-\lambda \varepsilon}\tag{$\ast$}\\
 &=\E(e^{\lambda d_1}\cdot\ldots\cdot e^{\lambda d_{n-1}}\cdot\E(e^{\lambda d_n}\mid \Sigma_{n-1}))\cdot e^{-\lambda \varepsilon}\tag{Lemma \ref{lem:condExp}}\\
 &\leq\E(e^{\lambda d_1}\cdot\ldots\cdot e^{\lambda d_{n-1}})\cdot e^{\lambda^2\cdot \|d_n\|^2_\infty}\cdot e^{-\lambda \varepsilon}\tag{$\ast\ast$}\\
 &\hspace{3cm}\vdots\\
 &\leq e^{\lambda^2\cdot \|d_1\|^2_\infty}\cdot\ldots\cdot e^{\lambda^2\cdot \|d_{n-1}\|^2_\infty}\cdot e^{\lambda^2\cdot \|d_n\|^2_\infty}\cdot e^{-\lambda \varepsilon}\\
-&=e^{\lambda^2\cdot\sum_{i=1}^n\|d_i\|^2_\infty-\lambda \varepsilon}.
+&=\exp({\lambda^2\cdot\sum_{i=1}^n\|d_i\|^2_\infty-\lambda \varepsilon}).
 \end{align*}
 
 For $(\ast)$ note that for any measurable function $g\colon X\to\R$ with $g\geq0$ we have %$\mu(\{g\geq1\})\leq\E(g)$.
@@ -127,7 +130,7 @@ For $(\ast\ast)$ we need to use Lemma \ref{lem:exToex2}
 &\leq 0 + e^{\lambda^2 \|d_i\|_\infty^2}.\tag{Lemma \ref{lem:condExp}}
 \end{align*}
 
-Substituting $-\frac{\varepsilon^2}{\sum_{i=1}^{n}\|d_i\|_\infty^2}$ for $\lambda$ we conclude that
+Substituting $\frac{\varepsilon}{2\cdot\sum_{i=1}^{n}\|d_i\|_\infty^2}$ for $\lambda$, we conclude that
 \[\mu(\{f-\mathbb{E}(f)\geq \varepsilon\})\leq\exp\left(-\frac{\varepsilon^2}{4\cdot\sum_{i=1}^{n}\|d_i\|^2_\infty}\right). \]
 The same calculations with $-d_i$ instead of $d_i$ yield the dual inequality
 \[\mu(\{f-\mathbb{E}(f)\leq -\varepsilon\})\leq\exp\left(-\frac{\varepsilon^2}{4\cdot\sum_{i=1}^{n}\|d_i\|^2_\infty}\right). \]
