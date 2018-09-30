@@ -146,13 +146,12 @@ The group we are interested in is the metric completion of $\lim G_n$.
 	It is clear from the definition that $\bar d$ is also bi-invariant. Next we show that $\bar G$ is still a topological group. 
 	%Observe that for any $\varepsilon>0$ and $[(g_n)_{n\in\N}]\in\bar G$ we can assume w.l.o.g. that $\sup\{d(g_n,g_m)\mid n,m\in\N\}<\varepsilon$. Using this the proof is nearly the same as in Lemma \ref{lem:limIsTopo}. 
 	The proof is very similar to the one of Lemma \ref{lem:limIsTopo}.
-	Let $\varepsilon>0$ and $[(g_n)_{n\in\N}],[(h_n)_{n\in\N}]\in\bar G$ with $\bar d([(g_n)_{n\in\N}],[(h_n)_{n\in\N}])<\varepsilon$. Then
+	Let $\varepsilon>0$ and $[(g_n)_{n\in\N}],[(h_n)_{n\in\N}]\in\bar G$ with $\bar d([(g_n)_{n\in\N}],[(h_n)_{n\in\N}])<\varepsilon$. Observe that $[(g_n)_{n\in\N}]^{-1}=[(g_n^{-1})_{n\in\N}]$. Therefore
 	\[\bar d([(g_n)_{n\in\N}]^{-1},[(h_n)_{n\in\N}]^{-1})=\lim_{n\to\infty} d(g_n^{-1},h_n^{-1})=\lim_{n\to\infty} d(g_n,h_n)<\varepsilon. \]
 				
 	Analogously, we obtain that the group operation is continuous.
 	%For the group operation, let $[(g_n)_{n\in\N}], [(g'_n)_{n\in\N}], [(h_n)_{n\in\N}], [(h'_n)_{n\in\N}]\in\bar G$ with
 \end{proof}
-%TODO Up Next metric completion
 		
 \begin{definition}
 	Let $(G_n)_{n\in\N}$, $G=\lim G_n$, and $d$ be as before. Define the \define{closure of the limit of $(G_n)_{n\in\N}$}, denoted by $\clim G_n$, as the metric completion of $(G,d)$.
@@ -222,7 +221,7 @@ Now we can come back to groups.
 %Note that, since $G_n$ is finite, the normalized Haar measure of $G_n$ is just the normalized counting measure.
 		
 Whether $G=\clim G_n$ is a L\'evy group depends on the particular choice of the sequence $(G_n)_{n\in\N}$. We have already seen in Lemma \ref{lem:climIsPolish} that $G$ is always a Polish group. But the second condition is not so easy to prove.
-To show that for certain sequences, $G$ is a L\'evy group, we will use $(G_n)_{n\in\N}$ as increasing sequence (or $(\psi_n(G_n))_{n\in\N}$ to be precise). Note that $G_n$ is finite and therefore compact. Furthermore the normalized Haar measure $\mu_n$ on $G_n$ is just the normalized counting measure. We will bound $\alpha_{(G_n,d_n,\mu_n)}(\varepsilon)$ in terms of $n$ and $\varepsilon$ and show that this bound converges to 0 as $n$ tends to infinity. 
+To show that for certain sequences, $G$ is a L\'evy group, we will use $(G_n)_{n\in\N}$ as increasing sequence (or $(\psi_n(G_n))_{n\in\N}$ to be precise) and show that it is a L\'evy family. Note that $G_n$ is finite and therefore compact. Furthermore the normalized Haar measure $\mu_n$ on $G_n$ is just the normalized counting measure. The plan is to bound $\alpha_{(G_n,d_n,\mu_n)}(\varepsilon)$ in terms of $n$ and $\varepsilon$ and show that this bound converges to 0 as $n$ tends to infinity. 
 The next section develops the methods necessary to obtain this upper bound.
 %To do this we need methods which are developed in the next section.
 		
@@ -230,7 +229,11 @@ The next section develops the methods necessary to obtain this upper bound.
 %is a well defined embedding
 		
 \section{Azema's Inequality and Measure Concentration}\label{sec:azema}
-In this section we will prove Azema's inequality and as a consequence, we will obtain an upper bound for the measure concentration function in terms of an invariant of mm-spaces called the length. As the next results rely heavily on stochastic methods we will briefly introduce the necessary notions. Since the $G_n$ are all finite and equipped with the normalized counting measure we will only consider \define{probability spaces} $(X,\Sigma,\mu)$, where $X$ is finite, $\Sigma$ is a $\sigma$-algebra over $X$, and $\mu(A)=|A|/|X|$ for $A\subseteq X$. In this section we will roughly follow Section 3.2 from \cite{Azema}. Most of the statements presented in this section hold in a more general setting. Note that $\Sigma$ has a very nice representation.%Note that $\Sigma$ is the smallest $\sigma$-algebra containing $A_1,\dots,A_n$, where $$ 
+In this section we will prove Azema's inequality and as a consequence, we will obtain an upper bound for the measure concentration function in terms of an invariant of mm-spaces called the length. For groups we will then bound the length using an increasing sequence of subgroups. 
+
+As the next results rely heavily on stochastic methods we will briefly introduce the necessary notions. Since the $G_n$ are all finite and equipped with the normalized counting measure we will only consider \define{probability spaces} $(X,\Sigma,\mu)$, where $X$ is finite, $\Sigma$ is a $\sigma$-algebra over $X$, and $\mu(A)=|A|/|X|$ for $A\subseteq X$. In this section we will roughly follow Section 3.2 from \cite{Azema}. Most of the statements presented in this section hold in a more general setting. 
+
+Note that in our case $\Sigma$ has a very nice representation.%Note that $\Sigma$ is the smallest $\sigma$-algebra containing $A_1,\dots,A_n$, where $$ 
 		
 \begin{lemma}
 	Let $\Sigma$ be a $\sigma$-algebra over a finite set $X$ and $A_1,\dots,A_n$ be the minimal nonempty sets in $\Sigma$. Then $A_1,\dots,A_n$ is a partition of $X$ and $\Sigma$ is the smallest $\sigma$-algebra containing $A_1,\dots,A_n$.
@@ -240,7 +243,7 @@ In this section we will prove Azema's inequality and as a consequence, we will o
 				
 	For $A\in\Sigma$ we have, again by minimality, that $A\cap A_i$ is either $A_i$ or $\emptyset$. Therefore $A$ can be written as a union of $A_i$'s.
 \end{proof}
-Note that it follows from the proof that any $A\in\Sigma$ can be written as $\bigcup_{i\in I}A_i$ for a suitable set $I\subseteq\{1,\dots,n\}$. This lemma allows us to use partitions and $\sigma$-algebras interchangeably. We will denote the partition corresponding to $\Sigma$ by $A_1,\dots,A_n$, for $\Sigma'$ we will use $B_1,\dots,B_{m}$.
+Note that it follows from the proof that any $A\in\Sigma$ can be written as $\bigcup_{i\in I}A_i$ for a suitable set $I\subseteq\{1,\dots,n\}$. This lemma allows us to use partitions and $\sigma$-algebras interchangeably. We will denote the partition corresponding to $\Sigma$ by $A_1,\dots,A_n$ and for $\Sigma'$ we will use $B_1,\dots,B_{m}$.
 \begin{lemma}\label{lem:measurabilityForm}
 	Let $f\colon X\to\R$ be a $\Sigma$-measurable (measurable for short) function. Then there are $f_1,\dots,f_n\in\R$ such that $f=\sum_{i=1}^{n}f_i\cdot\mathbb{1}_{A_i}$.
 \end{lemma}
@@ -316,11 +319,12 @@ The following lemma might not seem very interesting, but changing the exponent f
 	Showing this inequality comes down to a case study.
 	\begin{itemize}
 		\item For $x\leq0$ the left side is bounded by 1, while the right side is larger than 2.
-		\item For $0<x\leq\ln 2$ note that both sides are increasing. Furthermore the right side is at least 2.
-		\item For $\ln2<x\leq1$ both sides are still increasing. Also, $\ln2\geq\frac{1}{2}$ and therefore the right side with $x=\ln2$ evaluates to a number larger then $e$.  
-		\item For $1< x$ we have $x< x^2$ and the inequality holds trivially.
+		\item For $0<x\leq\ln 2$ note that both sides are increasing. Furthermore the right side is at least 2, while the left side is at most 2.
+		\item For $\ln2<x<1$ both sides are still increasing. Also, $\ln2\geq\frac{1}{2}$ and therefore the right side with $x=\ln2$ evaluates to a number larger then $e$. Whereas the left side is clearly less than $e$.
+		\item For $1\leq x$ we have $x\leq x^2$ and the inequality holds trivially.
 		      %\item For $0< x< 1$ note that the both sides are increasing. Hence the inequality holds for all $x$ with $e^x\leq 2$. Finally, $\ln2\geq\frac{1}{2}$ and therefore the right hand side with $x=\ln2$ evaluates to a number larger then $e$.  
 	\end{itemize}
+	Hence the inequality holds for the second derivatives  and therefore also for the original functions.
 \end{proof}
 		
 Before we will prove Azema's inequality, let us introduce some useful notation. Whenever there is no danger of confusion we will abbreviate sets of the form
@@ -328,31 +332,31 @@ Before we will prove Azema's inequality, let us introduce some useful notation. 
 	\{x\in X\mid \operatorname{Condition}(x)\text{ holds}\} &   & \text{by} &   & \{\operatorname{Condition}\}. 
 \end{align*}
 For example $\{x\in X\mid f(x)= c\}$ becomes $\{f= c\}$.
-		
-%TODO introduce sup norm
+For a function $f\colon X\to\R$ we denote the \define{sup norm} of $f$ by $\|f\|_\infty:=\sup f(X)$.
 		
 \begin{lemma}[Azema's inequality]\label{lem:azema}
-	Let $(X,\Sigma,\mu)$ be a finite probability space, $f\colon X\to\R$ a measurable function, and $\{X,\emptyset\}=\Sigma_0\subseteq\dots\subseteq\Sigma_n=\Sigma$ a chain of sub-$\sigma$-algebras. Define $f_i:=\E(f\mid\Sigma_i)$ and $d_i:=f_i-f_{i-1}$. Then for every $\varepsilon\geq0$
+	Let $(X,\Sigma,\mu)$ be a finite probability space, $f\colon X\to\R$ a measurable function, and $\{X,\emptyset\}=\Sigma_0\subseteq\dots\subseteq\Sigma_n=\Sigma$ a chain of sub-$\sigma$-algebras. Define $f_0:=\E(f\mid\Sigma_0)$ and $f_i:=\E(f\mid\Sigma_i)$, $d_i:=f_i-f_{i-1}$ for $i\in\{1,\dots,n\}$. Then for every $\varepsilon\geq0$
 	%\[\mu(\{x\in X\mid |f(x)-\mathbb{E}(f)|\geq c\})\leq 2\exp\left(-\frac{c^2}{4\sum_{i=1}^{n}\|d_i\|^2_\infty}\right)\]
 	\[\mu(\{|f-\E(f)|\geq \varepsilon\})\leq 2\cdot\exp\left(-\frac{\varepsilon^2}{4\cdot\sum_{i=1}^{n}\|d_i\|^2_\infty}\right).\]
 \end{lemma}
 Note that $(f_i,\Sigma_i)_{0\leq i\leq n}$ is a discrete martingale. But we will not formally introduce this notion as it is not necessary for the upcoming results.
 		
-\begin{proof} First, observe that $f_0=\E(f\mid \{X,\emptyset\})=\E(f)$ and $f_n=\E(f\mid\Sigma)=f$. Using a simple telescoping sum we obtain $f-\E(f)=d_1+\dots+d_n$. Therefore
+\begin{proof} First, observe that $f_0=\E(f\mid \{X,\emptyset\})=\E(f)$ and $f_n=\E(f\mid\Sigma)=f$. Using a simple telescoping sum we obtain \[f-\E(f)=d_1+\dots+d_n.\] Therefore we have
 	\begin{align*}
 		\mu(\{f-\E(f)\geq \varepsilon\}) & =\mu(\{\sum_{i=1}^{n}d_i\geq  \varepsilon\})                                                                                                                            \\
 		                                 & =\mu(\{\lambda\cdot\sum_{i=1}^{n}d_i\geq \lambda \varepsilon\})\tag{for any $\lambda>0$}                                                                                \\
-		                                 & =\mu(\{\exp({\lambda\cdot\sum_{i=1}^{n}d_i-\lambda \varepsilon})\geq 1\})                                                                                               \\
+		                                 & =\mu(\{\exp({\lambda\cdot\sum_{i=1}^{n}d_i})\geq e^{\lambda \varepsilon}\})                                                                                               \\
 		                                 & \leq\E(\exp({\lambda\cdot\sum_{i=1}^{n}d_i}))\cdot e^{-\lambda \varepsilon}\tag{$\ast$}                                                                                 \\
-		                                 & =\E(e^{\lambda d_1}\cdot\ldots\cdot e^{\lambda d_{n-1}}\cdot\E(e^{\lambda d_n}\mid \Sigma_{n-1}))\cdot e^{-\lambda \varepsilon}\tag{Lemma \ref{lem:condExp}}            \\
+		                                 & =\E(\E(e^{\lambda d_1}\cdot\ldots\cdot e^{\lambda d_{n-1}}\cdot e^{\lambda d_n}\mid \Sigma_{n-1}))\cdot e^{-\lambda \varepsilon}\tag{Lemma \ref{lem:condExp} iii)}            \\
+		                                 & =\E(e^{\lambda d_1}\cdot\ldots\cdot e^{\lambda d_{n-1}}\cdot\E(e^{\lambda d_n}\mid \Sigma_{n-1}))\cdot e^{-\lambda \varepsilon}\tag{Lemma \ref{lem:condExp} ii)}            \\
 		                                 & \leq\E(e^{\lambda d_1}\cdot\ldots\cdot e^{\lambda d_{n-1}})\cdot e^{\lambda^2\cdot \|d_n\|^2_\infty}\cdot e^{-\lambda \varepsilon}\tag{$\ast\ast$}                      \\
 		                                 & \hspace{3cm}\vdots                                                                                                                                                      \\
 		                                 & \leq e^{\lambda^2\cdot \|d_1\|^2_\infty}\cdot\ldots\cdot e^{\lambda^2\cdot \|d_{n-1}\|^2_\infty}\cdot e^{\lambda^2\cdot \|d_n\|^2_\infty}\cdot e^{-\lambda \varepsilon} \\
 		                                 & =\exp({\lambda^2\cdot\sum_{i=1}^n\|d_i\|^2_\infty-\lambda \varepsilon}).                                                                                                
 	\end{align*}
 				
-	For $(\ast)$ note that for any measurable function $g\colon X\to\R$ with $g\geq0$ we have %$\mu(\{g\geq1\})\leq\E(g)$.
-	\[\mu(\{g\geq1\})=\E(\mathbb{1}_{\{g\geq1\}})\leq\E(g).\]
+	For $(\ast)$ note that for any measurable function $g\colon X\to\R$ and $c\in\R$ we have %$\mu(\{g\geq1\})\leq\E(g)$.
+	\[\mu(\{e^g\geq e^c\})=\E(\mathbb{1}_{\{e^g\geq e^c\}})\leq\E(e^g)e^{-c}.\]
 				
 	For $(\ast\ast)$ we need to use Lemma \ref{lem:exToex2}
 	\begin{align*}
