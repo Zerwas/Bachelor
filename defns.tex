@@ -22,7 +22,7 @@
 \usepackage{mathpazo}
 
 % environment definitions
-\declaretheorem[name=Lemma]{lemma}
+\declaretheorem[name=Lemma,numberwithin=section]{lemma}
 \declaretheorem[name=Theorem,sibling=lemma]{theorem}
 \declaretheorem[name=Corollary,sibling=lemma]{corollary}
 \declaretheorem[name=Conjecture,sibling=lemma]{conjecture}
@@ -46,6 +46,7 @@
 % Domain specific
 \newcommand{\F}{\mathbb{F}}
 \newcommand{\E}{\mathbb{E}}
+\newcommand{\len}{\operatorname{len}}
 \newcommand{\clim}{\operatorname{clim}}
 \newcommand{\rank}{\operatorname{r}}
 \newcommand{\SL}{\operatorname{SL}}

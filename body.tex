@@ -5,7 +5,7 @@ The objects studied in this thesis are groups of matrices over some finite field
 Given such group, we can equip it with the normalized rank metric and the normalized Haar measure to obtain a \emph{metric measure space}. Observe that, since matrix groups over finite fields are again finite, the normalized Haar measure is just the normalized counting measure.
 For some sequences of matrix groups of increasing size there is a well defined limit. For example, this is the case for the special linear group of $(n\times n)$-matrices $\SL_n$.
 Carderi and Thom  showed in \cite{thom} that a suitable limit of $\SL_n$ is, as a topological group, \emph{extremely amenable}. The goal of this thesis is to generalize this result to limits of other families of matrix groups, namely groups of \define{symplectic}, \define{unitary}, and \define{orthogonal} matrices.  
-These matrices can be seen as \define{Isometries}, i.e. bijective linear maps from a vector space into itself preserving a symplectic, unitary, or orthogonal form.
+These matrices can be seen as \define{Isometries}, i.e.\ bijective linear maps from a vector space into itself preserving a symplectic, unitary, or orthogonal form.
 The general strategy to prove extreme amenability for limits of families of these groups will be as follows: given such a family $(G_n)_{n\in\N}$ of finite matrix groups considered as metric measure spaces. We apply a consequence of Azema's inequality \cite{Azema} to obtain an upper bound for the \emph{measure concentration function} of $G_n$ in terms of the \define{length} of $G_n$.
 As the upper bounds converge to zero we conclude that $(G_n)_{n\in\N}$ is a \emph{L\'{e}vy family}, making their limit a \emph{L\'{e}vy group}. Finally, we know from \cite{Levy} that every L\'{e}vy group is extremely amenable.
 
@@ -36,7 +36,7 @@ Let $q$ be a prime power and $\F_q$ be the unique $q$ element field. Denote the 
 %The group $G$, equipped with the topology induced by $d$, is a topological group.
 
 \begin{lemma}
-	The metric $d$ is \define{bi-invariant}, i.e. for all $g,h,k\in \GL_n(q)$ we have 
+	The metric $d$ is \define{bi-invariant}, i.e.\ for all $g,h,k\in \GL_n(q)$ we have 
 	\[d(kg,kh)=d(g,h)=d(gk,hk).\] 
 \end{lemma}
 \begin{proof}
@@ -44,7 +44,7 @@ Let $q$ be a prime power and $\F_q$ be the unique $q$ element field. Denote the 
 	\[n\cdot d(kg,kh)=\rank(kg-kh)=\rank(k(g-h))=\rank(g-h)=n\cdot d(g,h).\]
 	The other equality follows similarly.
 \end{proof}
-%Since all matrices in $G$ have full rank, this metric is \define{bi-invariant}, i.e. for all $g,h,k\in G$ we have \[d(kg,kh)=d(g,h)=d(gk,hk).\] 
+%Since all matrices in $G$ have full rank, this metric is \define{bi-invariant}, i.e.\ for all $g,h,k\in G$ we have \[d(kg,kh)=d(g,h)=d(gk,hk).\] 
 
 
 Let $G_n\leq \GL_{2^n}(q)$ be a family of subgroups, such that 
@@ -200,10 +200,10 @@ But before we can talk about L\'evy groups we need some more definitions. For an
 \[N_\varepsilon(A):=\{x\in X\mid\exists y\in A.\  d(x,y)<\varepsilon\}.\]
 Note that $N_\varepsilon(A)$ is always an open set.
 \begin{definition}
-	A \define{metric measure space} (mm-space) $\boldsymbol{X}$ is a triple $(X,d,\mu)$, where $d$ is a metric on the set $X$ and $\mu$ is a measure on the Borel-$\sigma$-algebra induced by $d$. We will always assume that $\mu(X)=1$, i.e. that $\mu$ is a probability measure.  
+	A \define{metric measure space} (mm-space) $\boldsymbol{X}$ is a triple $(X,d,\mu)$, where $d$ is a metric on the set $X$ and $\mu$ is a measure on the Borel-$\sigma$-algebra induced by $d$. We will always assume that $\mu(X)=1$, i.e.\ that $\mu$ is a probability measure.  
 	The \define{measure concentration function} $\alpha_{\boldsymbol{X}}\colon(0,\infty)\to[0,\frac{1}{2}]$ of $\boldsymbol{X}$ is defined as 
 	\begin{align*}
-		\alpha_{\boldsymbol{X}}(\varepsilon)=\sup\{1-\mu(N_\varepsilon(A))\mid A\subseteq X\ \text{measurable}, \mu(A)\geq\frac{1}{2}\}. 
+		\alpha_{\boldsymbol{X}}(\varepsilon)=\sup\left\lbrace1-\mu(N_\varepsilon(A))\mid A\subseteq X\ \text{measurable}, \mu(A)\geq\frac{1}{2}\right\rbrace. 
 	\end{align*}
 	A family of mm-spaces $(\boldsymbol{X}_n)_{n\in\N}$ with diameter 1 is called a \define{L\'evy family} if 
 	\[\alpha_{\boldsymbol{X}_n}(\varepsilon)\to 0\ \text{ as $n\to\infty$}\]
@@ -219,7 +219,11 @@ Now we can come back to groups.
 	\end{itemize}  
 \end{definition}
 %Note that, since $G_n$ is finite, the normalized Haar measure of $G_n$ is just the normalized counting measure.
-		
+The following theorem gives us the desired connection to extreme amenability.
+\begin{theorem}[Theorem \textbf{4.1.3} in \cite{Levy}]\label{thm:LevyImpliesExAm}
+Every L\'evy group is extremely amenable.
+\end{theorem}
+
 Whether $G=\clim G_n$ is a L\'evy group depends on the particular choice of the sequence $(G_n)_{n\in\N}$. We have already seen in Lemma \ref{lem:climIsPolish} that $G$ is always a Polish group. But the second condition is not so easy to prove.
 To show that for certain sequences, $G$ is a L\'evy group, we will use $(G_n)_{n\in\N}$ as increasing sequence (or $(\psi_n(G_n))_{n\in\N}$ to be precise) and show that it is a L\'evy family. Note that $G_n$ is finite and therefore compact. Furthermore the normalized Haar measure $\mu_n$ on $G_n$ is just the normalized counting measure. The plan is to bound $\alpha_{(G_n,d_n,\mu_n)}(\varepsilon)$ in terms of $n$ and $\varepsilon$ and show that this bound converges to 0 as $n$ tends to infinity. 
 The next section develops the methods necessary to obtain this upper bound.
@@ -372,23 +376,25 @@ Note that $(f_i,\Sigma_i)_{0\leq i\leq n}$ is a discrete martingale. But we will
 	These two statements obviously give us the desired result.
 \end{proof}
 		
-Since $\mu$ is the counting measure Azema's inequality bounds the number of elements for which $f$ differs at least $\varepsilon$ from its mean. This seems at least somewhat connected to the measure concentration function, as there we want to show that for any set $A$ with $\mu(A)\geq\frac{1}{2}$ only a few elements are more than $\varepsilon$ away from $A$.
+Since $\mu$ is the counting measure Azema's inequality bounds the number of elements for which $f$ differs at least $\varepsilon$ from its mean. This seems at least somewhat connected to the measure concentration function, as there we want to show that for any measurable set $A$ with $\mu(A)\geq\frac{1}{2}$ only a few elements are more than $\varepsilon$ away from $A$.
 The next goal is to formalize this connection. % Azema's inequality with the measure concentration function. 
-But to achieve this we first need to introduce a new property of mm-spaces.
+But to achieve this we first need to introduce the length of an mm-space.
 \begin{definition}\label{def:length}
-	Let $\boldsymbol{X}=(X,d,\mu)$ be a finite mm-space. The \define{length} of $\boldsymbol X$ is the minimum over all $l$ with the following property. There is a refining sequence of partitions 
+	Let $\boldsymbol{X}=(X,d,\mu)$ be a finite mm-space. The \define{length} of $\boldsymbol X$, denoted by $\len(\boldsymbol{X})$, is the minimum over all $l\in\R_{\geq0}$ with the following property. There is a refining sequence of partitions 
 	\[\{X\}=\Omega_0\prec\dots\prec\Omega_n=\{\{x\}\mid x\in X\},\]
-	where for every $i\in\{1,\dots,n\}$ there is an $a_i$ such that $\sum_{i=1}^{n}a^2_i=l^2$ and for every $A\in \Omega_{i-1}$, $x,y\in A$ there is an isomorphism (of metric spaces) $\phi\colon[x]_i\to [y]_i$ with 
-	\[d(z,\phi(z))\leq a_i\text{ for all $z\in[x]_i$.}\]
+	where for every $i\in\{1,\dots,n\}$ there is an $a_i$ such that $\sum_{i=1}^{n}a^2_i=l^2$ and for every $A\in \Omega_{i-1}$, $x,y\in A$ (denote the sets from $\Omega_i$ containing $x$ and $y$ by $[x]_i$ and $[y]_i$, respectively) there is an isometry $\varphi\colon[x]_i\to [y]_i$ with 
+	\[d(z,\varphi(z))\leq a_i\text{ for all $z\in[x]_i$.}\]
 \end{definition}
-		
-Note that since $\mu$ is the counting measure $\phi$ is also an isomorphism of mm-spaces.
+
+Note that since $\mu$ is the counting measure $\varphi$ is also an isomorphism of mm-spaces. Furthermore $\boldsymbol{X}$ is finite and therefore the infimum becomes a minimum.
 As this definition is quite hard we will look at some properties and examples of the length of $\boldsymbol{X}$ before proceeding.
-\begin{lemma}
-	Let $\boldsymbol{X}$ be a finite mm-space. Then the length of $\boldsymbol{X}$ is at most the diameter of $\boldsymbol{X}$.
+\begin{lemma}\label{lem:lenUpperBound}
+	Let $\boldsymbol{X}=(X,d,\mu)$ be a finite mm-space. Then 
+	\[\len(\boldsymbol{X})\leq \operatorname{diam}(\boldsymbol{X}).\]
+	%the length of $\boldsymbol{X}$ is at most its diameter.
 \end{lemma}
 \begin{proof}
-	Consider only the two partitions $\{X\}\prec\{\{x\}\mid x\in X\}$. Clearly,  $x\to y$ is an isomorpism between $\{x\}$ and $\{y\}$ for all $x,y\in X$.
+	Consider only the two partitions $\{X\}\prec\{\{x\}\mid x\in X\}$. Clearly,  $x\to y$ is an isometry between $\{x\}$ and $\{y\}$ and $d(x,y)\leq\operatorname{diam}(\boldsymbol{X})$ for all $x,y\in X$.
 \end{proof}
 		
 We will see more properties later in Lemma \ref{lem:diamLen} and Lemma \ref{lem:lengthLowerBound}.
@@ -442,9 +448,10 @@ We will see more properties later in Lemma \ref{lem:diamLen} and Lemma \ref{lem:
 	We will only consider the following sequence of partitions
 	\[\Omega_0\prec\dots\prec\Omega_n\text{ with }\Omega_i=\{wX_{n-i}\mid w\in\{0,1\}^i\}.\]
 				
-	First, we equip $X_n$ with the euclidean metric and rescale it such that the diameter is 1. To bound the length of the resulting space $\boldsymbol X^E_n$ consider $[x]_i\neq[y]_i$. Note that $x$ and $y$ are w.l.o.g. of the form $w0u$ and $w1v$ for some $w\in\{0,1\}^{i-1}$, $u,v\in\{0,1\}^{n-i}$. The isomorphism $\phi$ takes an element $w0u'$ in $[x]_i$ and maps it to $w1u'$. The length of a side in $\boldsymbol X^E_n$ is $\frac{1}{\sqrt{n}}$, hence $a_i$ is $\frac{1}{\sqrt{n}}$ for every $i$ and the length of $\boldsymbol{X}^E_n$ is bounded by $(\sum_{i=1}^{n}\frac{1}{\sqrt{n}^2})^{\frac{1}{2}}=1$.
+	First, we equip $X_n$ with the euclidean metric and rescale it such that the diameter is 1. To bound the length of the resulting space $\boldsymbol X^E_n$ consider $[x]_i\neq[y]_i$. Note that $x$ and $y$ are w.l.o.g. of the form $w0u$ and $w1v$ for some $w\in\{0,1\}^{i-1}$, $u,v\in\{0,1\}^{n-i}$. The isometry $\varphi$ takes an element $w0u'$ in $[x]_i$ and maps it to $w1u'$. The length of a side in $\boldsymbol X^E_n$ is $\frac{1}{\sqrt{n}}$, hence $a_i$ is $\frac{1}{\sqrt{n}}$ for every $i$ and the length of $\boldsymbol{X}^E_n$ is bounded by $(\sum_{i=1}^{n}\frac{1}{\sqrt{n}^2})^{\frac{1}{2}}=1$. We already got the same upper bound from Lemma \ref{lem:lenUpperBound} and the question remains whether $\len(\boldsymbol{X}^E_n)$ is indeed 1.
 				
-	Secondly, we use the normalized hemming metric and obtain the mm-space $\boldsymbol{X}^H_n$ with diameter 1. It has side length $\frac{1}{n}$ and therefore the length of $\boldsymbol{X}^H_n$ is bounded by $(\sum_{i=1}^{n}\frac{1}{n^2})^{\frac{1}{2}}=n^{-\frac{1}{2}}$. We see that here the length of $\boldsymbol{X}^H_n$ converges to 0 as $n$ tends to infinity. We will show that this means that the measure concentration function $\alpha_{\boldsymbol{X}^H_n}(\varepsilon)$ also goes to 0 for any fixed $\varepsilon>0$. 
+	Secondly, we use the normalized Hamming metric $d_H$, defined by 
+	\[d_H(u_1\dots u_n,v_1\dots v_n)=\frac{1}{n}\cdot|\{i\in\{1,\dots,n\}\mid u_i\not=v_i\}|,\] and obtain the mm-space $\boldsymbol{X}^H_n$ with diameter 1. Now, the n-dimensional cube has side length $\frac{1}{n}$ and therefore the length of $\boldsymbol{X}^H_n$ is bounded by $(\sum_{i=1}^{n}\frac{1}{n^2})^{\frac{1}{2}}=n^{-\frac{1}{2}}$. In Lemma \ref{lem:lengthLowerBound} we will show that this is also a lower bound. Therefore $\len(\boldsymbol{X}^H_n)=n^{-\frac{1}{2}}$. We see that here the length of $\boldsymbol{X}^H_n$ converges to 0 as $n$ tends to infinity. We will show that this means that the measure concentration function $\alpha_{\boldsymbol{X}^H_n}(\varepsilon)$ also converges to 0 for any fixed $\varepsilon>0$. 
 \end{example}
 		
 Now we come back to the connection between Azema's inequality and the measure concentration function.
@@ -459,19 +466,19 @@ Now we come back to the connection between Azema's inequality and the measure co
 	be a refining sequence of partitions with $a_1,\dots,a_n$ as in Definition \ref{def:length} such that $\sum_{i=1}^{n}a_i^2=l^2$. These partitions correspond to $\sigma$-algebras $\Sigma_0\subseteq\dots\subseteq\Sigma_n$. Now we can apply Azema's inequality to obtain
 	\[\mu(\{|f-\E(f)|\geq \varepsilon\})\leq 2\cdot\exp\left(-\frac{\varepsilon^2}{4\cdot\sum_{i=1}^{n}\|d_i\|^2_\infty}\right),\]
 	where $f_i=\E(f\mid \Sigma_i)$ and $d_i=f_i-f_{i-1}$ as before. Therefore we only need to show that $\|d_i\|_\infty\leq a_i$. Since on any $A\in\Omega_{i-1}$ we have $f_{i-1}=\E(f_i\mid A)$ it suffices to show that for all $A\in\Omega_{i-1}$ it holds that $f_i(x)-f_i(y)\leq a_i$ for all $x,y\in A$.
-	Let $\phi\colon [x]_i\to [y]_i$ be the isomorphism from Definition \ref{def:length}.
+	Let $\varphi\colon [x]_i\to [y]_i$ be the isometry from Definition \ref{def:length}.
 	\begin{align*}
-		f_i(x)-f_i(y) & =\E(f\mid [x]_i)-\E(f\mid [y]_i)                                \\
-		              & =\E(f\mid [x]_i)-\E(f\circ\phi\mid [x]_i)                       \\
-		              & =\E(f-f\circ\phi\mid [x]_i)                                     \\
-		              & \leq \E(d(\ .\ ,\phi(\ .\ ))\mid [x]_i)\tag{$f$ is 1-Lipschitz} \\
+		f_i(x)-f_i(y) & =\E(f\mid [x]_i)-\E(f\mid [y]_i)                                   \\
+		              & =\E(f\mid [x]_i)-\E(f\circ\varphi\mid [x]_i)                       \\
+		              & =\E(f-f\circ\varphi\mid [x]_i)                                     \\
+		              & \leq \E(d(\ .\ ,\varphi(\ .\ ))\mid [x]_i)\tag{$f$ is 1-Lipschitz} \\
 		              & \leq a_i                                                        
 	\end{align*}
 	This concludes the proof.
 \end{proof}
 		
 Let $\boldsymbol{X}=(X,d,\mu)$ be a finite mm-space and $A\subseteq X$ measurable. Observe that $d_A\colon X\to\R$, $d_A(x):=\inf_{y\in A}d(x,y)$ is a 1-Lipschitz function. Using $d_A$ we can rewrite the definition of the measure concentration function 
-\[\alpha_{\boldsymbol{X}}(\varepsilon)=\sup\{\mu(\{d_A\geq\varepsilon\})\mid \mu(A)\geq\frac{1}{2}\}.\]
+\[\alpha_{\boldsymbol{X}}(\varepsilon)=\sup\left\lbrace\mu(\{d_A\geq\varepsilon\})\mid A\subseteq X\ \text{measurable},\mu(A)\geq\frac{1}{2}\right\rbrace.\]
 This gives us the desired connection.
 %\FlorianSagt{$n$ dimensional cubes with diameter 1 have length $\frac{1}{\sqrt{3}}$ and if $|X|$ is a prime, then the length of $X$ is equal to its diameter, the length of a circle is the same as its diameter}
 		
@@ -485,9 +492,10 @@ This gives us the desired connection.
 	Let $\varepsilon>0$ and $A\subseteq X$ be measurable with $\mu(A)\geq\frac{1}{2}$. As mentioned above $d_A$ is 1-Lipschitz and therefore, by Lemma \ref{lem:lipschitz},
 				
 	\[\mu(\{|d_A-\E(d_A)|\geq\varepsilon\})\leq 2\exp\left(-\frac{\varepsilon^2}{4l^2}\right).\]
-	Now there are two cases to consider, the first case is the more interesting one.
-				
-	If $\E(d_A)\leq\varepsilon$, then for any $x$ with $d_A(x)\geq2\varepsilon$ we know $d_A(x)\geq \varepsilon+\E(d_A)$ and therefore $|d_A(x)-\E(d_A)|\geq \varepsilon$. As a consequence %then for any $x$ with $|d_A(x)-\E(d_A)|<\varepsilon$ we have, by non-negativity of $d_A$, that $d_A(x)-\E(d_A)<\varepsilon$. Hence $d_A(x)<2\varepsilon$ and in general 
+	Now there are two cases to consider.
+	
+	The first case is the more interesting one.			
+	If $\E(d_A)\leq\varepsilon$, then for any $x$ with $d_A(x)\geq2\varepsilon$, we know $d_A(x)\geq \varepsilon+\E(d_A)$ and therefore $|d_A(x)-\E(d_A)|\geq \varepsilon$. As a consequence %then for any $x$ with $|d_A(x)-\E(d_A)|<\varepsilon$ we have, by non-negativity of $d_A$, that $d_A(x)-\E(d_A)<\varepsilon$. Hence $d_A(x)<2\varepsilon$ and in general 
 	\[\mu(\{d_A\geq2\varepsilon\})\leq \mu(\{|d_A-\E(d_A)|\geq\varepsilon\})\leq2\exp\left(-\frac{\varepsilon^2}{4l^2}\right) .\]
 	Replacing $\varepsilon$ by $\frac{\varepsilon}{2}$ gives the desired inequality.
 				
@@ -495,26 +503,26 @@ This gives us the desired connection.
 	\[\mu(\{d_A\geq\varepsilon\})\leq \mu(X\setminus A)\leq \frac{1}{2}\leq \mu(A)\leq \mu(\{|d_A-\E(d_A)|\geq\varepsilon\})\leq 2\exp\left(-\frac{\varepsilon^2}{4l^2}\right).\]
 	This proves the theorem.
 \end{proof}
-Note that in the second case the upper bound is at least $\frac{1}{2}$, which means that if $l$ is large enough then we are in the first case and the expected distance to a set with at least half measure is less then $\varepsilon$. In Section \ref{sec:ramsey} we will see a slight modification of this lemma.
-But for now our goal is to apply Theorem \ref{thm:LevyImpliesExAm} to groups and as it turns out we can bound the length of a group using sequences of subgroups. Before we can write down the corresponding corollary we need to make a quick excursion into factor metrics. 
+Note that in the second case, the upper bound is at least $\frac{1}{2}$, which means that if $l$ is large enough, then we are in the first case and the expected distance to a set with at least half measure is less then $\varepsilon$. In Section \ref{sec:ramsey} we will see a slight modification of this lemma.
+But for now, our goal is to apply Theorem \ref{thm:LevyImpliesExAm} to groups and as it turns out, we can bound the length of a group using sequences of subgroups. Before we can write down the corresponding corollary, we need to make a quick excursion into factor metrics. 
 		
 \begin{definition}
-	Let $(X,d)$ be a metric space and let $\sim$ be an equivalence relation on $X$. Then \[d_\sim([x],[y])=\inf\{d(p_1,q_1)+\dots+d(p_n,q_n)\mid q_i\sim p_{i+1}, x\sim p_1, q_n\sim y\}\] defines a pseudometric on $X/{\sim}$.
+	Let $(X,d)$ be a metric space and let $\sim$ be an equivalence relation on $X$. Then \[d_\sim([x],[y])=\inf\{d(p_1,q_1)+\dots+d(p_n,q_n)\mid q_i\sim p_{i+1}, x\sim p_1, q_n\sim y, n\in\N\}\] defines a pseudometric on $X/{\sim}$. We call  $d_\sim$ the \define{factor metric} on $X/\sim$.
 \end{definition}
-		
-In case that $X$ is a group with bi-invariant metric this definition simplifies.
+Note that of $X$ is finite, then the infimum becomes a minimum and $d_\sim$ is a proper metric.
+In case that $X$ is a group with a bi-invariant metric this definition simplifies.
 \begin{lemma}\label{lem:factorMetric}
-	Let $G$ be a finite group with bi-invariant metric $d$ and $H$ a (not necessarily normal) subgroup of $G$. Then the factor metric $d_H$ on $G/H=\{gH\mid g\in G\}$ is a proper metric and satisfies $d_H(gH,g'H)=\inf\{d(g,g'h)\mid h\in H\}$.
+	Let $G$ be a finite group with a bi-invariant metric $d$ and $H$ a (not necessarily normal) subgroup of $G$. Then the factor metric $d_H$ on $G/H=\{gH\mid g\in G\}$ satisfies $d_H(gH,g'H)=\inf\{d(g,g'h)\mid h\in H\}$.
 \end{lemma}
 \begin{proof}
 	Let $x,y\in G$. We show that for any path $p_1,q_1,\dots,p_n,q_n$ as in the definition there are $x\sim p$ and $q\sim y$ such that $d(p,q)\leq d(p_1,q_1)+\dots+d(p_n,q_n)$. It suffices to show this for $n=2$. 
 	By definition $p_1,q_1,p_2,q_2$ are of the form $g,g',g'h,g''$ for some $g,g',g''\in G$ and $h\in H$. Since $d$ is bi-invariant 
 	\[d(gh,g'')\leq d(gh,g'h)+d(g'h,g'')=d(g,g')+d(g'h,g'').\]
-	Furthermore we are given that $G$ is finite. Hence the infimum becomes a minimum and $d_H([x],[y])=0$ only if $[x]=[y]$.
-	%$d(g,g')=d(gh,g'h)$.
+	%Furthermore we are given that $G$ is finite. Hence the infimum becomes a minimum and $d_H([x],[y])=0$ only if $[x]=[y]$.
+	For $n>2$ the statement follows by induction.
 \end{proof}
 		
-Equipped with this knowledge we can formulate the final statement for this section. 
+Equipped with this knowledge, we can formulate the final statement for this section. 
 \begin{corollary}\label{cor:meaContractionGroups}
 	Let $G$ be a finite group with a bi-invariant metric $d$, and let
 	\[\{e\}=G_0<G_1<\dots <G_n=G\]
@@ -529,13 +537,13 @@ Equipped with this knowledge we can formulate the final statement for this secti
 	\end{align*}
 	Take $A\in \Omega_{i+1}$ and $g,g'\in A$. Since the distance of $gG_i$ and $g'G_i$ with respect to the factor metric is at most $a_i$ there is an $h'\in G_i$ such that $d(g,g'h')\leq a_i$. Hence the map 
 	\begin{align*}
-		\phi\colon g G_i & {}\to g'G_i     \\
+		\varphi\colon g G_i & {}\to g'G_i     \\
 		gh               & {}\mapsto g'h'h 
 	\end{align*}
 	is, by bi-invariance of $d$, an isomorphism of metric spaces with $d(gh,g'h'h)=d(g,g'h')\leq a_i$ for all $gh\in gG_i$.
 	Therefore $\left(\sum_{i=1}^{n}a_i^2\right)$ is an upper bound for $l^2$. 
 \end{proof}
-Carderi and Thom used this result to show that the closure of the limit of $\SL_{2^n}(q)$ is extremely amenable \cite{thom}. We will recreate this proof in the next section. 
+Carderi and Thom used this result to show that the closure of the limit of $\SL_{2^n}(q)$ is extremely amenable \cite{thom}. We will explain their proof in the next section. 
 		
 		
 \section{Special Linear Groups and Extreme Amenability}\label{sec:thom}
@@ -544,7 +552,7 @@ When studying matrices it is often useful to look at the corresponding linear ma
 In the case of $\SL_n(q)$ an $n$ dimensional $\F_q$ vector space $V$ suffices. Fixing a basis $e_1,\dots,e_n$ gives us an embedding from $\SL_n(q)$ into $\Aut(V)$. Next we will apply the methods from the previous section to show that $\clim \SL_{2^n}(q)$ is extremely amenable.
 %rank from 2 to 3 in proof
 \begin{theorem}\label{thm:SLConcentrates}
-	The normalized counting measure $\mu_n$ on the groups $\SL_{n}(q)$ concentrates with respect to the normalized rank-metric $d_n$, i.e. for all $\varepsilon>0$
+	The normalized counting measure $\mu_n$ on the groups $\SL_{n}(q)$ concentrates with respect to the normalized rank-metric $d_n$, i.e.\ for all $\varepsilon>0$
 	\[\lim_{n\to\infty} \alpha_{(\SL_{n}(q), d_n, \mu_n)}(\varepsilon)=0 .\]
 \end{theorem}
 \begin{proof}\FlorianSagt{proof for $\SL$ and $\GL$ te same?}
@@ -677,13 +685,13 @@ Using this we can give an interval for the length of $\SL_n(q)$.
 	The diameter of $\SL_n(q)$ is equal to 1 and for any $g\not=g'\in\SL_n(q)$ we have that $d(g,g')\geq \frac1n$.
 \end{proof}
 		
-The next goal is to show that the closure of the limit of symplectic groups is also extremely amenable. Theses groups can be seen as automorphism groups of a vector space together with a symplectic form. The proof will be similar to the one for the special linear groups but extending the partial inverse $h'$ becomes much harder. This is why in the next section we will prove Witt's Lemma which does exactly what we need, i.e. extending isometries.
+The next goal is to show that the closure of the limit of symplectic groups is also extremely amenable. Theses groups can be seen as automorphism groups of a vector space together with a symplectic form. The proof will be similar to the one for the special linear groups but extending the partial inverse $h'$ becomes much harder. This is why in the next section we will prove Witt's Lemma which does exactly what we need, i.e.\ extending isometries.
 		
 \section{Witt's Lemma}\label{sec:witt}
 In this section we will prove Witt's Lemma and explore the structure of symplectic spaces. Witt's Lemma states that an isometry between subspaces of a finite dimensional symplectic, unitary, or orthogonal space can always be extended to an isomtry on the whole space.  We will roughly follow the proof in \cite{Witt}. Since we are mainly interested in symplectic spaces we will only show Witt's Lemma for those but it also holds for unitary and orthogonal spaces.
 		
 \begin{definition}
-	Let $V$ be an $\F_q$ vector space. A bilinear form $\omega$ on $V$ is called \define{symplectic} if $\omega$ is nondegenerate, i.e. $\omega(x,\ .\ )\not=0_V$ for all $x\in V\setminus\{0\}$, and $\omega(x,y)=-\omega(y,x)$ for all $x,y\in V$. We call $(V,\omega)$ a \define{symplectic space}.
+	Let $V$ be an $\F_q$ vector space. A bilinear form $\omega$ on $V$ is called \define{symplectic} if $\omega$ is nondegenerate, i.e.\ $\omega(x,\ .\ )\not=0_V$ for all $x\in V\setminus\{0\}$, and $\omega(x,y)=-\omega(y,x)$ for all $x,y\in V$. We call $(V,\omega)$ a \define{symplectic space}.
 				
 	A finite group $G$ is called \define{symplectic} if there is a symplectic space $(V,\omega)$ such that $G\cong\Aut(V,\omega)$. 
 				
@@ -764,7 +772,7 @@ Next we will strengthen this result and show that any symplectic space is the di
 Using Theorem \ref{thm:hypDecomp} we can describe the structure of symplectic spaces.
 		
 \begin{corollary}\label{cor:structureSympl}
-	%The symplectic space $(V,\omega)$ is of even dimension $2n$ and can be written as the orthogonal sum of hyperbolic planes $U_1,\dots, U_n$, i.e. $V=U_1\oplus\dots\oplus U_n$.
+	%The symplectic space $(V,\omega)$ is of even dimension $2n$ and can be written as the orthogonal sum of hyperbolic planes $U_1,\dots, U_n$, i.e.\ $V=U_1\oplus\dots\oplus U_n$.
 				
 	Let $(V,\omega)$ be a symplectic space. Then $V$ is of even dimension $2n$ and there are hyperbolic planes $U_1,\dots, U_n\leq V$ such that $V=U_1\oplus\dots\oplus U_n$ and $U_i\bot U_j$ for $i\not=j$.
 	In particular for any $n$ there is exactly one symplectic space of dimension $2n$.
@@ -993,7 +1001,7 @@ In this section we will use the upper bound obtained for the length of symplecti
 As in Section \ref{sec:mySec} the results from this section are already shown in \cite{thom} for special linear groups. 
 		
 The first lemma is very similar to Theorem \ref{thm:measureConcetration}.
-\begin{lemma}[Lemma 2.7 in \cite{thom}]\label{lem:measureOfNeigh}
+\begin{lemma}[Lemma \textbf{2.7} in \cite{thom}]\label{lem:measureOfNeigh}
 	Let $(X,d,\mu)$ be a finite mm-space with length $l$. Then for every $\varepsilon>0$ and $A\subseteq X$ with $\mu(A)>2\exp\left(-\frac{\varepsilon^2}{16l^2}\right)$ we have
 	\[\mu(N_\varepsilon(A))\geq 1-2\exp\left(-\frac{\varepsilon^2}{16l^2}\right).\]
 \end{lemma}
