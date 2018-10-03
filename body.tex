@@ -249,7 +249,7 @@ Note that in our case $\Sigma$ has a very nice representation.%Note that $\Sigma
 \end{proof}
 Note that it follows from the proof that any $A\in\Sigma$ can be written as $\bigcup_{i\in I}A_i$ for a suitable set $I\subseteq\{1,\dots,n\}$. This lemma allows us to use partitions and $\sigma$-algebras interchangeably. We will denote the partition corresponding to $\Sigma$ by $A_1,\dots,A_n$ and for $\Sigma'$ we will use $B_1,\dots,B_{m}$.
 \begin{lemma}\label{lem:measurabilityForm}
-	Let $f\colon X\to\R$ be a $\Sigma$-measurable (measurable for short) function. Then there are $f_1,\dots,f_n\in\R$ such that $f=\sum_{i=1}^{n}f_i\cdot\mathbb{1}_{A_i}$.
+	Let $f\colon X\to\R$ be a $\Sigma$-measurable (measurable, for short) function. Then there are $f_1,\dots,f_n\in\R$ such that $f=\sum_{i=1}^{n}f_i\cdot\mathbb{1}_{A_i}$.
 \end{lemma}
 \begin{proof}
 	For all $c\in\R$ the set $\{x\in X\mid f(x)=c\}$ is in $\Sigma$ and therefore a union of $A_i$'s. This already yields the lemma.
@@ -503,16 +503,16 @@ This gives us the desired connection.
 	\[\mu(\{d_A\geq\varepsilon\})\leq \mu(X\setminus A)\leq \frac{1}{2}\leq \mu(A)\leq \mu(\{|d_A-\E(d_A)|\geq\varepsilon\})\leq 2\exp\left(-\frac{\varepsilon^2}{4l^2}\right).\]
 	This proves the theorem.
 \end{proof}
-Note that in the second case, the upper bound is at least $\frac{1}{2}$, which means that if $l$ is large enough, then we are in the first case and the expected distance to a set with at least half measure is less then $\varepsilon$. In Section \ref{sec:ramsey} we will see a slight modification of this lemma.
+Note that in the second case, the upper bound is at least $\frac{1}{2}$, which means that if $l$ is large enough, then we are in the first case and the expected distance to a set with at least half measure is at most $\varepsilon$. In Section \ref{sec:ramsey}, we will see a slight modification of this lemma.
 But for now, our goal is to apply Theorem \ref{thm:LevyImpliesExAm} to groups and as it turns out, we can bound the length of a group using sequences of subgroups. Before we can write down the corresponding corollary, we need to make a quick excursion into factor metrics. 
 		
 \begin{definition}
 	Let $(X,d)$ be a metric space and let $\sim$ be an equivalence relation on $X$. Then \[d_\sim([x],[y])=\inf\{d(p_1,q_1)+\dots+d(p_n,q_n)\mid q_i\sim p_{i+1}, x\sim p_1, q_n\sim y, n\in\N\}\] defines a pseudometric on $X/{\sim}$. We call  $d_\sim$ the \define{factor metric} on $X/\sim$.
 \end{definition}
-Note that of $X$ is finite, then the infimum becomes a minimum and $d_\sim$ is a proper metric.
+Note that if $X$ is finite, then the infimum becomes a minimum and $d_\sim$ is a proper metric.
 In case that $X$ is a group with a bi-invariant metric this definition simplifies.
 \begin{lemma}\label{lem:factorMetric}
-	Let $G$ be a finite group with a bi-invariant metric $d$ and $H$ a (not necessarily normal) subgroup of $G$. Then the factor metric $d_H$ on $G/H=\{gH\mid g\in G\}$ satisfies $d_H(gH,g'H)=\inf\{d(g,g'h)\mid h\in H\}$.
+	Let $G$ be a finite group with a bi-invariant metric $d$ and $H$ a (not necessarily normal) subgroup of $G$. Then the factor metric $d_H$ on $G/H=\{gH\mid g\in G\}$ satisfies \[d_H(gH,g'H)=\inf\{d(g,g'h)\mid h\in H\}.\]
 \end{lemma}
 \begin{proof}
 	Let $x,y\in G$. We show that for any path $p_1,q_1,\dots,p_n,q_n$ as in the definition there are $x\sim p$ and $q\sim y$ such that $d(p,q)\leq d(p_1,q_1)+\dots+d(p_n,q_n)$. It suffices to show this for $n=2$. 
@@ -551,7 +551,7 @@ Carderi and Thom used this result to show that the limit of $\SL_{2^n}(q)$ is ex
 When studying matrices it is often useful to look at the corresponding linear maps of a suitable vector space. 
 For example fixing a basis $e_1,\dots,e_n$ of an $n$-dimensional $\F_q$-vector space $V$ gives us an embedding from $\SL_n(q)$ into $\Aut(V)$. In the following we will use matrices and their corresponding linear maps interchangeably.
 %In the case of $\SL_n(q)$ an $n$ dimensional $\F_q$ vector space $V$ suffices. Fixing a basis $e_1,\dots,e_n$ gives us an embedding from $\SL_n(q)$ into $\Aut(V)$. 
-Next we will apply the methods from the previous section to show that $\clim \SL_{2^n}(q)$ is extremely amenable.
+Next we will apply the methods from the previous section to show that $\clim \SL_{2^n}(q)$ is a L\'evy group and therefore extremely amenable.
 
 %rank from 2 to 3 in proof
 \begin{theorem}\label{thm:SLConcentrates}
@@ -574,17 +574,19 @@ Next we will apply the methods from the previous section to show that $\clim \SL
 		A      & 0       \\
 		c^\bot & \lambda 
 	\end{pmatrix}$.
-	Define $h':=
-	\begin{pmatrix}
-		\lambda & 0            \\
-		0       & \lambda^{-1} 
-	\end{pmatrix}
-	$
-	and $\tilde g:=
-	\begin{pmatrix}
-		I_{i-2} & 0  \\
-		0       & h' 
-	\end{pmatrix}\cdot g$.
+	Define 
+	\begin{align*}
+		h':=
+		\begin{pmatrix}
+			\lambda & 0            \\
+			0       & \lambda^{-1} 
+		\end{pmatrix}
+		&&\text{and}&&\tilde g:=
+		\begin{pmatrix}
+			I_{i-2} & 0  \\
+			0       & h' 
+		\end{pmatrix}\cdot g.
+	\end{align*}
 	By construction $\tilde g\in\SL_i(q)$ and it is of the form 
 	$\begin{pmatrix}
 		A'      & 0 \\
@@ -612,17 +614,20 @@ Next we will apply the methods from the previous section to show that $\clim \SL
 		c^\bot & c_{i-1} & \lambda 
 	\end{pmatrix}
 	$.
-	Define $h':=
-	\begin{pmatrix}
-		\lambda & -1 \\
-		1       & 0  
-	\end{pmatrix}
-	$ and as before $\tilde g:=
-	\begin{pmatrix}
-		I_{i-2} & 0  \\
-		0       & h' 
-	\end{pmatrix}\cdot g$.
-	Now we can apply the argument from above to get an $h\in \SL_{i-1}(q)$ such that $d(g,h)\leq\frac{3}{n}$. Applying Corollary \ref{cor:meaContractionGroups} we obtain
+	Define 
+	\begin{align*}
+		h':=
+		\begin{pmatrix}
+			\lambda & -1 \\
+			1       & 0  
+		\end{pmatrix}
+		&&\text{and as before}&& \tilde g:=
+		\begin{pmatrix}
+			I_{i-2} & 0  \\
+			0       & h' 
+		\end{pmatrix}\cdot g.
+	\end{align*}
+	Now we can apply the argument from above to obtain an $h\in \SL_{i-1}(q)$ such that $d(g,h)\leq\frac{3}{n}$. Applying Corollary \ref{cor:meaContractionGroups} we conclude
 	\[\alpha_{(\SL_n(q), d_n, \mu_n)}(\varepsilon)\leq 2\exp\left(-\frac{\varepsilon^2}{16\cdot\sum_{i=1}^{n}\frac{9}{n^2}}\right)=2\exp\left(-\frac{\varepsilon^2 n}{16\cdot9}\right),\]
 	which converges to 0 as $n$ tends to infinity. 
 \end{proof}
@@ -682,7 +687,7 @@ The next goal is to show that the limit of symplectic groups is also extremely a
 In this section we will prove Witt's Lemma and explore the structure of symplectic vector spaces. Witt's Lemma states that an isometry between subspaces of a finite dimensional symplectic, unitary, or orthogonal vector space can always be extended to a linear isometry on the whole space.  We will roughly follow the proof in \cite{Witt}. Since we are mainly interested in symplectic vector spaces we will only show Witt's Lemma for those but it also holds for unitary and orthogonal spaces.
 		
 \begin{definition}
-	Let $V$ be an $\F_q$ vector space. A bilinear form $\omega$ on $V$ is called \define{symplectic} if $\omega$ is nondegenerate, i.e.\ for all $x\in V\setminus\{0\}$ there is an $y\in V$ such that $\omega(x,y)\not=0$, $\omega(x,y)=-\omega(y,x)$ for all $x,y\in V$, and if $q=2$, then $\omega(x,x)=0$ for all $x\in V$. For $x,y\in V$ with $\omega(x,y)=0$ we often write $x\bot y$. We call $(V,\omega)$ a \define{symplectic vector space}.
+	Let $V$ be an $\F_q$-vector space. A bilinear form $\omega$ on $V$ is called \define{symplectic} if $\omega$ is nondegenerate, i.e.\ for all $x\in V\setminus\{0\}$ there is an $y\in V$ such that $\omega(x,y)\not=0$, $\omega(x,y)=-\omega(y,x)$ for all $x,y\in V$, and if $q=2$, then $\omega(x,x)=0$ for all $x\in V$. For $x,y\in V$ with $\omega(x,y)=0$ we often write $x\bot y$. We call $(V,\omega)$ a \define{symplectic vector space}.
 				
 	A finite group $G$ is called \define{symplectic} if there is a symplectic vector space $(V,\omega)$ such that $G\cong\Aut(V,\omega)$, if $V$ is $n$-dimensional, then we will denote $\Aut(V,\omega)$ by $\Sp_n(q)$. 
 				
@@ -771,7 +776,7 @@ Using Theorem \ref{thm:hypDecomp} we can describe the structure of symplectic ve
 \begin{corollary}\label{cor:structureSympl}
 	%The symplectic space $(V,\omega)$ is of even dimension $2n$ and can be written as the orthogonal sum of hyperbolic planes $U_1,\dots, U_n$, i.e.\ $V=U_1\oplus\dots\oplus U_n$.
 				
-	Let $(V,\omega)$ be a symplectic vector space. Then $V$ is of even dimension $2n$ for some $n\in\N$ and there are hyperbolic planes $U_1,\dots, U_n\leq V$ such that $V=U_1\oplus\dots\oplus U_n$ and $U_i\bot U_j$ for $i\not=j$.
+	Let $(V,\omega)$ be a symplectic vector space. Then $V$ is of dimension $2n$ for some $n\in\N$. Furthermore there are hyperbolic planes $U_1,\dots, U_n\leq V$ such that $V=U_1\oplus\dots\oplus U_n$ and $U_i\bot U_j$ for $i\not=j$.
 	In particular for any $n\in\N$ there is exactly one symplectic vector space of dimension $2n$.
 \end{corollary}
 \begin{proof}
@@ -835,14 +840,14 @@ Now that we understand symplectic vector spaces and can extend isometries we are
 Our goal in this section is to show that $\clim \Sp_{2^n}(q)$ is extremely amenable. The structure of the proof is the same as in Section \ref{sec:thom} with special linear groups. We will bound the length of $\Sp_n(q)\cong\Aut(V,\omega)$ by applying Corollary \ref{cor:meaContractionGroups} to a sequence of subgroups $(G_i)_{0\leq i\leq n}$. To bound the diameter of $G_i/G_{i-1}$ we will construct for any $g\in G_i$ an $h'\in G_i$ such that the distance between $g$ and $h'g$ is small and $h'g\in G_{i-1}$. The $h'$ will behave like the inverse of $g$ on a small subspace of $V$ and like the identity on most of the rest. The proof can be generalized to unitary and orthogonal groups. Therefore we will briefly introduce those groups and afterwards show extreme amenability for the limits of symplectic, unitary, and orthogonal groups.
 		
 \begin{definition}
-	Let $V$ be a finite dimensional $\F_q$ vector space and $\omega$ a nondegenerate map from $V\times V$ to $\F_q$.
+	Let $V$ be a finite dimensional $\F_q$-vector space and $\omega$ a nondegenerate map from $V\times V$ to $\F_q$.
 				
 	Then $(V,\omega)$ is an \define{orthogonal vector space} if $\omega$ is bilinear, $\omega(x,y)=\omega(y,x)$ for all $x,y\in V$, and if $q=2$ then $\omega(x,x)=0$ for all $x\in V$.
 				
 	And $(V,\omega)$ is a \define{unitary vector space} if there is an $h\in\Aut(\F_q)$ with $h^2=1$ such that 
 	\begin{align*}
-		\omega(ax+y,z) & =a\omega(x,z)+\omega(y,z)    \\
-		\omega(x,ay+z) & =h(a)\omega(x,y)+\omega(x,z) \\
+		\omega(ax+y,z) & =a\cdot\omega(x,z)+\omega(y,z)    \\
+		\omega(x,ay+z) & =h(a)\cdot\omega(x,y)+\omega(x,z) \\
 		\omega(x,y)    & =h(\omega(y,x))              
 	\end{align*}
 	for all $x,y,z\in V$ and $a\in\F_q$.
@@ -952,7 +957,7 @@ Now we can proof the analogue of Theorem \ref{thm:SLConcentrates} from Section \
 \begin{theorem}\label{thm:suoBoundDiam}
 	%Let $G$ be a symplectic, unitary, or orthogonal group of dimension $n\geq2$ equipped with the rank metric $d$, where $d(g,g')=\lambda \cdot\rank(g-g')$. Then there is a subgroup $H\leq G$ of dimension at most $n-1$ such that the diameter of $G/H$ is at most $8\lambda$.
 				
-	Let $G$ be a symplectic, unitary, or orthogonal group equipped with the rank metric $d$ and of diameter $n$. Then there is a symplectic, unitary, or orthogonal subgroup $H\leq G$ with diameter at most $n-1$ such that the diameter of $G/H$ is at most $8$.
+	Let $G$ be a symplectic, unitary, or orthogonal group equipped with the rank metric $d$. Let $n$ be the diameter of $G$. Then there is a symplectic, unitary, or orthogonal subgroup $H\leq G$ with diameter at most $n-1$ such that the diameter of $G/H$ with respect to the factor metric is at most $8$.
 \end{theorem}
 \begin{proof}
 	We have $G\cong\Aut(V,\omega)$ for some $n$-dimensional vector space $V$ and some $\omega$. Use Lemma \ref{lem:decompositionComplement} to obtain $U\leq V$ such that $V=U\oplus U^\bot$ and $\dim U\leq2$. Define $H=\Aut(U^\bot,\omega)$. Our aim is to find for any $g\in G$ an $\tilde g\in H$ such that $d(g,\tilde g)\leq8$.
@@ -1006,7 +1011,7 @@ A covering $\mathcal{U}$ of a metric space $(X,d)$ is an \define{$\varepsilon$-c
 \begin{theorem}
 	Let $\varepsilon>0$, $k,m\in\N$. Define $N:=16\cdot64\varepsilon^{-2}\cdot\max\{\ln(2k),\ln(2m)\}$ and let $G=\Aut(V,\omega)$, where $(V,\omega)$ is a symplectic, unitary, or orthogonal vector space of dimension $n>N$, with an $\varepsilon$-cover $\mathcal{U}$ of cardinality at most $m$. Then there is a $U\in\mathcal{U}$ such that for all $F\subseteq G$ satisfying $|F|\leq k$ there is a $g\in G$ with $gF\subseteq U$.
 \end{theorem}
-Intuitively the theorem says that whenever we color $G$ with $m$ colors, where a single element can have multiple colors, such that all elements of $\varepsilon$-balls have at least one color in common, then there is one color $c$ such that for every $F$ with at most $k$ elements there is a $g$ where the elements of $gF$ all have the color $c$.
+Intuitively the theorem says that whenever we color $G$ with $m$ colors, where a single element can have multiple colors, such that all elements of $\varepsilon$-balls have at least one color in common, then there is one color $c$ such that for every $F$, with at most $k$ elements, there is a $g$ where the elements of $gF$ all have the color $c$.
 \begin{proof}
 	\def\core{\operatorname{Core}}
 	Look at $G$ as the usual mm-space with normalized rank metric and normalized counting measure.
