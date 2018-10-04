@@ -5,11 +5,11 @@ The objects studied in this thesis are groups of matrices over some finite field
 Given such group, we can equip it with the normalized rank metric and the normalized Haar measure to obtain a \emph{metric measure space}. Observe that, since matrix groups over finite fields are again finite, the normalized Haar measure is just the normalized counting measure.
 For some sequences of matrix groups of increasing size there is a well defined limit. For example, this is the case for the special linear group of $(n\times n)$-matrices $\SL_n$.
 Carderi and Thom  showed in \cite{thom} that a suitable limit of $\SL_n$ is, as a topological group, \emph{extremely amenable}. The goal of this thesis is to generalize this result to limits of other families of matrix groups, namely groups of \define{symplectic}, \define{unitary}, and \define{orthogonal} matrices.  
-These matrices can be seen as \define{Isometries}, i.e.\ bijective linear maps from a vector space into itself preserving a symplectic, unitary, or orthogonal form.
+These matrices can be seen as \define{isometries}, i.e.\ bijective linear maps from a vector space into itself preserving a symplectic, unitary, or orthogonal form.
 The general strategy to prove extreme amenability for limits of families of these groups will be as follows: given such a family $(G_n)_{n\in\N}$ of finite matrix groups considered as metric measure spaces. We apply a consequence of Azema's inequality \cite{Azema} to obtain an upper bound for the \emph{measure concentration function} of $G_n$ in terms of the \define{length} of $G_n$.
 As the upper bounds converge to zero we conclude that $(G_n)_{n\in\N}$ is a \emph{L\'{e}vy family}, making their limit a \emph{L\'{e}vy group}. Finally, we know from \cite{Levy} that every L\'{e}vy group is extremely amenable.
 
-This thesis is structured as follows. In Section \ref{sec:generalDefns}, we will give a short introduction on how to view matrix groups as metric measure spaces and how to define a limit of a sequence of matrix groups. Furthermore we will introduce the notion of extreme amenability and its connection to L\'evy groups. In Section \ref{sec:azema}, we will briefly introduce the notion of \define{conditional expectation} to show Azema's inequality. Next we will introduce an important invariant of metric measure spaces, namely their \define{length}. Azema's inequality will allow us to connect the length of a metric measure space with its measure concentration function. This connection is used in Section \ref{sec:thom} to show that the limit of $\SL_n$ is extremely amenable. To generalize this result we give a proof of Witt's lemma, which says that isometries between subspaces can be extended to the whole space, in Section \ref{sec:witt}. In Section \ref{sec:mySec}, we generalize the result from Section \ref{sec:thom} to symplectic, unitary, and orthogonal groups. Finally, in Section \ref{sec:ramsey}, a Ramsey theoretic result from \cite{thom} about $\SL_n$ is generalized to symplectic, unitary, and orthogonal groups.
+This thesis is structured as follows. In Section \ref{sec:generalDefns}, we will give a short introduction on how to view matrix groups as metric measure spaces and how to define a limit of a sequence of matrix groups. Furthermore we will introduce the notion of extreme amenability and its connection to L\'evy groups. In Section \ref{sec:azema}, we will briefly introduce the notion of \define{conditional expectation} to show Azema's inequality. Next we will introduce an important invariant of metric measure spaces, namely their \define{length}. Azema's inequality will allow us to connect the length of a metric measure space with its measure concentration function. This connection is used in Section \ref{sec:thom} to show that the limit of $\SL_n$ is extremely amenable. To generalize this result we give a proof of Witt's lemma, which says that isometries between subspaces can be extended to isometries on the whole space, in Section \ref{sec:witt}. In Section \ref{sec:mySec}, we generalize the result from Section \ref{sec:thom} to symplectic, unitary, and orthogonal groups. Finally, in Section \ref{sec:ramsey}, a Ramsey theoretic result from \cite{thom} about $\SL_n$ is generalized to symplectic, unitary, and orthogonal groups.
 
 %Define limit of $G_n$
 
@@ -65,11 +65,11 @@ $\begin{pmatrix}
 	\begin{align*}
 		d(g,h) & =\frac{1}{n}\rank(g-h)               \\
 		       & =\frac{1}{2n}(\rank(g-h)+\rank(g-h)) \\
-		       & =\frac{1}{2n}\rank                   
+		       & =\frac{1}{2n}\rank (                  
 		\begin{pmatrix}
 		g-h    & 0                                    \\
 		0      & g-h                                  
-		\end{pmatrix}\\
+		\end{pmatrix})\\
 		       & =d(                                  
 		\begin{pmatrix}
 		g      & 0                                    \\
@@ -103,7 +103,7 @@ Define the function $\varphi\colon\bigsqcup_{n\in\N} G_n\to\bigsqcup_{n\in\N} G_
 			\node[below of=Gm] (Gn) {$G_n$};
 			\path[right hook-latex'] (Gn) edge node[below right] {$\psi_n$} (G)
 			(Gn) edge node[left] {$\varphi^{m-n}|_{G_n}$} (Gm)
-			(Gm) edge node[above] {$\psi_n$} (G);
+			(Gm) edge node[above] {$\psi_m$} (G);
 		\end{tikzpicture}
 	\end{center}
 	%Here $\varphi_{n,m}:=\varphi^{m-n}|_{G_n}$. 
@@ -135,7 +135,7 @@ Furthermore the metric and the group structure of $G$ interact nicely.
 		
 The group we are interested in is the metric completion of $\lim G_n$. 
 \begin{lemma}\label{lem:climIsTopo}
-	Let $G$ be a topological group with bi-invariant metric $d$. Then there a unique metric space $(\bar G,\bar d)$ containing $G$ such that $\bar G$ is complete and $G$ is dense in $\bar G$. Furthermore $\bar G$, with the group structure induced by $G$, is a topological group and $\bar d$ is still bi-invariant.
+	Let $G$ be a topological group with bi-invariant metric $d$. Then there is a unique metric space $(\bar G,\bar d)$ containing $G$ such that $\bar G$ is complete and $G$ is dense in $\bar G$. Furthermore $\bar G$, with the group structure induced by $G$, is a topological group and $\bar d$ is still bi-invariant.
 \end{lemma}
 \begin{proof}
 	Consider the set $G_C$ of Cauchy sequences in $G$. Define $\bar G:=G_C/\sim$, where two Cauchy sequences $(g_n)_{n\in\N}$ and $(h_n)_{n\in\N}$ are equivalent if $\lim d(g_n,h_n)=0$. Furthermore define $\bar d([(g_n)_{n\in\N}],[(h_n)_{n\in\N}]):=\lim d(g_n,h_n)$. It is well known that $(\bar G,\bar d)$ is the unique metric completion of $(G,d)$.
@@ -156,7 +156,7 @@ The group we are interested in is the metric completion of $\lim G_n$.
 \begin{definition}
 	Let $(G_n)_{n\in\N}$, $G=\lim G_n$, and $d$ be as before. Define the \define{closure of the limit of $(G_n)_{n\in\N}$}, denoted by $\clim G_n$, as the metric completion of $(G,d)$.
 \end{definition}
-By the previous lemma $\clim G_n$ is a topological group and a complete metric space with bi-invariant metric. 
+By the previous lemma $\clim G_n$ is a topological group and a complete metric space with a bi-invariant metric. 
 Additionally $\clim G_n$ has another nice property. For this we need to introduce the well established notion of Polish spaces. 
 \begin{definition}
 	A topological space $(X,\tau)$ is a \define{Polish space} if there is a metric $d$ on $X$ that induces the topology $\tau$ such that $(X,d)$ is complete and has a countable dense subset. A topological group is a \define{Polish group} if the underlying topological space is a Polish space.
@@ -507,7 +507,7 @@ Note that in the second case, the upper bound is at least $\frac{1}{2}$, which m
 But for now, our goal is to apply Theorem \ref{thm:LevyImpliesExAm} to groups and as it turns out, we can bound the length of a group using sequences of subgroups. Before we can write down the corresponding corollary, we need to make a quick excursion into factor metrics. 
 		
 \begin{definition}
-	Let $(X,d)$ be a metric space and let $\sim$ be an equivalence relation on $X$. Then \[d_\sim([x],[y])=\inf\{d(p_1,q_1)+\dots+d(p_n,q_n)\mid q_i\sim p_{i+1}, x\sim p_1, q_n\sim y, n\in\N\}\] defines a pseudometric on $X/{\sim}$. We call  $d_\sim$ the \define{factor metric} on $X/\sim$.
+	Let $(X,d)$ be a metric space and let $\sim$ be an equivalence relation on $X$. Then \[d_\sim([x],[y])=\inf\{d(p_1,q_1)+\dots+d(p_n,q_n)\mid q_i\sim p_{i+1}, x\sim p_1, q_n\sim y, n\in\N\}\] defines a pseudo-metric on $X/{\sim}$. We call  $d_\sim$ the \define{factor metric} on $X/\sim$.
 \end{definition}
 Note that if $X$ is finite, then the infimum becomes a minimum and $d_\sim$ is a proper metric.
 In case that $X$ is a group with a bi-invariant metric this definition simplifies.
@@ -703,7 +703,7 @@ We will start of with some technical lemmas.
 	Let $U\leq V$ be a subspace. Then $U$ is nondegenerate iff $U\cap U^\bot=\{0\}$.
 \end{lemma}
 \begin{proof}
-	If $U$ is degenerate, then there is a $u\in U$ such that $u\bot v$ for all $v\in U$. Therefeore $u\in U^\bot$. Vice versa if $u\in (U\cap U^\bot)\setminus\{0\}$, then $\omega(u,v)=0$ for all $v\in U$.
+	If $U$ is degenerate, then there is a $u\in U$ such that $u\bot v$ for all $v\in U$. Therefore $u\in U^\bot$. Vice versa if $u\in (U\cap U^\bot)\setminus\{0\}$, then $\omega(u,v)=0$ for all $v\in U$.
 \end{proof}
 		
 %\begin{lemma}
