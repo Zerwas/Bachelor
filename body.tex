@@ -6,10 +6,10 @@ Given such group, we can equip it with the normalized rank metric and the normal
 For some sequences of matrix groups of increasing size there is a well defined limit. For example, this is the case for the special linear group of $(n\times n)$-matrices $\SL_n$.
 Carderi and Thom  showed in \cite{thom} that a suitable limit of $\SL_n$ is, as a topological group, \emph{extremely amenable}. The goal of this thesis is to generalize this result to limits of other families of matrix groups, namely groups of \define{symplectic}, \define{unitary}, and \define{orthogonal} matrices.  
 These matrices can be seen as \define{isometries}, i.e.\ bijective linear maps from a vector space into itself preserving a symplectic, unitary, or orthogonal form.
-The general strategy to prove extreme amenability for limits of families of these groups will be as follows: given such a family $(G_n)_{n\in\N}$ of finite matrix groups considered as metric measure spaces. We apply a consequence of Azema's inequality \cite{Azema} to obtain an upper bound for the \emph{measure concentration function} of $G_n$ in terms of the \define{length} of $G_n$.
-As the upper bounds converge to zero we conclude that $(G_n)_{n\in\N}$ is a \emph{L\'{e}vy family}, making their limit a \emph{L\'{e}vy group}. Finally, we know from \cite{Levy} that every L\'{e}vy group is extremely amenable.
+The general strategy to prove extreme amenability for limits of families of these groups will be as follows: Given such a family $(G_n)_{n\in\N}$ of finite matrix groups considered as metric measure spaces, we apply a consequence of Azuma's inequality \cite{azuma1967} to obtain an upper bound for the \emph{measure concentration function} of $G_n$ in terms of the \define{length} of $G_n$.
+As the upper bounds converge to zero we conclude that $(G_n)_{n\in\N}$ is a \emph{L\'{e}vy family}, making their limit a \emph{L\'{e}vy group}. Finally, we know from \cite{AzemaLevy} that every L\'{e}vy group is extremely amenable.
 
-This thesis is structured as follows. In Section \ref{sec:generalDefns}, we will give a short introduction on how to view matrix groups as metric measure spaces and how to define a limit of a sequence of matrix groups. Furthermore we will introduce the notion of extreme amenability and its connection to L\'evy groups. In Section \ref{sec:azema}, we will briefly introduce the notion of \define{conditional expectation} to show Azema's inequality. Next we will introduce an important invariant of metric measure spaces, namely their \define{length}. Azema's inequality will allow us to connect the length of a metric measure space with its measure concentration function. This connection is used in Section \ref{sec:thom} to show that the limit of $\SL_n$ is extremely amenable. To generalize this result we give a proof of Witt's lemma, which says that isometries between subspaces can be extended to isometries on the whole space, in Section \ref{sec:witt}. In Section \ref{sec:mySec}, we generalize the result from Section \ref{sec:thom} to symplectic, unitary, and orthogonal groups. Finally, in Section \ref{sec:ramsey}, a Ramsey theoretic result from \cite{thom} about $\SL_n$ is generalized to symplectic, unitary, and orthogonal groups.
+This thesis is structured as follows. In Section \ref{sec:generalDefns}, we will give a short introduction on how to view matrix groups as metric measure spaces and how to define a limit of a sequence of matrix groups. Furthermore we will introduce the notion of extreme amenability and its connection to L\'evy groups. In Section \ref{sec:azema}, we will briefly introduce the notion of \define{conditional expectation} to show Azuma's inequality. Next we will introduce an important invariant of metric measure spaces, namely their \define{length}. Azuma's inequality will allow us to connect the length of a metric measure space with its measure concentration function. This connection is used in Section \ref{sec:thom} to show that the limit of $\SL_n$ is extremely amenable. To generalize this result we give a proof of Witt's lemma, which says that isometries between subspaces can be extended to isometries on the whole space, in Section \ref{sec:witt}. In Section \ref{sec:mySec}, we generalize the result from Section \ref{sec:thom} to symplectic, unitary, and orthogonal groups. Finally, in Section \ref{sec:ramsey}, a Ramsey theoretic result from \cite{thom} about $\SL_n$ is generalized to symplectic, unitary, and orthogonal groups.
 
 %Define limit of $G_n$
 
@@ -173,7 +173,7 @@ Additionally $\clim G_n$ has another nice property. For this we need to introduc
 	A topological group $G$ is \define{extremely amenable} if every continuous action of $G$ on a compact topological space admits a fixed point.
 \end{definition}
 		
-The goal of this thesis is to show that for certain sequences $(G_n)_{n\in\N}$ we have that $\clim G_n$ is extremely amenable. It is hard to show this directly, but we know from \cite{Levy} that every L\'evy group (see Definition \ref{def:Levy}) is extremely amenable. Hence we will show that $\clim G_n$ is a L\'evy group instead.
+The goal of this thesis is to show that for certain sequences $(G_n)_{n\in\N}$ we have that $\clim G_n$ is extremely amenable. It is hard to show this directly, but we know from \cite{AzemaLevy} that every L\'evy group (see Definition \ref{def:Levy}) is extremely amenable. Hence we will show that $\clim G_n$ is a L\'evy group instead.
 		
 		
 %\subsection*{Levy}
@@ -220,7 +220,7 @@ Now we can come back to groups.
 \end{definition}
 %Note that, since $G_n$ is finite, the normalized Haar measure of $G_n$ is just the normalized counting measure.
 The following theorem gives us the desired connection to extreme amenability.
-\begin{theorem}[Theorem \textbf{4.1.3} in \cite{Levy}]\label{thm:LevyImpliesExAm}
+\begin{theorem}[Theorem \textbf{3.1.3} in \cite{AzemaLevy}]\label{thm:LevyImpliesExAm}
 Every L\'evy group is extremely amenable.
 \end{theorem}
 
@@ -232,10 +232,10 @@ The next section develops the methods necessary to obtain this upper bound.
 %\[\varphi_n\colon g\mapsto\]
 %is a well defined embedding
 		
-\section{Azema's Inequality and Measure Concentration}\label{sec:azema}
-In this section we will prove Azema's inequality and as a consequence, we will obtain an upper bound for the measure concentration function in terms of an invariant of mm-spaces called the length. For groups we will then bound the length using an increasing sequence of subgroups. 
+\section{Azuma's Inequality and Measure Concentration}\label{sec:azema}
+In this section we will prove Azuma's inequality and as a consequence, we will obtain an upper bound for the measure concentration function in terms of an invariant of mm-spaces called the length. For groups we will then bound the length using an increasing sequence of subgroups. 
 
-As the next results rely heavily on stochastic methods we will briefly introduce the necessary notions. Since the $G_n$ are all finite and equipped with the normalized counting measure we will only consider \define{probability spaces} $(X,\Sigma,\mu)$, where $X$ is finite, $\Sigma$ is a $\sigma$-algebra over $X$, and $\mu(A)=|A|/|X|$ for $A\subseteq X$. In this section we will roughly follow Section 3.2 from \cite{Azema}. Most of the statements presented in this section hold in a more general setting. 
+As the next results rely heavily on stochastic methods we will briefly introduce the necessary notions. Since the $G_n$ are all finite and equipped with the normalized counting measure we will only consider \define{probability spaces} $(X,\Sigma,\mu)$, where $X$ is finite, $\Sigma$ is a $\sigma$-algebra over $X$, and $\mu(A)=|A|/|X|$ for $A\subseteq X$. In this section we will roughly follow Section 3.2 from \cite{AzemaLevy}. Most of the statements presented in this section hold in a more general setting. 
 
 Note that in our case $\Sigma$ has a very nice representation.%Note that $\Sigma$ is the smallest $\sigma$-algebra containing $A_1,\dots,A_n$, where $$ 
 		
@@ -309,7 +309,7 @@ With this intuition the statements from the following lemma are not surprising.
 %\end{itemize}
 %\end{definition}
 		
-The following lemma might not seem very interesting, but changing the exponent from $x$ to $x^2$ is the crucial ingredient for the proof of Azema's inequality.
+The following lemma might not seem very interesting, but changing the exponent from $x$ to $x^2$ is the crucial ingredient for the proof of Azuma's inequality.
 \begin{lemma}\label{lem:exToex2} For all $x\in\R$
 	\[e^{x}\leq x+e^{x^2}.\]
 \end{lemma} 
@@ -331,14 +331,14 @@ The following lemma might not seem very interesting, but changing the exponent f
 	Hence the inequality holds for the second derivatives  and therefore also for the original functions.
 \end{proof}
 		
-Before we will prove Azema's inequality, let us introduce some useful notation. Whenever there is no danger of confusion we will abbreviate sets of the form
+Before we will prove Azuma's inequality, let us introduce some useful notation. Whenever there is no danger of confusion we will abbreviate sets of the form
 \begin{align*}
 	\{x\in X\mid \operatorname{Condition}(x)\text{ holds}\} &   & \text{by} &   & \{\operatorname{Condition}\}. 
 \end{align*}
 For example $\{x\in X\mid f(x)= c\}$ becomes $\{f= c\}$.
 For a function $f\colon X\to\R$ we denote the \define{sup norm} of $f$ by $\|f\|_\infty:=\sup f(X)$.
 		
-\begin{lemma}[Azema's inequality]\label{lem:azema}
+\begin{lemma}[Azuma's inequality]\label{lem:azema}
 	Let $(X,\Sigma,\mu)$ be a finite probability space, $f\colon X\to\R$ a measurable function, and $\{X,\emptyset\}=\Sigma_0\subseteq\dots\subseteq\Sigma_n=\Sigma$ a chain of sub-$\sigma$-algebras. Define $f_0:=\E(f\mid\Sigma_0)$ and $f_i:=\E(f\mid\Sigma_i)$, $d_i:=f_i-f_{i-1}$ for $i\in\{1,\dots,n\}$. Then for every $\varepsilon\geq0$
 	%\[\mu(\{x\in X\mid |f(x)-\mathbb{E}(f)|\geq c\})\leq 2\exp\left(-\frac{c^2}{4\sum_{i=1}^{n}\|d_i\|^2_\infty}\right)\]
 	\[\mu(\{|f-\E(f)|\geq \varepsilon\})\leq 2\cdot\exp\left(-\frac{\varepsilon^2}{4\cdot\sum_{i=1}^{n}\|d_i\|^2_\infty}\right).\]
@@ -376,7 +376,7 @@ Note that $(f_i,\Sigma_i)_{0\leq i\leq n}$ is a discrete martingale. But we will
 	These two statements obviously give us the desired result.
 \end{proof}
 		
-Since $\mu$ is the counting measure Azema's inequality bounds the number of elements for which $f$ differs at least $\varepsilon$ from its mean. This seems at least somewhat connected to the measure concentration function, as there we want to show that for any measurable set $A$ with $\mu(A)\geq\frac{1}{2}$ only a few elements are more than $\varepsilon$ away from $A$.
+Since $\mu$ is the counting measure Azuma's inequality bounds the number of elements for which $f$ differs at least $\varepsilon$ from its mean. This seems at least somewhat connected to the measure concentration function, as there we want to show that for any measurable set $A$ with $\mu(A)\geq\frac{1}{2}$ only a few elements are more than $\varepsilon$ away from $A$.
 The next goal is to formalize this connection. % Azema's inequality with the measure concentration function. 
 But to achieve this we first need to introduce the length of an mm-space.
 \begin{definition}\label{def:length}
@@ -454,7 +454,7 @@ We will see more properties later in Lemma \ref{lem:diamLen} and Lemma \ref{lem:
 	\[d_H(u_1\dots u_n,v_1\dots v_n)=\frac{1}{n}\cdot|\{i\in\{1,\dots,n\}\mid u_i\not=v_i\}|,\] and obtain the mm-space $\boldsymbol{X}^H_n$ with diameter 1. Now, the n-dimensional cube has side length $\frac{1}{n}$ and therefore the length of $\boldsymbol{X}^H_n$ is bounded by $(\sum_{i=1}^{n}\frac{1}{n^2})^{\frac{1}{2}}=n^{-\frac{1}{2}}$. In Lemma \ref{lem:lengthLowerBound} we will show that this is also a lower bound. Therefore $\len(\boldsymbol{X}^H_n)=n^{-\frac{1}{2}}$. We see that here the length of $\boldsymbol{X}^H_n$ converges to 0 as $n$ tends to infinity. We will show that this means that the measure concentration function $\alpha_{\boldsymbol{X}^H_n}(\varepsilon)$ also converges to 0 for any fixed $\varepsilon>0$. 
 \end{example}
 		
-Now we come back to the connection between Azema's inequality and the measure concentration function.
+Now we come back to the connection between Azuma's inequality and the measure concentration function.
 		
 \begin{lemma}\label{lem:lipschitz}
 	Let $\boldsymbol{X}=(X,d,\mu)$ be a finite mm-space of length $l$ and $f\colon X\to\R$ be a 1-Lipschitz function. Then
@@ -463,7 +463,7 @@ Now we come back to the connection between Azema's inequality and the measure co
 \begin{proof}
 	Let 
 	$\Omega_0\prec\dots\prec\Omega_n$
-	be a refining sequence of partitions with $a_1,\dots,a_n$ as in Definition \ref{def:length} such that $\sum_{i=1}^{n}a_i^2=l^2$. These partitions correspond to $\sigma$-algebras $\Sigma_0\subseteq\dots\subseteq\Sigma_n$. Now we can apply Azema's inequality to obtain
+	be a refining sequence of partitions with $a_1,\dots,a_n$ as in Definition \ref{def:length} such that $\sum_{i=1}^{n}a_i^2=l^2$. These partitions correspond to $\sigma$-algebras $\Sigma_0\subseteq\dots\subseteq\Sigma_n$. Now we can apply Azuma's inequality to obtain
 	\[\mu(\{|f-\E(f)|\geq \varepsilon\})\leq 2\cdot\exp\left(-\frac{\varepsilon^2}{4\cdot\sum_{i=1}^{n}\|d_i\|^2_\infty}\right),\]
 	where $f_i=\E(f\mid \Sigma_i)$ and $d_i=f_i-f_{i-1}$ as before. Therefore we only need to show that $\|d_i\|_\infty\leq a_i$. Since on any $A\in\Omega_{i-1}$ we have $f_{i-1}=\E(f_i\mid A)$ it suffices to show that for all $A\in\Omega_{i-1}$ it holds that $f_i(x)-f_i(y)\leq a_i$ for all $x,y\in A$.
 	Let $\varphi\colon [x]_i\to [y]_i$ be the isometry from Definition \ref{def:length}.
